@@ -1,0 +1,62 @@
+name: education
+description: "A new Flutter project."
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  get: ^4.7.2
+  image_picker: ^1.2.0
+  country_code_picker: ^3.4.0
+  fluttertoast: ^8.2.12
+  cached_network_image: ^3.4.1
+  flutter_svg: ^2.2.0
+  loading_overlay: ^0.4.3
+  pull_to_refresh: ^2.0.0
+  shared_preferences: ^2.5.3
+  permission_handler: ^12.0.1
+  connectivity_plus: ^6.1.5
+  dio: ^5.9.0
+  responsive_framework: ^1.5.1
+  pinput: ^5.0.1
+  persistent_bottom_nav_bar: ^6.2.1
+  intl: ^0.20.2
+  skeletonizer: ^2.1.0+1
+  shimmer: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/png/
+    - assets/svg/
+
+  fonts:
+    - family: OpenSansRegular
+      fonts:
+        - asset: assets/fonts/OpenSans-Regular.ttf
+    - family: OpenSansMedium
+      fonts:
+        - asset: assets/fonts/OpenSans-Medium.ttf
+    - family: OpenSansSemiBold
+      fonts:
+        - asset: assets/fonts/OpenSans-SemiBold.ttf
+    - family: OpenSansBold
+      fonts:
+        - asset: assets/fonts/OpenSans-Bold.ttf
+    - family: OpenSansLight
+      fonts:
+        - asset: assets/fonts/OpenSans-Light.ttf
