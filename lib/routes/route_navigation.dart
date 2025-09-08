@@ -1,5 +1,6 @@
 
 import 'dart:io';
+import 'package:education/view/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../view/onboarding/login/login_screen.dart';
@@ -17,14 +18,6 @@ class RouteNavigation{
   static const String createNewPasswordScreenRoute = 'create_new_password_screen';
   static const String dashboardScreenRoute = 'dashboard_screen';
   static const String chatDetailScreenRoute = 'chat_detail_screen';
-  static const String scheduleDriveScreenRoute = 'schedule_drive_screen';
-  static const String driveListScreenRoute = 'drive_list_screen';
-  static const String startDriveScreenRoute = 'start_drive_screen';
-  static const String findDriveMatesScreenRoute = 'find_drive_mates_screen';
-  static const String endDriveScreenRoute = 'end_drive_screen';
-  static const String profileScreenRoute = 'profile_screen';
-  static const String settingsScreenRoute = 'settings_screen';
-
 
   static GetPageRoute<dynamic>? generateRoute(RouteSettings settings){
     switch(settings.name) {
@@ -41,6 +34,10 @@ class RouteNavigation{
       case verifyOtpScreenRoute:
         final argument  = settings.arguments as VerifyOtpScreen;
         return GetPageRoute(page: () => VerifyOtpScreen( email: argument.email,phone: argument.phone,type: argument.type,),transition: Platform.isAndroid ? Transition.rightToLeftWithFade : Transition.native,curve: Platform.isAndroid ? Curves.fastOutSlowIn : null,routeName: splashScreenRoute);
+
+      case dashboardScreenRoute:
+        final argument  = settings.arguments as DashboardScreen;
+        return GetPageRoute(page: () => DashboardScreen(index: argument.index,),transition: Platform.isAndroid ? Transition.rightToLeftWithFade : Transition.native,curve: Platform.isAndroid ? Curves.fastOutSlowIn : null,routeName: splashScreenRoute);
 
       default:
         return GetPageRoute(page: () => SplashScreen(),transition: Platform.isAndroid ? Transition.rightToLeftWithFade : Transition.native,curve: Platform.isAndroid ? Curves.fastOutSlowIn : null,routeName: splashScreenRoute);

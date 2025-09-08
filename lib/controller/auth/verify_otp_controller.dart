@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:education/routes/route_navigation.dart';
+import 'package:education/view/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/services/api/api_controller.dart';
@@ -38,6 +40,7 @@ class VerifyOtpController extends GetxController{
   Future<void> onSuccess({required String email,required String mobile,required String type})async{
     if(otpController.value.text.length >=6) {
       FocusScope.of(Get.context!).unfocus();
+      Get.offAllNamed(RouteNavigation.dashboardScreenRoute,arguments: DashboardScreen(index: 0));
       // getVerifyOtpApi(email: email,mobile: mobile,type: type);
     }else{
       ToastCustom.showSnackBar(subtitle: "Please enter valid otp",isSuccess: false);
