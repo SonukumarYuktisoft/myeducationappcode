@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../../../core/constants/color.dart';
 import '../../../core/constants/font_family.dart';
-import '../../../core/utils/appbar_custom.dart';
 import '../../../core/utils/button.dart';
 import '../../../core/utils/custom_snackbar.dart';
 import '../../../core/utils/text.dart';
@@ -36,7 +35,8 @@ class LoginScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
-          body: SafeArea(
+        body: SafeArea(
+          child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
@@ -44,41 +44,47 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   buildSizeBox(100.0, 0.0),
                   Align(
-                      alignment: Alignment.centerLeft,
-                      child: BuildText.buildText(text: "Welcome To,\nLogin",
-                          size: 32,
-                          fontFamily: FontFamily.bold)
+                    alignment: Alignment.centerLeft,
+                    child: BuildText.buildText(
+                      text: "Welcome To,\nLogin",
+                      size: 32,
+                      fontFamily: FontFamily.bold,
+                    ),
                   ),
                   buildSizeBox(40.0, 0.0),
-
                   formFieldSection(),
                   buildSizeBox(20.0, 0.0),
-
                   CustomButton(
                     onPressed: () {
-                      Get.toNamed(RouteNavigation.verifyOtpScreenRoute,
-                          arguments: VerifyOtpScreen(email: '',
-                              phone: controller.phoneController.value.text,
-                              type: "phone"));
+                      Get.toNamed(
+                        RouteNavigation.verifyOtpScreenRoute,
+                        arguments: VerifyOtpScreen(
+                          email: '',
+                          phone: controller.phoneController.value.text,
+                          type: "phone",
+                        ),
+                      );
                     },
                     text: "Login",
                   ),
                   buildSizeBox(20.0, 0.0),
                   bottomWidget(),
+                  buildSizeBox(40.0, 0.0), // Extra space at bottom
                 ],
               ),
             ),
-          )
+          ),
+        ),
       ),
     );
   }
 
   Widget loginTypeWidget() {
     return Container(
-      padding: EdgeInsets.all(4),
+      padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-          color: AppColors.clr222222,
-          borderRadius: BorderRadius.circular(30)
+        color: AppColors.clr222222,
+        borderRadius: BorderRadius.circular(30),
       ),
       child: TabBar(
         controller: controller.tabController,
@@ -114,15 +120,13 @@ class LoginScreen extends StatelessWidget {
 
   Widget formFieldSection() {
     return AnimatedSize(
-      duration: Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 600),
       curve: Curves.linearToEaseOut,
       alignment: Alignment.topCenter,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          // /// Phone Number
-          // if (controller.tabController.index == 1)
+          // Phone Number Field
           TextFieldForPhone(
             focusNode: controller.focusNodePhone,
             controller: controller.phoneController.value,
@@ -133,55 +137,47 @@ class LoginScreen extends StatelessWidget {
             errortext: controller.isPhoneNumber
                 ? "Enter Phone Number"
                 : controller.isValidPhoneNumber
-                ? "Enter Valid Phone Number"
-                : "",
+                    ? "Enter Valid Phone Number"
+                    : "",
             onChangedCode: (value) {
-              controller.countryCode.value =
-                  value.dialCode ?? "";
+              controller.countryCode.value = value.dialCode ?? "";
             },
           ),
 
-          /// Email
+          // Commented out Email/Password section
           // if (controller.tabController.index == 0) ...[
           //   TextFieldCustom(
           //     focusNode: controller.focusEmail,
           //     controller: controller.emailController,
           //     hintText: "Enter your email",
-          //     errorText:
-          //     controller.isValidateEmail
-          //         ? "Enter Email"
-          //         : "",
+          //     errorText: controller.isValidateEmail ? "Enter Email" : "",
           //     keyboardType: TextInputType.emailAddress,
           //     textCapitalization: TextCapitalization.none,
           //   ),
           //   buildSizeBox(15.0, 0.0),
-          //
-          //   /// Password
           //   TextFieldCustom(
           //     focusNode: controller.focusPassword,
           //     controller: controller.passwordController,
           //     hintText: "Password",
-          //     errorText: controller.isValidatePassword
-          //         ? "Enter Password"
-          //         : "",
+          //     errorText: controller.isValidatePassword ? "Enter Password" : "",
           //     keyboardType: TextInputType.visiblePassword,
           //     isPassword: true,
           //   ),
           // ],
 
-          /// Forgot Password
+          // Forgot Password Button
           Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                  onPressed: () {
-                    Get.toNamed(
-                        RouteNavigation.forgotPasswordScreenRoute);
-                  },
-                  child: BuildText.buildText(
-                      text: "Forgot Password?",
-                      size: 14,
-                      fontFamily: FontFamily.medium)
-              )
+            alignment: Alignment.centerRight,
+            child: TextButton(
+              onPressed: () {
+                Get.toNamed(RouteNavigation.forgotPasswordScreenRoute);
+              },
+              child: BuildText.buildText(
+                text: "Forgot Password?",
+                size: 14,
+                fontFamily: FontFamily.medium,
+              ),
+            ),
           ),
         ],
       ),
@@ -189,33 +185,37 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget bottomWidget() {
-    return Positioned(
-      bottom: 25,
-      left: 0,
-      right: 0,
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 20),
       child: Text.rich(
-          textAlign: TextAlign.center,
-          TextSpan(
-              text: "Don't have an account? ",
-              style: TextStyle(fontSize: 15,
-                  color: AppColors.blackColor,
-                  fontFamily: FontFamily.semiBold),
-              children: <TextSpan>[
-                TextSpan(
-                    text: "Sign Up",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: FontFamily.bold,
-                      color: AppColors.blackColor,
-                    ),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        Get.offAndToNamed(RouteNavigation.signupScreenRoute);
-                      }
-                ),
-              ]
-          )
+        textAlign: TextAlign.center,
+        TextSpan(
+          text: "Don't have an account? ",
+          style: TextStyle(
+            fontSize: 15,
+            color: AppColors.blackColor,
+            fontFamily: FontFamily.semiBold,
+          ),
+          children: <TextSpan>[
+            TextSpan(
+              text: "Sign Up",
+              style: TextStyle(
+                fontSize: 16,
+                fontFamily: FontFamily.bold,
+                color: AppColors.primaryColor, // Use primary color for better visibility
+                decoration: TextDecoration.underline, // Add underline to indicate it's clickable
+              ),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  Get.offAndToNamed(RouteNavigation.signupScreenRoute);
+                },
+            ),
+          ],
+        ),
       ),
     );
   }
+
+
 }

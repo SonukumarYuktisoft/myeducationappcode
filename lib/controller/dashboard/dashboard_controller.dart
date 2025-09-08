@@ -31,7 +31,7 @@ class DashboardController extends GetxController {
     HomeScreen(),
     MyCourseScreen(),
     ChatScreen(),
-    TestScreen(),
+    MockTestScreen(),
     ProfileScreen()
   ];
 
