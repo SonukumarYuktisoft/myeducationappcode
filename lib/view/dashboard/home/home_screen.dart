@@ -1,10 +1,8 @@
 
 import 'package:education/core/constants/color.dart';
 import 'package:education/core/constants/font_style.dart';
-import 'package:education/core/utils/text.dart';
-import 'package:education/routes/route_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

@@ -1,8 +1,11 @@
 import 'package:education/core/constants/color.dart';
 import 'package:education/core/constants/font_family.dart';
 import 'package:education/core/constants/font_style.dart';
-import 'package:education/core/utils/text.dart';
+import 'package:education/view/dashboard/chat/chat_with_ai.dart';
+import 'package:education/view/dashboard/chat/conversation_screen.dart';
+import 'package:education/view/dashboard/chat/support_chat_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -14,17 +17,11 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  int _selectedIndex = 0;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
-    _tabController.addListener(() {
-      setState(() {
-        _selectedIndex = _tabController.index;
-      });
-    });
   }
 
   @override
@@ -332,7 +329,9 @@ class _ChatScreenState extends State<ChatScreen>
                 child: _buildQuickActionButton(
                   icon: Icons.help_outline,
                   label: 'Ask Doubt',
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(() => ChatWithAiScreen());
+                  },
                 ),
               ),
               const SizedBox(width: 12),
@@ -340,7 +339,9 @@ class _ChatScreenState extends State<ChatScreen>
                 child: _buildQuickActionButton(
                   icon: Icons.support_agent,
                   label: 'Contact Support',
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(() => SupportChatScreen());
+                  },
                 ),
               ),
             ],
@@ -407,18 +408,28 @@ class _ChatScreenState extends State<ChatScreen>
           Row(
             children: [
               Expanded(
-                child: _buildSupportOption(
-                  icon: Icons.chat_bubble_outline,
-                  label: 'Live Chat',
-                  subtitle: 'Chat with support team',
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => SupportChatScreen());
+                  },
+                  child: _buildSupportOption(
+                    icon: Icons.chat_bubble_outline,
+                    label: 'Live Chat',
+                    subtitle: 'Chat with support team',
+                  ),
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
-                child: _buildSupportOption(
-                  icon: Icons.email_outlined,
-                  label: 'Email Support',
-                  subtitle: 'Send us an email',
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => SupportChatScreen());
+                  },
+                  child: _buildSupportOption(
+                    icon: Icons.email_outlined,
+                    label: 'Email Support',
+                    subtitle: 'Send us an email',
+                  ),
                 ),
               ),
             ],
@@ -480,7 +491,11 @@ class _ChatScreenState extends State<ChatScreen>
   }) {
     return GestureDetector(
       onTap: () {
-        // Navigate to individual chat screen
+        Get.to(() => ConversationScreen(
+          instructorName: name,
+          subject: subject,
+          isOnline: isOnline,
+        ));
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),

@@ -101,7 +101,7 @@
             debugPrint('onClipboardFound: $value');
           },
           hapticFeedbackType: HapticFeedbackType.mediumImpact,
-          onCompleted: (pin) => controller.onSuccess(email: widget.email,mobile: widget.phone,type: widget.type),
+          // onCompleted: (pin) => controller.onSuccess(email: widget.email,mobile: widget.phone,type: widget.type),
           onChanged: (value) {},
           cursor: Row(
             mainAxisAlignment: MainAxisAlignment.center,

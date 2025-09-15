@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 import 'core/services/secure_storage/secure_storage.dart';
 import 'core/utils/permission_handler/connection_validator.dart';
 import 'core/utils/print_log.dart';
@@ -17,6 +18,9 @@ Future<void> main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitUp]);
+  
+  // Initialize Gemini
+  Gemini.init(apiKey: 'AIzaSyDXcf1wPKY7CczxIM-JuTLDhig3LNwGxeQ'); // Replace with your actual API key
 
   await AppSecureStorage.getInstance().then((value) => {
     accessToken = value?.getString(AppSecureStorage.kAuthToken) ?? "",
