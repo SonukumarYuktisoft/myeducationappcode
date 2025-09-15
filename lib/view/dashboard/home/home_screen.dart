@@ -1,7 +1,9 @@
 
 import 'package:education/core/constants/color.dart';
 import 'package:education/core/constants/font_style.dart';
+import 'package:education/view/my_batches/my_batches.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -137,7 +139,9 @@ class HomeScreen extends StatelessWidget {
               icon: Icons.book_outlined,
               title: 'My Batches',
               color: const Color(0xFF4285F4),
-              onTap: () {},
+              onTap: () {
+                Get.to(() => MyBatchesScreen());
+              },
             ),
             _buildActionCard(
               icon: Icons.quiz_outlined,
