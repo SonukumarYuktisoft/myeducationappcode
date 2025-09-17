@@ -137,6 +137,28 @@ class _BatchDetailScreenState extends State<BatchDetailScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
+          BuildText.buildText(text: "Course Overview"),
+          const SizedBox(height: 12),
+           Container(
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.all(16),
+        height: 200,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/png/trending_courses_img.jpg'),
+            fit: BoxFit.cover,
+          ),
+          color: AppColors.whiteColor,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.08),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+          border: Border.all(color: AppColors.clrD6D6D6.withOpacity(0.5)),
+        ),),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

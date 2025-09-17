@@ -2,6 +2,7 @@ import 'package:education/core/constants/color.dart';
 import 'package:education/core/constants/font_family.dart';
 import 'package:education/core/constants/font_style.dart';
 import 'package:education/view/my_batches/batch_detail.dart';
+import 'package:education/view/my_batches/course_controller/course_controller.dart';
 import 'package:education/view/my_batches/live_class_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,9 @@ class MyBatchesScreen extends StatefulWidget {
 class _MyBatchesScreenState extends State<MyBatchesScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+   final CourseController courseCtrl =
+      Get.put(CourseController());
+
 
   @override
   void initState() {
@@ -132,16 +136,21 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
       ),
     ];
 
-    return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemCount: overviewItems.length,
-      physics: BouncingScrollPhysics(),
-      itemBuilder: (context, index) {
-        final item = overviewItems[index];
-        return _buildOverviewCard(item, () {
-          Get.to(() => BatchDetailScreen(item: item));
-        });
-      },
+    return Obx(
+       () {
+        
+        return ListView.builder(
+          padding: const EdgeInsets.all(16),
+          itemCount: overviewItems.length,
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (context, index) {
+            final item = overviewItems[index];
+            return _buildOverviewCard(item, () {
+              Get.to(() => BatchDetailScreen(item: item));
+            });
+          },
+        );
+      }
     );
   }
 
