@@ -1,10 +1,14 @@
-
 import 'package:education/core/constants/color.dart';
 import 'package:education/core/constants/font_style.dart';
+import 'package:education/view/my_batches/aI_assistant_screen.dart';
+import 'package:education/view/my_batches/free_batches_screen.dart';
+import 'package:education/view/my_batches/live_class_screen.dart';
 import 'package:education/view/my_batches/my_batches.dart';
+import 'package:education/view/my_batches/notes_screen.dart';
+import 'package:education/view/my_batches/recorded_videos_screen.dart';
+import 'package:education/view/my_batches/upcoming_batches_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -66,7 +70,6 @@ class HomeScreen extends StatelessWidget {
             color: AppColors.blackColor,
           ),
         ),
-        
       ],
     );
   }
@@ -153,37 +156,49 @@ class HomeScreen extends StatelessWidget {
               icon: Icons.live_tv_outlined,
               title: 'Live Classes',
               color: const Color(0xFFEA4335),
-              onTap: () {},
+              onTap: () {
+                Get.to(() => LiveClassScreen());
+              },
             ),
             _buildActionCard(
               icon: Icons.note_outlined,
               title: 'Notes',
               color: const Color(0xFFFBBC05),
-              onTap: () {},
+              onTap: () {
+                Get.to(() => NotesScreen());
+              },
             ),
             _buildActionCard(
               icon: Icons.stars_outlined,
               title: 'Free Batches',
               color: const Color(0xFF9C27B0),
-              onTap: () {},
+              onTap: () {
+                Get.to(() => FreeBatchesScreen());
+              },
             ),
             _buildActionCard(
               icon: Icons.play_circle_outline,
               title: 'Recorded Videos',
               color: const Color(0xFFFF5722),
-              onTap: () {},
+              onTap: () {
+                Get.to(() => RecordedVideosScreen());
+              },
             ),
             _buildActionCard(
               icon: Icons.schedule_outlined,
               title: 'Upcoming Batches',
               color: const Color(0xFF795548),
-              onTap: () {},
+              onTap: () {
+                Get.to(() => UpcomingBatchesScreen());
+              },
             ),
             _buildActionCard(
               icon: Icons.psychology_outlined,
               title: 'AI Assistant',
               color: const Color(0xFF607D8B),
-              onTap: () {},
+              onTap: () {
+                Get.to(() => AIAssistantScreen());
+              },
             ),
           ],
         ),
@@ -222,7 +237,7 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Icon(icon, color: color, size: 28),
             ),
-            const SizedBox(height: 8),
+            // const SizedBox(height: 8),
             Text(
               title,
               textAlign: TextAlign.center,
@@ -270,31 +285,30 @@ class HomeScreen extends StatelessWidget {
             itemCount: 3,
             itemBuilder: (context, index) {
               return _buildCourseCard(
-                title: index == 0
-                    ? 'UPSC Prelims 2024'
-                    : index == 1
-                    ? 'SSC CGL Special'
-                    : 'Banking Preparation',
-                subtitle: index == 0
-                    ? 'Complete Course'
-                    : index == 1
-                    ? 'Crash Course'
-                    : 'Foundation Course',
-                price: index == 0
-                    ? '₹2999'
-                    : index == 1
-                    ? '₹1999'
-                    : '₹1499',
-                originalPrice: index == 0
-                    ? '₹4999'
-                    : index == 1
-                    ? '₹2999'
-                    : '₹2499',
-                color: index == 0
-                    ? const Color(0xFF1565C0)
-                    : index == 1
-                    ? const Color(0xFFD32F2F)
-                    : const Color(0xFF388E3C),
+                // title:
+                //     index == 0
+                //         ? 'UPSC Prelims 2024'
+                //         : index == 1
+                //         ? 'SSC CGL Special'
+                //         : 'Banking Preparation',
+                // subtitle:
+                //     index == 0
+                //         ? 'Complete Course'
+                //         : index == 1
+                //         ? 'Crash Course'
+                //         : 'Foundation Course',
+                // price:
+                //     index == 0
+                //         ? '₹2999'
+                //         : index == 1
+                //         ? '₹1999'
+                //         : '₹1499',
+                // originalPrice:
+                //     index == 0
+                //         ? '₹4999'
+                //         : index == 1
+                //         ? '₹2999'
+                //         : '₹2499',
               );
             },
           ),
@@ -321,26 +335,30 @@ class HomeScreen extends StatelessWidget {
           itemCount: 3,
           itemBuilder: (context, index) {
             return _buildUpcomingBatchCard(
-              title: index == 0
-                  ? 'BPSC Mains Batch'
-                  : index == 1
-                  ? 'Railway Group D'
-                  : 'Police SI Preparation',
-              startDate: index == 0
-                  ? 'Sept 15, 2024'
-                  : index == 1
-                  ? 'Sept 20, 2024'
-                  : 'Sept 25, 2024',
-              duration: index == 0
-                  ? '6 Months'
-                  : index == 1
-                  ? '4 Months'
-                  : '3 Months',
-              seats: index == 0
-                  ? '45'
-                  : index == 1
-                  ? '60'
-                  : '30',
+              title:
+                  index == 0
+                      ? 'BPSC Mains Batch'
+                      : index == 1
+                      ? 'Railway Group D'
+                      : 'Police SI Preparation',
+              startDate:
+                  index == 0
+                      ? 'Sept 15, 2024'
+                      : index == 1
+                      ? 'Sept 20, 2024'
+                      : 'Sept 25, 2024',
+              duration:
+                  index == 0
+                      ? '6 Months'
+                      : index == 1
+                      ? '4 Months'
+                      : '3 Months',
+              seats:
+                  index == 0
+                      ? '45'
+                      : index == 1
+                      ? '60'
+                      : '30',
             );
           },
         ),
@@ -348,100 +366,218 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  // Widget _buildCourseCard({
+  //   required String title,
+  //   required String subtitle,
+  //   required String price,
+  //   required String originalPrice,
+  // }) {
+  //   return Container(
+  //     width: 280,
+  //     margin: const EdgeInsets.only(right: 16),
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.circular(16),
+  //       image: const DecorationImage(
+  //         image: AssetImage('assets/png/TrendingCourses_img.jpg'),
+  //         fit: BoxFit.cover,
+  //       ),
+  //     ),
+  //     child: Container(
+  //       decoration: BoxDecoration(
+  //         borderRadius: BorderRadius.circular(16),
+  //         color: Colors.black.withOpacity(
+  //           0.4,
+  //         ), // 👈 Optional overlay for text readability
+  //       ),
+  //       child: Padding(
+  //         padding: const EdgeInsets.all(16),
+  //         child: Column(
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           children: [
+  //             // Top Row
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //               children: [
+  //                 Container(
+  //                   padding: const EdgeInsets.symmetric(
+  //                     horizontal: 8,
+  //                     vertical: 4,
+  //                   ),
+  //                   decoration: BoxDecoration(
+  //                     color: Colors.white.withOpacity(0.2),
+  //                     borderRadius: BorderRadius.circular(8),
+  //                   ),
+  //                   child: Text(
+  //                     'TRENDING',
+  //                     style: TextStyleCustom.normalStyle(
+  //                       fontSize: 10,
+  //                       color: Colors.white,
+  //                     ),
+  //                   ),
+  //                 ),
+  //                 const Icon(
+  //                   Icons.bookmark_outline,
+  //                   color: Colors.white,
+  //                   size: 20,
+  //                 ),
+  //               ],
+  //             ),
+  //             const Spacer(),
+
+  //             // Title
+  //             Text(
+  //               title,
+  //               style: TextStyleCustom.headingStyle(
+  //                 fontSize: 18,
+  //                 color: Colors.white,
+  //               ),
+  //             ),
+  //             const SizedBox(height: 4),
+
+  //             // Subtitle
+  //             Text(
+  //               subtitle,
+  //               style: TextStyleCustom.normalStyle(
+  //                 fontSize: 14,
+  //                 color: Colors.white.withOpacity(0.9),
+  //               ),
+  //             ),
+  //             const SizedBox(height: 12),
+
+  //             // Price Row
+  //             Row(
+  //               children: [
+  //                 Text(
+  //                   price,
+  //                   style: TextStyleCustom.headingStyle(
+  //                     fontSize: 16,
+  //                     color: Colors.white,
+  //                   ),
+  //                 ),
+  //                 const SizedBox(width: 8),
+  //                 Text(
+  //                   originalPrice,
+  //                   style: TextStyleCustom.normalStyle(
+  //                     fontSize: 12,
+  //                     color: Colors.white.withOpacity(0.7),
+  //                   ).copyWith(decoration: TextDecoration.lineThrough),
+  //                 ),
+  //               ],
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
   Widget _buildCourseCard({
-    required String title,
-    required String subtitle,
-    required String price,
-    required String originalPrice,
-    required Color color,
+    String? title,
+    String? subtitle,
+    String? price,
+    String? originalPrice,
+    String? imagePath,
+    bool showTrending = true,
   }) {
     return Container(
       width: 280,
       margin: const EdgeInsets.only(right: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [color, color.withOpacity(0.8)],
+        image: DecorationImage(
+          image: AssetImage('assets/png/trending_courses_img.jpg'),
+          fit: BoxFit.cover,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: color.withOpacity(0.3),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
-          ),
-        ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.whiteColor.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    'TRENDING',
-                    style: TextStyleCustom.normalStyle(
-                      fontSize: 10,
-                      color: AppColors.whiteColor,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: Colors.black.withOpacity(0.4), // overlay for text readability
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Top Row
+              if (showTrending) // 👈 optional "TRENDING" badge
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        'TRENDING',
+                        style: TextStyleCustom.normalStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-                  ),
+                    const Icon(
+                      Icons.bookmark_outline,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                  ],
                 ),
-                Icon(
-                  Icons.bookmark_outline,
-                  color: AppColors.whiteColor,
-                  size: 20,
-                ),
-              ],
-            ),
-            const Spacer(),
-            Text(
-              title,
-              style: TextStyleCustom.headingStyle(
-                fontSize: 18,
-                color: AppColors.whiteColor,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              subtitle,
-              style: TextStyleCustom.normalStyle(
-                fontSize: 14,
-                color: AppColors.whiteColor.withOpacity(0.9),
-              ),
-            ),
-            const SizedBox(height: 12),
-            Row(
-              children: [
+
+              const Spacer(),
+
+              // Title
+              if (title != null)
                 Text(
-                  price,
+                  title,
                   style: TextStyleCustom.headingStyle(
-                    fontSize: 16,
-                    color: AppColors.whiteColor,
+                    fontSize: 18,
+                    color: Colors.white,
                   ),
                 ),
-                const SizedBox(width: 8),
+
+              if (subtitle != null) ...[
+                const SizedBox(height: 4),
                 Text(
-                  originalPrice,
+                  subtitle,
                   style: TextStyleCustom.normalStyle(
-                    fontSize: 12,
-                    color: AppColors.whiteColor.withOpacity(0.7),
-                  ).copyWith(decoration: TextDecoration.lineThrough),
+                    fontSize: 14,
+                    color: Colors.white.withOpacity(0.9),
+                  ),
                 ),
               ],
-            ),
-          ],
+
+              if (price != null || originalPrice != null) ...[
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    if (price != null)
+                      Text(
+                        price,
+                        style: TextStyleCustom.headingStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    if (price != null && originalPrice != null)
+                      const SizedBox(width: 8),
+                    if (originalPrice != null)
+                      Text(
+                        originalPrice,
+                        style: TextStyleCustom.normalStyle(
+                          fontSize: 12,
+                          color: Colors.white.withOpacity(0.7),
+                        ).copyWith(decoration: TextDecoration.lineThrough),
+                      ),
+                  ],
+                ),
+              ],
+            ],
+          ),
         ),
       ),
     );

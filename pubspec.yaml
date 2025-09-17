@@ -48,6 +48,9 @@ flutter:
 
   assets:
     - assets/fonts/
+    - assets/png/
+    - assets/png/groups_images/
+    - assets/png/teachers_image/
   fonts:
     - family: OpenSansRegular
       fonts:

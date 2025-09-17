@@ -1,8 +1,11 @@
 import 'package:education/core/constants/color.dart';
 import 'package:education/core/constants/font_family.dart';
 import 'package:education/core/constants/font_style.dart';
+import 'package:education/view/my_batches/batch_detail.dart';
 import 'package:education/view/my_batches/live_class_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:video_player/video_player.dart';
 
 class MyBatchesScreen extends StatefulWidget {
@@ -39,10 +42,7 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: [
-                _buildOverviewTab(),
-                _buildCurriculumTab(),
-              ],
+              children: [_buildOverviewTab(), _buildCurriculumTab()],
             ),
           ),
         ],
@@ -90,10 +90,7 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
           fontSize: 14,
           fontFamily: FontFamily.medium,
         ),
-        tabs: const [
-          Tab(text: 'Overview'),
-          Tab(text: 'Curriculum'),
-        ],
+        tabs: const [Tab(text: 'Overview'), Tab(text: 'Curriculum')],
       ),
     );
   }
@@ -101,7 +98,7 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
   // ---------------- Overview Tab ----------------
   Widget _buildOverviewTab() {
     final overviewItems = [
-      _CourseOverview(
+      CourseOverview(
         name: 'UPSC Prelims Complete',
         categories: const ['UPSC', 'BPSC', 'Railway'],
         startDate: '15 Oct 2025',
@@ -109,7 +106,7 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
         teacher: 'Dr. Rajesh Kumar',
         isPaid: true,
       ),
-      _CourseOverview(
+      CourseOverview(
         name: 'SSC CGL Mathematics',
         categories: const ['SSC'],
         startDate: '01 Nov 2025',
@@ -117,7 +114,7 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
         teacher: 'Prof. Anjali Sharma',
         isPaid: false,
       ),
-      _CourseOverview(
+      CourseOverview(
         name: 'SSC CGL Mathematics',
         categories: const ['SSC'],
         startDate: '01 Nov 2025',
@@ -125,7 +122,7 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
         teacher: 'Prof. Anjali Sharma',
         isPaid: false,
       ),
-      _CourseOverview(
+      CourseOverview(
         name: 'SSC CGL Mathematics',
         categories: const ['SSC'],
         startDate: '01 Nov 2025',
@@ -141,76 +138,87 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
         final item = overviewItems[index];
-        return _buildOverviewCard(item);
+        return _buildOverviewCard(item, () {
+          Get.to(() => BatchDetailScreen(item: item));
+        });
       },
     );
   }
 
-  Widget _buildOverviewCard(_CourseOverview item) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.whiteColor,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.08),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
+  Widget _buildOverviewCard(CourseOverview item, Function() onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.all(16),
+        height: 200,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/png/trending_courses_img.jpg'),
+            fit: BoxFit.cover,
           ),
-        ],
-        border: Border.all(color: AppColors.clrD6D6D6.withOpacity(0.5)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 56,
-                height: 56,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Icon(Icons.menu_book, color: AppColors.primaryColor),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      item.name,
-                      style: TextStyleCustom.headingStyle(
-                        fontSize: 16,
-                        color: AppColors.blackColor,
-                      ),
-                    ),
-                    const SizedBox(height: 6),
-                    Wrap(
-                      spacing: 6,
-                      runSpacing: -8,
-                      children: item.categories
-                          .map((c) => _chip(c, AppColors.primaryColor))
-                          .toList(),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          _kv('Start date', item.startDate),
-          const SizedBox(height: 8),
-          _kv('Duration', item.duration),
-          const SizedBox(height: 8),
-          _kv('Teacher', item.teacher),
-          const SizedBox(height: 8),
-          _kv('Paid', item.isPaid ? 'Yes' : 'No'),
-        ],
+          color: AppColors.whiteColor,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.08),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+          border: Border.all(color: AppColors.clrD6D6D6.withOpacity(0.5)),
+        ),
+        // child: Column(
+        //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+        //     Row(
+        //       crossAxisAlignment: CrossAxisAlignment.start,
+        //       children: [
+        //         Container(
+        //           width: 56,
+        //           height: 56,
+        //           decoration: BoxDecoration(
+        //             color: AppColors.primaryColor.withOpacity(0.1),
+        //             borderRadius: BorderRadius.circular(8),
+        //           ),
+        //           child: Icon(Icons.menu_book, color: AppColors.primaryColor),
+        //         ),
+        //         const SizedBox(width: 12),
+        //         Expanded(
+        //           child: Column(
+        //             crossAxisAlignment: CrossAxisAlignment.start,
+        //             children: [
+        //               Text(
+        //                 item.name,
+        //                 style: TextStyleCustom.headingStyle(
+        //                   fontSize: 16,
+        //                   color: AppColors.blackColor,
+        //                 ),
+        //               ),
+        //               const SizedBox(height: 6),
+        //               Wrap(
+        //                 spacing: 6,
+        //                 runSpacing: -8,
+        //                 children:
+        //                     item.categories
+        //                         .map((c) => _chip(c, AppColors.primaryColor))
+        //                         .toList(),
+        //               ),
+        //             ],
+        //           ),
+        //         ),
+        //       ],
+        //     ),
+        //     const SizedBox(height: 12),
+        //     _kv('Start date', item.startDate),
+        //     const SizedBox(height: 8),
+        //     _kv('Duration', item.duration),
+        //     const SizedBox(height: 8),
+        //     _kv('Teacher', item.teacher),
+        //     const SizedBox(height: 8),
+        //     _kv('Paid', item.isPaid ? 'Yes' : 'No'),
+        //   ],
+        // ),
       ),
     );
   }
@@ -219,7 +227,10 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
   Widget _buildCurriculumTab() {
     final subjects = <_SubjectItem>[
       _SubjectItem(title: 'Science - Light', status: _ClassStatus.live),
-      _SubjectItem(title: 'Mathematics - Algebra', status: _ClassStatus.upcoming),
+      _SubjectItem(
+        title: 'Mathematics - Algebra',
+        status: _ClassStatus.upcoming,
+      ),
       _SubjectItem(title: 'GK/GS - Polity', status: _ClassStatus.completed),
       _SubjectItem(title: 'Reasoning - Series', status: _ClassStatus.upcoming),
     ];
@@ -253,13 +264,14 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
           children: [
             _statusPill(statusText, statusColor),
             const SizedBox(width: 8),
-            _primaryButton('Join', onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => const LiveClassScreen(),
-                ),
-              );
-            }),
+            _primaryButton(
+              'Join',
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const LiveClassScreen()),
+                );
+              },
+            ),
           ],
         );
         break;
@@ -427,7 +439,7 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
   }
 }
 
-class _CourseOverview {
+class CourseOverview {
   final String name;
   final List<String> categories;
   final String startDate;
@@ -435,7 +447,7 @@ class _CourseOverview {
   final String teacher;
   final bool isPaid;
 
-  const _CourseOverview({
+  const CourseOverview({
     required this.name,
     required this.categories,
     required this.startDate,

@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -5,10 +6,19 @@ class ConversationController extends GetxController {
   final TextEditingController messageController = TextEditingController();
   final ScrollController scrollController = ScrollController();
   final RxList<ChatMessage> messages = <ChatMessage>[].obs;
-  
+
   final String instructorName;
   final String subject;
   final bool isOnline;
+
+  final List<String> dummyReplies = [
+    "Okay, noted 👍",
+    "Great question! Let’s discuss further.",
+    "I’ll explain that in more detail.",
+    "Good point, keep it up!",
+    "Yes, exactly.",
+    "Hmm, interesting thought 🤔",
+  ];
 
   ConversationController({
     required this.instructorName,
@@ -20,7 +30,6 @@ class ConversationController extends GetxController {
   void onInit() {
     super.onInit();
     _loadSampleMessages();
-    // Auto-scroll to bottom after the first frame is rendered
     WidgetsBinding.instance.addPostFrameCallback((_) {
       scrollToBottom();
     });
@@ -34,38 +43,18 @@ class ConversationController extends GetxController {
   }
 
   void _loadSampleMessages() {
-    // Sample messages for demonstration
     messages.addAll([
       ChatMessage(
-        text: "Good morning! Today we will discuss the important topics for UPSC History.",
+        text: "Hello! Let's start with some key points for UPSC prep.",
         isMe: false,
-        timestamp: DateTime.now().subtract(const Duration(hours: 2)),
-      ),
-      ChatMessage(
-        text: "Good morning sir! I'm ready for the session.",
-        isMe: true,
-        timestamp: DateTime.now().subtract(const Duration(hours: 1, minutes: 45)),
-      ),
-      ChatMessage(
-        text: "Please make sure you have completed the previous chapter readings.",
-        isMe: false,
-        timestamp: DateTime.now().subtract(const Duration(hours: 1, minutes: 30)),
-      ),
-      ChatMessage(
-        text: "Yes sir, I have completed chapter 5 and 6. Should I also review chapter 4?",
-        isMe: true,
-        timestamp: DateTime.now().subtract(const Duration(hours: 1, minutes: 15)),
-      ),
-      ChatMessage(
-        text: "Yes, that would be helpful. Chapter 4 has some important concepts that connect with today's topic.",
-        isMe: false,
-        timestamp: DateTime.now().subtract(const Duration(minutes: 30)),
+        timestamp: DateTime.now().subtract(const Duration(minutes: 5)),
       ),
     ]);
   }
 
   void sendMessage() {
     if (messageController.text.trim().isNotEmpty) {
+      // User message add
       messages.add(
         ChatMessage(
           text: messageController.text.trim(),
@@ -75,13 +64,27 @@ class ConversationController extends GetxController {
       );
       messageController.clear();
       scrollToBottom();
+
+      // 1 second delay -> auto reply
+      Future.delayed(const Duration(seconds: 1), () {
+        final random = Random();
+        final reply = dummyReplies[random.nextInt(dummyReplies.length)];
+
+        messages.add(
+          ChatMessage(
+            text: reply,
+            isMe: false,
+            timestamp: DateTime.now(),
+          ),
+        );
+        scrollToBottom();
+      });
     }
   }
 
   void scrollToBottom() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (scrollController.hasClients) {
-        // Add a small delay to ensure the layout is updated
         Future.delayed(const Duration(milliseconds: 100), () {
           if (scrollController.hasClients) {
             scrollController.animateTo(

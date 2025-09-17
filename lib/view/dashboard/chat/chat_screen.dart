@@ -67,17 +67,11 @@ class _ChatScreenState extends State<ChatScreen>
       actions: [
         IconButton(
           onPressed: () {},
-          icon: Icon(
-            Icons.search,
-            color: AppColors.blackColor,
-          ),
+          icon: Icon(Icons.search, color: AppColors.blackColor),
         ),
         IconButton(
           onPressed: () {},
-          icon: Icon(
-            Icons.more_vert,
-            color: AppColors.blackColor,
-          ),
+          icon: Icon(Icons.more_vert, color: AppColors.blackColor),
         ),
       ],
     );
@@ -118,58 +112,75 @@ class _ChatScreenState extends State<ChatScreen>
     );
   }
 
+  final List<Map<String, dynamic>> instructors = [
+    {
+      "name": "Demis Hassabis",
+      "subject": "UPSC History",
+      "lastMessage": "Good morning! Today we will discuss...",
+      "time": "9:30 AM",
+      "isOnline": true,
+      "unreadCount": 2,
+      "image": "assets/png/teachers_image/DemisHassabis.jpg",
+    },
+    {
+      "name": "Prof. Anjali Sharma",
+      "subject": "Mathematics",
+      "lastMessage": "Please solve the practice questions",
+      "time": "8:45 AM",
+      "isOnline": false,
+      "unreadCount": 0,
+      "image": "assets/png/teachers_image/femaleTeacher.jpg",
+    },
+    {
+      "name": "Ian Goodfellow",
+      "subject": "Current Affairs",
+      "lastMessage": "Weekly quiz results are out",
+      "time": "Yesterday",
+      "isOnline": true,
+      "unreadCount": 5,
+      "image": "assets/png/teachers_image/IanGoodfellow.jpg",
+    },
+    {
+      "name": "Sam Altman",
+      "subject": "English",
+      "lastMessage": "Grammar exercises uploaded",
+      "time": "2 days ago",
+      "isOnline": false,
+      "unreadCount": 1,
+      "image": "assets/png/teachers_image/SamAltman.jpg",
+    },
+  ];
+
   Widget _buildInstructorsTab() {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildQuickAccessCard(),
-          const SizedBox(height: 20),
-          Text(
-            'Your Instructors',
-            style: TextStyleCustom.headingStyle(
-              fontSize: 18,
-              color: AppColors.blackColor,
-            ),
-          ),
-          const SizedBox(height: 12),
+          // _buildQuickAccessCard(),
+          // const SizedBox(height: 20),
+          // Text(
+          //   'Your Instructors',
+          //   style: TextStyleCustom.headingStyle(
+          //     fontSize: 18,
+          //     color: AppColors.blackColor,
+          //   ),
+          // ),
+          // const SizedBox(height: 12),
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: 4,
+            itemCount: instructors.length,
             itemBuilder: (context, index) {
+              final instructor = instructors[index];
               return _buildInstructorChatCard(
-                name: index == 0
-                    ? 'Dr. Rajesh Kumar'
-                    : index == 1
-                        ? 'Prof. Anjali Sharma'
-                        : index == 2
-                            ? 'Mr. Vikash Singh'
-                            : 'Ms. Priya Gupta',
-                subject: index == 0
-                    ? 'UPSC History'
-                    : index == 1
-                        ? 'Mathematics'
-                        : index == 2
-                            ? 'Current Affairs'
-                            : 'English',
-                lastMessage: index == 0
-                    ? 'Good morning! Today we will discuss...'
-                    : index == 1
-                        ? 'Please solve the practice questions'
-                        : index == 2
-                            ? 'Weekly quiz results are out'
-                            : 'Grammar exercises uploaded',
-                time: index == 0
-                    ? '9:30 AM'
-                    : index == 1
-                        ? '8:45 AM'
-                        : index == 2
-                            ? 'Yesterday'
-                            : '2 days ago',
-                isOnline: index == 0 ? true : index == 1 ? false : index == 2 ? true : false,
-                unreadCount: index == 0 ? 2 : index == 1 ? 0 : index == 2 ? 5 : 1,
+                name: instructor["name"],
+                subject: instructor["subject"],
+                lastMessage: instructor["lastMessage"],
+                time: instructor["time"],
+                isOnline: instructor["isOnline"],
+                unreadCount: instructor["unreadCount"],
+                image: instructor["image"], // 👈 new key
               );
             },
           ),
@@ -200,29 +211,34 @@ class _ChatScreenState extends State<ChatScreen>
             itemCount: 3,
             itemBuilder: (context, index) {
               return _buildSupportChatCard(
-                title: index == 0
-                    ? 'Course Access Issue'
-                    : index == 1
+                title:
+                    index == 0
+                        ? 'Course Access Issue'
+                        : index == 1
                         ? 'Payment Query'
                         : 'Technical Support',
-                ticketId: index == 0
-                    ? '#TKT-001234'
-                    : index == 1
+                ticketId:
+                    index == 0
+                        ? '#TKT-001234'
+                        : index == 1
                         ? '#TKT-001235'
                         : '#TKT-001236',
-                status: index == 0
-                    ? 'Resolved'
-                    : index == 1
+                status:
+                    index == 0
+                        ? 'Resolved'
+                        : index == 1
                         ? 'In Progress'
                         : 'Open',
-                lastMessage: index == 0
-                    ? 'Thank you for your help!'
-                    : index == 1
+                lastMessage:
+                    index == 0
+                        ? 'Thank you for your help!'
+                        : index == 1
                         ? 'Please check your email for refund details'
                         : 'I am facing login issues',
-                time: index == 0
-                    ? '2 hours ago'
-                    : index == 1
+                time:
+                    index == 0
+                        ? '2 hours ago'
+                        : index == 1
                         ? '1 day ago'
                         : '3 days ago',
               );
@@ -232,6 +248,49 @@ class _ChatScreenState extends State<ChatScreen>
       ),
     );
   }
+
+  final List<Map<String, dynamic>> groupsData = [
+    {
+      "groupName": "UPSC 2025 Aspirants",
+      "members": 156,
+      "lastMessage": "Rahul: Can someone explain this concept?",
+      "time": "10 min ago",
+      "unreadCount": 12,
+      "image": "assets/png/groups_images/upsc.jpg", // 👈 group icon
+    },
+    {
+      "groupName": "SSC CGL Study Group",
+      "members": 89,
+      "lastMessage": "Anjali: Sharing important notes",
+      "time": "1 hour ago",
+      "unreadCount": 5,
+      "image": "assets/png/groups_images/ssc.jpg",
+    },
+    {
+      "groupName": "Current Affairs Discussion",
+      "members": 234,
+      "lastMessage": "Vikash: Today's current affairs quiz",
+      "time": "2 hours ago",
+      "unreadCount": 8,
+      "image": "assets/png/groups_images/current.jpg",
+    },
+    {
+      "groupName": "Mathematics Problem Solving",
+      "members": 67,
+      "lastMessage": "Priya: Solution to yesterday's problem",
+      "time": "5 hours ago",
+      "unreadCount": 0,
+      "image": "assets/png/groups_images/math.jpg",
+    },
+    {
+      "groupName": "BPSC Preparation",
+      "members": 112,
+      "lastMessage": "Kumar: Mock test results discussion",
+      "time": "Yesterday",
+      "unreadCount": 3,
+      "image": "assets/png/groups_images/bpsc.jpg",
+    },
+  ];
 
   Widget _buildGroupsTab() {
     return SingleChildScrollView(
@@ -250,46 +309,15 @@ class _ChatScreenState extends State<ChatScreen>
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: 5,
+            itemCount: groupsData.length,
             itemBuilder: (context, index) {
               return _buildGroupChatCard(
-                groupName: index == 0
-                    ? 'UPSC 2025 Aspirants'
-                    : index == 1
-                        ? 'SSC CGL Study Group'
-                        : index == 2
-                            ? 'Current Affairs Discussion'
-                            : index == 3
-                                ? 'Mathematics Problem Solving'
-                                : 'BPSC Preparation',
-                members: index == 0
-                    ? 156
-                    : index == 1
-                        ? 89
-                        : index == 2
-                            ? 234
-                            : index == 3
-                                ? 67
-                                : 112,
-                lastMessage: index == 0
-                    ? 'Rahul: Can someone explain this concept?'
-                    : index == 1
-                        ? 'Anjali: Sharing important notes'
-                        : index == 2
-                            ? 'Vikash: Today\'s current affairs quiz'
-                            : index == 3
-                                ? 'Priya: Solution to yesterday\'s problem'
-                                : 'Kumar: Mock test results discussion',
-                time: index == 0
-                    ? '10 min ago'
-                    : index == 1
-                        ? '1 hour ago'
-                        : index == 2
-                            ? '2 hours ago'
-                            : index == 3
-                                ? '5 hours ago'
-                                : 'Yesterday',
-                unreadCount: index == 0 ? 12 : index == 1 ? 5 : index == 2 ? 8 : index == 3 ? 0 : 3,
+                groupName: groupsData[index]['groupName'],
+                members: groupsData[index]['members'],
+                lastMessage: groupsData[index]['lastMessage'],
+                time: groupsData[index]['time'],
+                unreadCount: groupsData[index]['unreadCount'],
+                image: groupsData[index]["image"],
               );
             },
           ),
@@ -366,11 +394,7 @@ class _ChatScreenState extends State<ChatScreen>
         ),
         child: Column(
           children: [
-            Icon(
-              icon,
-              color: AppColors.whiteColor,
-              size: 24,
-            ),
+            Icon(icon, color: AppColors.whiteColor, size: 24),
             const SizedBox(height: 8),
             Text(
               label,
@@ -452,11 +476,7 @@ class _ChatScreenState extends State<ChatScreen>
       ),
       child: Column(
         children: [
-          Icon(
-            icon,
-            color: AppColors.primaryColor,
-            size: 24,
-          ),
+          Icon(icon, color: AppColors.primaryColor, size: 24),
           const SizedBox(height: 8),
           Text(
             label,
@@ -488,14 +508,18 @@ class _ChatScreenState extends State<ChatScreen>
     required String time,
     required bool isOnline,
     required int unreadCount,
+    required String image, // 👈 new key
   }) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => ConversationScreen(
-          instructorName: name,
-          subject: subject,
-          isOnline: isOnline,
-        ));
+        Get.to(
+          () => ConversationScreen(
+            instructorName: name,
+            subject: subject,
+            isOnline: isOnline,
+            image: image, // 👈 new key
+          ),
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
@@ -517,16 +541,18 @@ class _ChatScreenState extends State<ChatScreen>
             Stack(
               children: [
                 CircleAvatar(
+                  backgroundImage: AssetImage(image),
                   radius: 25,
                   backgroundColor: AppColors.primaryColor.withOpacity(0.1),
-                  child: Text(
-                    name.split(' ').map((e) => e[0]).take(2).join(),
-                    style: TextStyleCustom.normalStyle(
-                      fontSize: 16,
-                      color: AppColors.primaryColor,
-                      fontFamily: FontFamily.semiBold,
-                    ),
-                  ),
+                  // child: Text(
+
+                  //   name.split(' ').map((e) => e[0]).take(2).join(),
+                  //   style: TextStyleCustom.normalStyle(
+                  //     fontSize: 16,
+                  //     color: AppColors.primaryColor,
+                  //     fontFamily: FontFamily.semiBold,
+                  //   ),
+                  // ),
                 ),
                 if (isOnline)
                   Positioned(
@@ -538,7 +564,10 @@ class _ChatScreenState extends State<ChatScreen>
                       decoration: BoxDecoration(
                         color: const Color(0xFF4CAF50),
                         shape: BoxShape.circle,
-                        border: Border.all(color: AppColors.whiteColor, width: 2),
+                        border: Border.all(
+                          color: AppColors.whiteColor,
+                          width: 2,
+                        ),
                       ),
                     ),
                   ),
@@ -594,7 +623,10 @@ class _ChatScreenState extends State<ChatScreen>
                       ),
                       if (unreadCount > 0)
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 2,
+                          ),
                           decoration: BoxDecoration(
                             color: AppColors.primaryColor,
                             borderRadius: BorderRadius.circular(10),
@@ -625,9 +657,10 @@ class _ChatScreenState extends State<ChatScreen>
     required String lastMessage,
     required String time,
   }) {
-    Color statusColor = status == 'Resolved'
-        ? const Color(0xFF4CAF50)
-        : status == 'In Progress'
+    Color statusColor =
+        status == 'Resolved'
+            ? const Color(0xFF4CAF50)
+            : status == 'In Progress'
             ? const Color(0xFFFFA500)
             : AppColors.redColor;
 
@@ -664,12 +697,34 @@ class _ChatScreenState extends State<ChatScreen>
                     fontFamily: FontFamily.semiBold,
                   ),
                 ),
-                Text(
-                  time,
-                  style: TextStyleCustom.normalStyle(
-                    fontSize: 12,
-                    color: AppColors.clr606060,
-                  ),
+                Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 2,
+                      ),
+                      decoration: BoxDecoration(
+                        color: statusColor.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        status,
+                        style: TextStyleCustom.normalStyle(
+                          fontSize: 10,
+                          color: statusColor,
+                          fontFamily: FontFamily.semiBold,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      time,
+                      style: TextStyleCustom.normalStyle(
+                        fontSize: 12,
+                        color: AppColors.clr606060,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -683,22 +738,25 @@ class _ChatScreenState extends State<ChatScreen>
                     color: AppColors.clr606060,
                   ),
                 ),
-                const SizedBox(width: 12),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                  decoration: BoxDecoration(
-                    color: statusColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    status,
-                    style: TextStyleCustom.normalStyle(
-                      fontSize: 10,
-                      color: statusColor,
-                      fontFamily: FontFamily.semiBold,
-                    ),
-                  ),
-                ),
+                // const SizedBox(width: 12),
+                // Container(
+                //   padding: const EdgeInsets.symmetric(
+                //     horizontal: 8,
+                //     vertical: 2,
+                //   ),
+                //   decoration: BoxDecoration(
+                //     color: statusColor.withOpacity(0.1),
+                //     borderRadius: BorderRadius.circular(12),
+                //   ),
+                //   child: Text(
+                //     status,
+                //     style: TextStyleCustom.normalStyle(
+                //       fontSize: 10,
+                //       color: statusColor,
+                //       fontFamily: FontFamily.semiBold,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
             const SizedBox(height: 8),
@@ -723,10 +781,19 @@ class _ChatScreenState extends State<ChatScreen>
     required String lastMessage,
     required String time,
     required int unreadCount,
+    required String image,
   }) {
     return GestureDetector(
       onTap: () {
-        // Navigate to group chat
+        Get.to(
+          () => ConversationScreen(
+            isGroup: false,
+            instructorName: groupName,
+            isOnline: true,
+            subject: '$members members',
+            image: image,
+          ),
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
@@ -746,13 +813,10 @@ class _ChatScreenState extends State<ChatScreen>
         child: Row(
           children: [
             CircleAvatar(
+              backgroundImage: AssetImage(image),
               radius: 25,
               backgroundColor: AppColors.primaryColor.withOpacity(0.1),
-              child: Icon(
-                Icons.group,
-                color: AppColors.primaryColor,
-                size: 24,
-              ),
+              // child: Icon(Icons.group, color: AppColors.primaryColor, size: 24),
             ),
             const SizedBox(width: 12),
             Expanded(
@@ -808,7 +872,10 @@ class _ChatScreenState extends State<ChatScreen>
                       ),
                       if (unreadCount > 0)
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 2,
+                          ),
                           decoration: BoxDecoration(
                             color: AppColors.primaryColor,
                             borderRadius: BorderRadius.circular(10),
