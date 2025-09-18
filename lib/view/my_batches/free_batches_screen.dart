@@ -3,13 +3,13 @@ import 'package:education/core/constants/font_family.dart';
 import 'package:education/core/constants/font_style.dart';
 import 'package:education/model/CourseModel/course_model.dart';
 import 'package:education/view/my_batches/batch_detail_copy.dart';
-import 'package:education/view/my_batches/course_controller/course_controller.dart';
+import 'package:education/view/my_batches/course_controller/free_batches_controller.dart';
 import 'package:education/view/my_batches/widgets/my_batches_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FreeBatchesScreen extends StatelessWidget {
-  final CourseController courseCtrl = Get.put(CourseController());
+  final FreeBatchesController controller = Get.put(FreeBatchesController());
 
   @override
   Widget build(BuildContext context) {
@@ -48,19 +48,19 @@ class FreeBatchesScreen extends StatelessWidget {
                 height: 40,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: courseCtrl.categories.length,
+                  itemCount: controller.categories.length,
                   itemBuilder: (context, index) {
-                    final category = courseCtrl.categories[index];
+                    final category = controller.categories[index];
                     final isSelected =
-                        courseCtrl.selectedCategory.value == category;
+                        controller.selectedCategory.value == category;
 
                     return Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: GestureDetector(
-                        onTap: () => courseCtrl.filterByCategory(category),
+                        onTap: () => controller.filterByCategory(category),
                         child: MyBatchesChip(
                           label: category,
-                          color: AppColors.primaryColor,
+                          color:  controller.selectedCategory.value == category? AppColors.primaryColor : Colors.grey,
                           isSelected: isSelected,
                         ),
                       ),
@@ -84,7 +84,7 @@ class FreeBatchesScreen extends StatelessWidget {
 
             /// Tags Filter Chips
             // Obx(() {
-            //   final freeCourses = courseCtrl.getFreeCourses();
+            //   final freeCourses = controller.getFreeCourses();
             //   final allTags = <String>{};
 
             //   for (var course in freeCourses) {
@@ -100,12 +100,12 @@ class FreeBatchesScreen extends StatelessWidget {
             //       itemCount: tagsList.length,
             //       itemBuilder: (context, index) {
             //         final tag = tagsList[index];
-            //         final isSelected = courseCtrl.selectedTag.value == tag;
+            //         final isSelected = controller.selectedTag.value == tag;
 
             //         return Padding(
             //           padding: const EdgeInsets.only(right: 8.0),
             //           child: GestureDetector(
-            //             onTap: () => courseCtrl.filterByTag(tag),
+            //             onTap: () => controller.filterByTag(tag),
             //             child: MyBatchesChip(
             //               label: tag,
             //               color: Colors.blue,
@@ -137,7 +137,7 @@ class FreeBatchesScreen extends StatelessWidget {
             /// Free Courses List
             Expanded(
               child: Obx(() {
-                if (courseCtrl.allCourses.isEmpty) {
+                if (controller.allCourses.isEmpty) {
                   return Center(
                     child: CircularProgressIndicator(
                       color: AppColors.primaryColor,
@@ -181,7 +181,7 @@ class FreeBatchesScreen extends StatelessWidget {
 
                 return RefreshIndicator(
                   onRefresh: () async {
-                    courseCtrl.loadCourses();
+                    controller.loadCourses();
                   },
                   color: AppColors.primaryColor,
                   child: ListView.builder(
@@ -208,25 +208,25 @@ class FreeBatchesScreen extends StatelessWidget {
 
   /// Get filtered free courses based on category and tag
   List<CourseModel> _getFilteredFreeCourses() {
-    var freeCourses = courseCtrl.getFreeCourses();
+    var freeCourses = controller.getFreeCourses();
 
     // Filter by category
-    if (courseCtrl.selectedCategory.value != "All") {
+    if (controller.selectedCategory.value != "All") {
       freeCourses =
           freeCourses
               .where(
                 (course) =>
-                    course.category == courseCtrl.selectedCategory.value,
+                    course.category == controller.selectedCategory.value,
               )
               .toList();
     }
 
     // Filter by tag
-    if (courseCtrl.selectedTag.value != "All Tags") {
+    if (controller.selectedTag.value != "All Tags") {
       freeCourses =
           freeCourses
               .where(
-                (course) => course.tags.contains(courseCtrl.selectedTag.value),
+                (course) => course.tags.contains(controller.selectedTag.value),
               )
               .toList();
     }
@@ -269,16 +269,16 @@ class FreeBatchesScreen extends StatelessWidget {
               ),
               child: Stack(
                 children: [
-                  Image.asset(
+                  Image.network(
                     course.bannerUrl.isNotEmpty
                         ? course.bannerUrl
                         : 'assets/png/trending_courses_img.jpg',
-                    height: 160,
+                    height:200,
                     width: double.infinity,
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
-                        height: 160,
+                        height: 300,
                         width: double.infinity,
                         color: AppColors.clrD6D6D6.withOpacity(0.3),
                         child: Icon(

@@ -1,0 +1,1258 @@
+[
+  {
+    "id": "F-SSC-01",
+    "title": "SSC CGL 2026 Free Crash Course",
+    "shortDescription": "Quick revision for SSC CGL Tier-I with practice tests.",
+    "description": "A fast-paced revision course covering all sections of SSC CGL Tier-I: Quantitative Aptitude, Reasoning, English, and GK. Includes topic-wise tests and strategy sessions.",
+    "category": "SSC",
+    "examType": "CGL Tier-I",
+    "language": "Hindi & English",
+    "tags": ["SSC", "Free", "Crash Course", "CGL"],
+    "instructor": {
+      "id": "t1",
+      "name": "Rohit Sharma",
+      "photoUrl": "https://dummyimage.com/200x200/222/fff",
+      "bio": "SSC Expert, 10+ years of experience, Mentored 5k+ selections",
+      "subjectExpertise": ["Quantitative Aptitude", "General Awareness"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 60,
+    "refundPolicy": "",
+    "startDate": "2025-10-15T10:00:00Z",
+    "type": "free",
+    "duration": "50 hours",
+    "totalClasses": 25,
+    "demoClasses": 5,
+    "recordingsAvailable": true,
+    "syllabus": ["Quantitative Aptitude", "English Language", "Reasoning", "General Awareness"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 20,
+      "testSeries": 2
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Quantitative Aptitude",
+        "classes": [
+          {"classId": "F-SSC-01-c1", "title": "Fast Calculation Tricks & Simplification", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/ssc/qa1"},
+          {"classId": "F-SSC-01-c2", "title": "Profit, Loss & Discount", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/ssc/qa2"}
+        ]
+      },
+      {
+        "sectionTitle": "General Awareness",
+        "classes": [
+          {"classId": "F-SSC-01-c3", "title": "Last 6 Months Current Affairs Mega Revision", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/ssc/ga1"},
+          {"classId": "F-SSC-01-c4", "title": "Important Static GK: History & Geography", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/ssc/ga2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "SSC",
+      "related": ["SSC CHSL", "SSC MTS"]
+    },
+    "targetExam": "SSC CGL Tier-I",
+    "examYear": 2026,
+    "difficultyLevel": "Beginner to Intermediate",
+    "eligibility": "12th Pass",
+    "engagement": {"enrollmentCount": 12500, "rating": 4.7, "reviews": 2100},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/ssc_free.png"},
+    "bannerUrl": "https://img.youtube.com/vi/mjWUtpP4XpY/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-UPSC-02",
+    "title": "UPSC Prelims 2026 Free Foundation",
+    "shortDescription": "UPSC GS Foundation with demo lectures and notes.",
+    "description": "Free UPSC Prelims GS course with focus on Polity, Economy & History. Includes demo lectures, notes, and PYQ discussions.",
+    "category": "UPSC",
+    "examType": "Prelims",
+    "language": "English",
+    "tags": ["UPSC", "Free", "Foundation"],
+    "instructor": {
+      "id": "t2",
+      "name": "Anjali Verma",
+      "photoUrl": "https://dummyimage.com/200x200/111/fff",
+      "bio": "Ex-UPSC aspirant, 8 years teaching Polity & History",
+      "subjectExpertise": ["Polity", "History", "Economy"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 120,
+    "refundPolicy": "",
+    "startDate": "2025-09-30T12:00:00Z",
+    "type": "free",
+    "duration": "80 hours",
+    "totalClasses": 10,
+    "demoClasses": 3,
+    "recordingsAvailable": true,
+    "syllabus": ["Polity", "History", "Economy"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": true,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 15,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Polity",
+        "classes": [
+          {"classId": "F-UPSC-02-c1", "title": "Polity: Preamble & Constitution", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsc/pol1"},
+          {"classId": "F-UPSC-02-c2", "title": "Polity: Fundamental Rights", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsc/pol2"}
+        ]
+      },
+      {
+        "sectionTitle": "History",
+        "classes": [
+          {"classId": "F-UPSC-02-c3", "title": "Ancient History: Indus Valley", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsc/hist1"},
+          {"classId": "F-UPSC-02-c4", "title": "Medieval India: Delhi Sultanate", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsc/hist2"}
+        ]
+      },
+      {
+        "sectionTitle": "Economy",
+        "classes": [
+          {"classId": "F-UPSC-02-c5", "title": "Economy: Basics of Indian Economy", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsc/eco1"},
+          {"classId": "F-UPSC-02-c6", "title": "Economy: Budget & Economic Survey", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsc/eco2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "UPSC",
+      "related": ["UPSC Prelims", "UPSC Mains"]
+    },
+    "targetExam": "UPSC Prelims",
+    "examYear": 2026,
+    "difficultyLevel": "Intermediate",
+    "eligibility": "Graduates",
+    "engagement": {"enrollmentCount": 5200, "rating": 4.8, "reviews": 980},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/upsc_free.png"},
+    "bannerUrl": "https://img.youtube.com/vi/jT4mNt5Y6iY/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-BANK-03",
+    "title": "IBPS PO Free Prelims Batch 2026",
+    "shortDescription": "Master Reasoning, Quant & English for IBPS PO Prelims.",
+    "description": "A comprehensive free course designed to crack IBPS PO Prelims 2026. Focus on high-weightage topics, short tricks, and time management.",
+    "category": "Banking",
+    "examType": "IBPS PO Prelims",
+    "language": "English",
+    "tags": ["Banking", "Free", "IBPS PO", "Prelims"],
+    "instructor": {
+      "id": "t3",
+      "name": "Karan Singh",
+      "photoUrl": "https://dummyimage.com/200x200/333/fff",
+      "bio": "Banking Exam Guru, Former Bank PO, 7 years teaching experience",
+      "subjectExpertise": ["Reasoning", "Quantitative Aptitude"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 90,
+    "refundPolicy": "",
+    "startDate": "2025-08-20T18:30:00Z",
+    "type": "free",
+    "duration": "60 hours",
+    "totalClasses": 30,
+    "demoClasses": 4,
+    "recordingsAvailable": true,
+    "syllabus": ["Quantitative Aptitude", "Reasoning Ability", "English Language"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 25,
+      "testSeries": 3
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Reasoning Ability",
+        "classes": [
+          {"classId": "F-BANK-03-c1", "title": "Puzzles (Floor, Box, Month) - Key Approaches", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/bank/r1"},
+          {"classId": "F-BANK-03-c2", "title": "Inequality & Syllogism - 100% Accuracy", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/bank/r2"}
+        ]
+      },
+      {
+        "sectionTitle": "Quantitative Aptitude",
+        "classes": [
+          {"classId": "F-BANK-03-c3", "title": "Data Interpretation: Table & Pie Charts", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/bank/q1"},
+          {"classId": "F-BANK-03-c4", "title": "Number Series & Quadratic Equations", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/bank/q2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Banking",
+      "related": ["SBI PO", "RBI Grade B"]
+    },
+    "targetExam": "IBPS PO Prelims",
+    "examYear": 2026,
+    "difficultyLevel": "Beginner",
+    "eligibility": "Graduation",
+    "engagement": {"enrollmentCount": 8900, "rating": 4.6, "reviews": 1500},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/sptgth5iMTo/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-RAIL-04",
+    "title": "RRB NTPC Free Stage 1 Course",
+    "shortDescription": "Complete preparation for RRB NTPC CBT 1.",
+    "description": "Free course covering Mathematics, General Intelligence, General Awareness for RRB NTPC Stage 1 exam. Bilingual medium.",
+    "category": "Railway",
+    "examType": "RRB NTPC CBT 1",
+    "language": "Hindi & English",
+    "tags": ["Railway", "Free", "RRB NTPC"],
+    "instructor": {
+      "id": "t4",
+      "name": "Priya Deshmukh",
+      "photoUrl": "https://img.youtube.com/vi/VgH-eRtgUlQ/maxresdefault.jpg",
+      "bio": "Specialized in Railway Exams, 5+ years of teaching experience",
+      "subjectExpertise": ["Mathematics", "General Science"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 75,
+    "refundPolicy": "",
+    "startDate": "2025-10-01T09:00:00Z",
+    "type": "free",
+    "duration": "45 hours",
+    "totalClasses": 15,
+    "demoClasses": 2,
+    "recordingsAvailable": true,
+    "syllabus": ["Mathematics", "General Intelligence & Reasoning", "General Awareness"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 10,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Mathematics",
+        "classes": [
+          {"classId": "F-RAIL-04-c1", "title": "Percentage, Ratio & Proportion", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/rrb/m1"},
+          {"classId": "F-RAIL-04-c2", "title": "Time, Speed & Distance", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rrb/m2"}
+        ]
+      },
+      {
+        "sectionTitle": "General Awareness",
+        "classes": [
+          {"classId": "F-RAIL-04-c3", "title": "Indian Geography: Rivers, Mountains, Soil", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rrb/ga1"},
+          {"classId": "F-RAIL-04-c4", "title": "Awards, Sports, and Important Days", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rrb/ga2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Railway",
+      "related": ["RRB Group D", "RRB JE"]
+    },
+    "targetExam": "RRB NTPC CBT 1",
+    "examYear": 2026,
+    "difficultyLevel": "Beginner",
+    "eligibility": "12th Pass",
+    "engagement": {"enrollmentCount": 7200, "rating": 4.5, "reviews": 1100},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/VgH-eRtgUlQ/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-DEF-05",
+    "title": "Free CDS OTA (II) Crash Course",
+    "shortDescription": "Crash course for CDS (II) English & GK.",
+    "description": "Targeted preparation for the Combined Defence Services (CDS) II exam for the Officers' Training Academy (OTA). Focus on English and General Knowledge.",
+    "category": "Defence",
+    "examType": "CDS II OTA",
+    "language": "English",
+    "tags": ["Defence", "Free", "CDS", "OTA"],
+    "instructor": {
+      "id": "t5",
+      "name": "Major (Retd.) S. Chauhan",
+      "photoUrl": "https://dummyimage.com/200x200/555/fff",
+      "bio": "Served in the Indian Army, CDS mentor for 6 years",
+      "subjectExpertise": ["General Knowledge", "English", "Interview Guidance"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 45,
+    "refundPolicy": "",
+    "startDate": "2025-07-25T15:00:00Z",
+    "type": "free",
+    "duration": "30 hours",
+    "totalClasses": 12,
+    "demoClasses": 3,
+    "recordingsAvailable": true,
+    "syllabus": ["English", "General Knowledge"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": true,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 8,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "English",
+        "classes": [
+          {"classId": "F-DEF-05-c1", "title": "Spotting Errors & Sentence Improvement", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/cds/e1"},
+          {"classId": "F-DEF-05-c2", "title": "Reading Comprehension & Para Jumbles", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/cds/e2"}
+        ]
+      },
+      {
+        "sectionTitle": "General Knowledge",
+        "classes": [
+          {"classId": "F-DEF-05-c3", "title": "Defence Current Affairs & History", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/cds/gk1"},
+          {"classId": "F-DEF-05-c4", "title": "Indian Polity & Geography for CDS", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/cds/gk2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Defence",
+      "related": ["AFCAT", "NDA"]
+    },
+    "targetExam": "CDS II OTA",
+    "examYear": 2026,
+    "difficultyLevel": "Intermediate",
+    "eligibility": "Graduates",
+    "engagement": {"enrollmentCount": 3800, "rating": 4.9, "reviews": 650},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/cds_free.png"},
+    "bannerUrl": "https://img.youtube.com/vi/o4dA_7rQj90/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-TEACH-06",
+    "title": "CTET Paper 1 Free Foundation",
+    "shortDescription": "Free classes for CTET Paper 1 (Classes I-V).",
+    "description": "Build a strong foundation for CTET Paper 1. Covers Child Development, Pedagogy, EVS, Mathematics, and Languages.",
+    "category": "Teaching",
+    "examType": "CTET Paper 1",
+    "language": "Hindi",
+    "tags": ["Teaching", "Free", "CTET"],
+    "instructor": {
+      "id": "t6",
+      "name": "Dr. Neha Gupta",
+      "photoUrl": "https://dummyimage.com/200x200/666/fff",
+      "bio": "PhD in Education, CTET qualified 4 times",
+      "subjectExpertise": ["Child Development & Pedagogy", "Environmental Studies"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 100,
+    "refundPolicy": "",
+    "startDate": "2025-09-10T11:00:00Z",
+    "type": "free",
+    "duration": "55 hours",
+    "totalClasses": 20,
+    "demoClasses": 4,
+    "recordingsAvailable": true,
+    "syllabus": ["Child Development & Pedagogy", "Mathematics", "Environmental Studies", "Language I & II"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 12,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Child Development & Pedagogy",
+        "classes": [
+          {"classId": "F-TEACH-06-c1", "title": "Theories of Piaget, Kohlberg, Vygotsky", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/ctet/cdp1"},
+          {"classId": "F-TEACH-06-c2", "title": "Inclusive Education & Learning Disabilities", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/ctet/cdp2"}
+        ]
+      },
+      {
+        "sectionTitle": "Environmental Studies",
+        "classes": [
+          {"classId": "F-TEACH-06-c3", "title": "Family, Food, Shelter & Water", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/ctet/evs1"},
+          {"classId": "F-TEACH-06-c4", "title": "Pedagogy of EVS", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/ctet/evs2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Teaching",
+      "related": ["UPTET", "STET"]
+    },
+    "targetExam": "CTET Paper 1",
+    "examYear": 2026,
+    "difficultyLevel": "Beginner",
+    "eligibility": "12th Pass",
+    "engagement": {"enrollmentCount": 15500, "rating": 4.7, "reviews": 2900},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/FxUocHR_bxo/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-STAT-07",
+    "title": "Free SSC CHSL Foundation Batch",
+    "shortDescription": "Complete prep for SSC CHSL Tier 1 from scratch.",
+    "description": "A beginner-friendly course for SSC CHSL Tier 1 covering all four sections with basic concepts and practice questions.",
+    "category": "SSC",
+    "examType": "CHSL Tier-I",
+    "language": "Hindi",
+    "tags": ["SSC", "Free", "CHSL", "Foundation"],
+    "instructor": {
+      "id": "t7",
+      "name": "Vikram Jadhav",
+      "photoUrl": "https://dummyimage.com/200x200/777/fff",
+      "bio": "Known for simplifying concepts, 8+ years in SSC prep",
+      "subjectExpertise": ["Quantitative Aptitude", "General Intelligence"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 110,
+    "refundPolicy": "",
+    "startDate": "2025-08-05T14:00:00Z",
+    "type": "free",
+    "duration": "70 hours",
+    "totalClasses": 35,
+    "demoClasses": 5,
+    "recordingsAvailable": true,
+    "syllabus": ["Quantitative Aptitude", "English Language", "General Intelligence", "General Awareness"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 30,
+      "testSeries": 2
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "General Intelligence",
+        "classes": [
+          {"classId": "F-STAT-07-c1", "title": "Coding-Decoding & Analogy", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/chsl/gi1"},
+          {"classId": "F-STAT-07-c2", "title": "Classification & Series", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/chsl/gi2"}
+        ]
+      },
+      {
+        "sectionTitle": "Quantitative Aptitude",
+        "classes": [
+          {"classId": "F-STAT-07-c3", "title": "Number System & HCF/LCM", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/chsl/qa1"},
+          {"classId": "F-STAT-07-c4", "title": "Average, Ratio & Mixture", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/chsl/qa2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "SSC",
+      "related": ["SSC CGL", "SSC MTS"]
+    },
+    "targetExam": "SSC CHSL Tier-I",
+    "examYear": 2026,
+    "difficultyLevel": "Beginner",
+    "eligibility": "12th Pass",
+    "engagement": {"enrollmentCount": 18300, "rating": 4.8, "reviews": 3200},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/chsl_free.png"},
+    "bannerUrl": "https://img.youtube.com/vi/Mp8vfwnZ2xY/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-STAT-08",
+    "title": "Free SSC MTS Preparation Batch",
+    "shortDescription": "Course for SSC Multi-Tasking Staff exam.",
+    "description": "A complete course tailored for the SSC MTS exam, focusing on Numerical and Reasoning Ability, English Language, and General Awareness.",
+    "category": "SSC",
+    "examType": "MTS",
+    "language": "Hindi & English",
+    "tags": ["SSC", "Free", "MTS"],
+    "instructor": {
+      "id": "t8",
+      "name": "Amit Kumar",
+      "photoUrl": "https://dummyimage.com/200x200/888/fff",
+      "bio": "Specializes in SSC Non-Technical exams",
+      "subjectExpertise": ["Reasoning", "English Grammar"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 80,
+    "refundPolicy": "",
+    "startDate": "2025-10-05T16:00:00Z",
+    "type": "free",
+    "duration": "40 hours",
+    "totalClasses": 20,
+    "demoClasses": 3,
+    "recordingsAvailable": true,
+    "syllabus": ["Numerical and Mathematical Ability", "Reasoning Ability", "English Language", "General Awareness"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 15,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Reasoning Ability",
+        "classes": [
+          {"classId": "F-STAT-08-c1", "title": "Alphanumeric Series & Ranking", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/mts/r1"},
+          {"classId": "F-STAT-08-c2", "title": "Direction Sense & Blood Relation", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/mts/r2"}
+        ]
+      },
+      {
+        "sectionTitle": "General Awareness",
+        "classes": [
+          {"classId": "F-STAT-08-c3", "title": "Static GK: History, Polity, Geography", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/mts/ga1"},
+          {"classId": "F-STAT-08-c4", "title": "Science & Computer Fundamentals", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/mts/ga2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "SSC",
+      "related": ["SSC CHSL", "SSC GD"]
+    },
+    "targetExam": "SSC MTS",
+    "examYear": 2026,
+    "difficultyLevel": "Beginner",
+    "eligibility": "10th Pass",
+    "engagement": {"enrollmentCount": 9500, "rating": 4.5, "reviews": 1400},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/3fUghata1PE/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-BANK-09",
+    "title": "Free SBI Clerk Prelims Crash Course",
+    "shortDescription": "Quick revision for SBI Clerk Prelims 2026.",
+    "description": "An intensive crash course to master the SBI Clerk Prelims exam. Learn shortcuts, strategies, and attempt full-length mock tests.",
+    "category": "Banking",
+    "examType": "SBI Clerk Prelims",
+    "language": "English",
+    "tags": ["Banking", "Free", "SBI Clerk", "Prelims"],
+    "instructor": {
+      "id": "t9",
+      "name": "Nidhi Agrawal",
+      "photoUrl": "https://dummyimage.com/200x200/999/fff",
+      "bio": "SBI Clerk & PO selected, 5 years teaching experience",
+      "subjectExpertise": ["English Language", "Reasoning"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 50,
+    "refundPolicy": "",
+    "startDate": "2025-11-01T17:00:00Z",
+    "type": "free",
+    "duration": "35 hours",
+    "totalClasses": 15,
+    "demoClasses": 2,
+    "recordingsAvailable": true,
+    "syllabus": ["English Language", "Numerical Ability", "Reasoning Ability"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 10,
+      "testSeries": 2
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "English Language",
+        "classes": [
+          {"classId": "F-BANK-09-c1", "title": "Cloze Test & Error Detection", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/sbi/e1"},
+          {"classId": "F-BANK-09-c2", "title": "Phrase Replacement & Vocabulary", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/sbi/e2"}
+        ]
+      },
+      {
+        "sectionTitle": "Numerical Ability",
+        "classes": [
+          {"classId": "F-BANK-09-c3", "title": "Data Interpretation for SBI Clerk", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/sbi/na1"},
+          {"classId": "F-BANK-09-c4", "title": "Approximation & Number Series", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/sbi/na2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Banking",
+      "related": ["IBPS Clerk", "RBI Assistant"]
+    },
+    "targetExam": "SBI Clerk Prelims",
+    "examYear": 2026,
+    "difficultyLevel": "Intermediate",
+    "eligibility": "Graduation",
+    "engagement": {"enrollmentCount": 11200, "rating": 4.6, "reviews": 1800},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/xh7Z6fbhjmw/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-BANK-10",
+    "title": "Free RBI Assistant Prelims Batch",
+    "shortDescription": "Specialized course for RBI Assistant Prelims.",
+    "description": "A focused course designed for the RBI Assistant Prelims exam pattern, emphasizing accuracy and speed in Reasoning, English, and Numerical Ability.",
+    "category": "Banking",
+    "examType": "RBI Assistant Prelims",
+    "language": "English",
+    "tags": ["Banking", "Free", "RBI Assistant"],
+    "instructor": {
+      "id": "t10",
+      "name": "Rajiv Mehta",
+      "photoUrl": "https://dummyimage.com/200x200/101010/fff",
+      "bio": "Banking exam specialist, Ex-Banker",
+      "subjectExpertise": ["Numerical Ability", "Financial Awareness"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 70,
+    "refundPolicy": "",
+    "startDate": "2025-09-15T19:00:00Z",
+    "type": "free",
+    "duration": "45 hours",
+    "totalClasses": 18,
+    "demoClasses": 3,
+    "recordingsAvailable": true,
+    "syllabus": ["English Language", "Numerical Ability", "Reasoning Ability"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 12,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Reasoning Ability",
+        "classes": [
+          {"classId": "F-BANK-10-c1", "title": "Puzzle (Box, Floor, Day) - Advanced", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/rbi/r1"},
+          {"classId": "F-BANK-10-c2", "title": "Inequality & Direction Sense", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rbi/r2"}
+        ]
+      },
+      {
+        "sectionTitle": "Numerical Ability",
+        "classes": [
+          {"classId": "F-BANK-10-c3", "title": "Simplification & Data Sufficiency", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rbi/na1"},
+          {"classId": "F-BANK-10-c4", "title": "Arithmetic: Percentage, Profit Loss", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rbi/na2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Banking",
+      "related": ["IBPS PO", "SBI Clerk"]
+    },
+    "targetExam": "RBI Assistant Prelims",
+    "examYear": 2026,
+    "difficultyLevel": "Intermediate",
+    "eligibility": "Graduation",
+    "engagement": {"enrollmentCount": 6800, "rating": 4.7, "reviews": 950},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/0sHi93OyNM4/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-RAIL-11",
+    "title": "Free RRB Group D CBT 1 Course",
+    "shortDescription": "Complete prep for RRB Group D exam.",
+    "description": "A comprehensive free course for RRB Group D aspirants. Covers Mathematics, Science, GK, and Reasoning as per the latest syllabus.",
+    "category": "Railway",
+    "examType": "RRB Group D CBT 1",
+    "language": "Hindi",
+    "tags": ["Railway", "Free", "RRB Group D"],
+    "instructor": {
+      "id": "t11",
+      "name": "Sanjay Yadav",
+      "photoUrl": "https://img.youtube.com/vi/jFdPg--QRIk/maxresdefault.jpg",
+      "bio": "Expert in Railway Group D & ALP exams",
+      "subjectExpertise": ["General Science", "Mathematics"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 95,
+    "refundPolicy": "",
+    "startDate": "2025-08-28T13:00:00Z",
+    "type": "free",
+    "duration": "65 hours",
+    "totalClasses": 25,
+    "demoClasses": 4,
+    "recordingsAvailable": true,
+    "syllabus": ["Mathematics", "General Intelligence & Reasoning", "General Science", "General Awareness"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 20,
+      "testSeries": 2
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "General Science",
+        "classes": [
+          {"classId": "F-RAIL-11-c1", "title": "Physics: Motion, Force, Work & Energy", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/rrbd/s1"},
+          {"classId": "F-RAIL-11-c2", "title": "Biology: Human Body, Nutrition, Diseases", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rrbd/s2"}
+        ]
+      },
+      {
+        "sectionTitle": "Mathematics",
+        "classes": [
+          {"classId": "F-RAIL-11-c3", "title": "Mensuration 2D & 3D", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/rrbd/m1"},
+          {"classId": "F-RAIL-11-c4", "title": "Algebra & Trigonometry Basics", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rrbd/m2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Railway",
+      "related": ["RRB NTPC", "SSC GD"]
+    },
+    "targetExam": "RRB Group D CBT 1",
+    "examYear": 2026,
+    "difficultyLevel": "Beginner",
+    "eligibility": "10th Pass",
+    "engagement": {"enrollmentCount": 20400, "rating": 4.6, "reviews": 3800},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/rrbd_free.png"},
+    "bannerUrl": "https://img.youtube.com/vi/jFdPg--QRIk/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-DEF-12",
+    "title": "Free AFCAT 1 2026 Crash Course",
+    "shortDescription": "Crash course for AFCAT 1 2026 exam.",
+    "description": "A quick revision course for AFCAT 1 covering English, GK, Reasoning, and Numerical Ability. Includes Military Aptitude test guidance.",
+    "category": "Defence",
+    "examType": "AFCAT 1",
+    "language": "English",
+    "tags": ["Defence", "Free", "AFCAT"],
+    "instructor": {
+      "id": "t12",
+      "name": "Squadron Leader R. Malhotra (Retd.)",
+      "photoUrl": "https://dummyimage.com/200x200/121212/fff",
+      "bio": "Former IAF Officer, AFCAT mentor",
+      "subjectExpertise": ["General Awareness", "Military Aptitude"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 40,
+    "refundPolicy": "",
+    "startDate": "2025-12-10T10:00:00Z",
+    "type": "free",
+    "duration": "25 hours",
+    "totalClasses": 10,
+    "demoClasses": 2,
+    "recordingsAvailable": true,
+    "syllabus": ["English", "General Awareness", "Numerical Ability", "Reasoning", "Military Aptitude"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 5,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "General Awareness",
+        "classes": [
+          {"classId": "F-DEF-12-c1", "title": "Defence Updates & History", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/afcat/gk1"},
+          {"classId": "F-DEF-12-c2", "title": "Geography, Sports, Awards", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/afcat/gk2"}
+        ]
+      },
+      {
+        "sectionTitle": "Military Aptitude",
+        "classes": [
+          {"classId": "F-DEF-12-c3", "title": "Verbal & Spatial Ability", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/afcat/ma1"},
+          {"classId": "F-DEF-12-c4", "title": "Practice Sets for MA", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/afcat/ma2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Defence",
+      "related": ["CDS", "NDA"]
+    },
+    "targetExam": "AFCAT 1",
+    "examYear": 2026,
+    "difficultyLevel": "Intermediate",
+    "eligibility": "Graduates",
+    "engagement": {"enrollmentCount": 5600, "rating": 4.8, "reviews": 870},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/fFOA5xs7OAE/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-DEF-13",
+    "title": "Free NDA 1 Mathematics Crash Course",
+    "shortDescription": "Focus on NDA 1 Mathematics paper.",
+    "description": "A targeted course to strengthen core concepts for the Mathematics paper of the NDA 1 2026 exam. Covers Calculus, Algebra, Matrices, etc.",
+    "category": "Defence",
+    "examType": "NDA 1",
+    "language": "English",
+    "tags": ["Defence", "Free", "NDA", "Maths"],
+    "instructor": {
+      "id": "t13",
+      "name": "Prof. A. Srinivasan",
+      "photoUrl": "https://dummyimage.com/200x200/131313/fff",
+      "bio": "Mathematics expert for NDA/NA, 15 years experience",
+      "subjectExpertise": ["Mathematics", "Calculus"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 55,
+    "refundPolicy": "",
+    "startDate": "2025-11-20T15:00:00Z",
+    "type": "free",
+    "duration": "30 hours",
+    "totalClasses": 12,
+    "demoClasses": 3,
+    "recordingsAvailable": true,
+    "syllabus": ["Mathematics"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": true,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 8,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Mathematics",
+        "classes": [
+          {"classId": "F-DEF-13-c1", "title": "Differential Calculus", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/nda/m1"},
+          {"classId": "F-DEF-13-c2", "title": "Matrices & Determinants", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/nda/m2"},
+          {"classId": "F-DEF-13-c3", "title": "Integral Calculus", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/nda/m3"},
+          {"classId": "F-DEF-13-c4", "title": "Probability & Statistics", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/nda/m4"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Defence",
+      "related": ["CDS", "AFCAT"]
+    },
+    "targetExam": "NDA 1",
+    "examYear": 2026,
+    "difficultyLevel": "Intermediate",
+    "eligibility": "12th Pass",
+    "engagement": {"enrollmentCount": 7200, "rating": 4.9, "reviews": 1300},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/nda_maths_free.png"},
+    "bannerUrl": "https://img.youtube.com/vi/VOO4Pbb6eXU/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-TEACH-14",
+    "title": "Free UPTET Paper 2 (Science) Course",
+    "shortDescription": "For UPTET Paper 2 (Science & Maths stream).",
+    "description": "A specialized course for UPTET Paper 2 aspirants opting for the Science and Mathematics stream. Covers Child Development and subject-specific pedagogy.",
+    "category": "Teaching",
+    "examType": "UPTET Paper 2",
+    "language": "Hindi",
+    "tags": ["Teaching", "Free", "UPTET"],
+    "instructor": {
+      "id": "t14",
+      "name": "Alok Mishra",
+      "photoUrl": "https://dummyimage.com/200x200/141414/fff",
+      "bio": "UPTET qualified, Specializes in Science pedagogy",
+      "subjectExpertise": ["Science", "Mathematics Pedagogy"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 85,
+    "refundPolicy": "",
+    "startDate": "2025-10-20T12:00:00Z",
+    "type": "free",
+    "duration": "50 hours",
+    "totalClasses": 22,
+    "demoClasses": 4,
+    "recordingsAvailable": true,
+    "syllabus": ["Child Development & Pedagogy", "Mathematics & Science", "Language I & II"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 10,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Science",
+        "classes": [
+          {"classId": "F-TEACH-14-c1", "title": "Physics: Light, Sound, Electricity", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/uptet/s1"},
+          {"classId": "F-TEACH-14-c2", "title": "Biology: Cell, Tissues, Human Physiology", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/uptet/s2"}
+        ]
+      },
+      {
+        "sectionTitle": "Pedagogy",
+        "classes": [
+          {"classId": "F-TEACH-14-c3", "title": "Pedagogy of Mathematics", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/uptet/p1"},
+          {"classId": "F-TEACH-14-c4", "title": "Pedagogy of Science", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/uptet/p2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Teaching",
+      "related": ["CTET", "BTET"]
+    },
+    "targetExam": "UPTET Paper 2",
+    "examYear": 2026,
+    "difficultyLevel": "Beginner",
+    "eligibility": "Graduation",
+    "engagement": {"enrollmentCount": 8400, "rating": 4.6, "reviews": 1250},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/lcSLt3sCTqI/maxresdefault.jpg",
+    "board": "State"
+  },
+  {
+    "id": "F-STAT-15",
+    "title": "Free IAS Foundation (Hindi Medium)",
+    "shortDescription": "UPSC Prelims GS foundation in Hindi.",
+    "description": "A comprehensive Hindi medium foundation course for UPSC Prelims, covering Polity, History, Geography, Economy, Science, and Environment.",
+    "category": "UPSC",
+    "examType": "Prelims",
+    "language": "Hindi",
+    "tags": ["UPSC", "Free", "Foundation", "Hindi"],
+    "instructor": {
+      "id": "t15",
+      "name": "Dr. Sunil Kumar",
+      "photoUrl": "https://dummyimage.com/200x200/151515/fff",
+      "bio": "Renowned Hindi medium faculty for UPSC, Author",
+      "subjectExpertise": ["Geography", "Polity", "History"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 130,
+    "refundPolicy": "",
+    "startDate": "2025-09-01T11:00:00Z",
+    "type": "free",
+    "duration": "100 hours",
+    "totalClasses": 40,
+    "demoClasses": 5,
+    "recordingsAvailable": true,
+    "syllabus": ["Polity", "History", "Geography", "Economy", "Science & Tech", "Environment"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": true,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 20,
+      "testSeries": 2
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Geography",
+        "classes": [
+          {"classId": "F-STAT-15-c1", "title": "World Geography: Continents & Oceans", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsch/g1"},
+          {"classId": "F-STAT-15-c2", "title": "Indian Geography: Climate, Soil, Vegetation", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsch/g2"}
+        ]
+      },
+      {
+        "sectionTitle": "Polity",
+        "classes": [
+          {"classId": "F-STAT-15-c3", "title": "संविधान की प्रस्तावना और मुख्य विशेषताएं", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsch/p1"},
+          {"classId": "F-STAT-15-c4", "title": "मौलिक अधिकार और कर्तव्य", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsch/p2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "UPSC",
+      "related": ["UPSC Mains", "State PCS"]
+    },
+    "targetExam": "UPSC Prelims",
+    "examYear": 2026,
+    "difficultyLevel": "Intermediate",
+    "eligibility": "Graduates",
+    "engagement": {"enrollmentCount": 9800, "rating": 4.8, "reviews": 2100},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/upsc_hindi_free.png"},
+    "bannerUrl": "https://img.youtube.com/vi/OwqXXkcK3uM/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-BANK-16",
+    "title": "Free SEBI Grade A Phase 1 Course",
+    "shortDescription": "Preparation for SEBI Grade A Officer Phase 1.",
+    "description": "A specialized course for SEBI Grade A Phase 1, covering Quantitative Aptitude, Reasoning, English, and Awareness (Economic, Social, Financial).",
+    "category": "Banking",
+    "examType": "SEBI Grade A Phase 1",
+    "language": "English",
+    "tags": ["Banking", "Free", "SEBI Grade A"],
+    "instructor": {
+      "id": "t16",
+      "name": "Esha Verma",
+      "photoUrl": "https://dummyimage.com/200x200/161616/fff",
+      "bio": "Finance professional, SEBI Grade A expert",
+      "subjectExpertise": ["Economic & Social Issues", "Finance"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 65,
+    "refundPolicy": "",
+    "startDate": "2025-08-10T18:00:00Z",
+    "type": "free",
+    "duration": "40 hours",
+    "totalClasses": 16,
+    "demoClasses": 3,
+    "recordingsAvailable": true,
+    "syllabus": ["Quantitative Aptitude", "Reasoning", "English Language", "Awareness"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": true,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 8,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Awareness",
+        "classes": [
+          {"classId": "F-BANK-16-c1", "title": "Indian Economy & Financial Market", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/sebi/a1"},
+          {"classId": "F-BANK-16-c2", "title": "Social Issues & Governance", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/sebi/a2"}
+        ]
+      },
+      {
+        "sectionTitle": "Reasoning",
+        "classes": [
+          {"classId": "F-BANK-16-c3", "title": "Logical Reasoning & Data Sufficiency", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/sebi/r1"},
+          {"classId": "F-BANK-16-c4", "title": "Puzzles for SEBI", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/sebi/r2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Banking",
+      "related": ["RBI Grade B", "NABARD Grade A"]
+    },
+    "targetExam": "SEBI Grade A Phase 1",
+    "examYear": 2026,
+    "difficultyLevel": "Advanced",
+    "eligibility": "Graduation",
+    "engagement": {"enrollmentCount": 4300, "rating": 4.7, "reviews": 600},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/jFdPg--QRIk/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-STAT-17",
+    "title": "Free SSC Stenographer Grade C Course",
+    "shortDescription": "Course for SSC Stenographer Grade C & D.",
+    "description": "Preparation course for SSC Stenographer exam, focusing on Reasoning, English, and General Awareness. Includes tips for dictation and shorthand.",
+    "category": "SSC",
+    "examType": "Stenographer Grade C & D",
+    "language": "English",
+    "tags": ["SSC", "Free", "Stenographer"],
+    "instructor": {
+      "id": "t17",
+      "name": "Anita Khanna",
+      "photoUrl": "https://dummyimage.com/200x200/171717/fff",
+      "bio": "Former Stenographer, 6 years teaching experience",
+      "subjectExpertise": ["English", "General Awareness"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 70,
+    "refundPolicy": "",
+    "startDate": "2025-11-05T14:00:00Z",
+    "type": "free",
+    "duration": "35 hours",
+    "totalClasses": 14,
+    "demoClasses": 2,
+    "recordingsAvailable": true,
+    "syllabus": ["General Intelligence & Reasoning", "English Language", "General Awareness"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 10,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "English Language",
+        "classes": [
+          {"classId": "F-STAT-17-c1", "title": "Grammar: Tenses, Voices, Narration", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/steno/e1"},
+          {"classId": "F-STAT-17-c2", "title": "Vocabulary: Synonyms, Antonyms, One-word", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/steno/e2"}
+        ]
+      },
+      {
+        "sectionTitle": "General Awareness",
+        "classes": [
+          {"classId": "F-STAT-17-c3", "title": "Current Affairs: Last 6 Months", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/steno/ga1"},
+          {"classId": "F-STAT-17-c4", "title": "Static GK: Books & Authors, Important Days", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/steno/ga2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "SSC",
+      "related": ["SSC CGL", "SSC CHSL"]
+    },
+    "targetExam": "SSC Stenographer Grade C & D",
+    "examYear": 2026,
+    "difficultyLevel": "Beginner",
+    "eligibility": "12th Pass",
+    "engagement": {"enrollmentCount": 3100, "rating": 4.5, "reviews": 480},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/6uTH9t-x22U/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-RAIL-18",
+    "title": "Free RRB JE CBT 1 (CE/IT) Course",
+    "shortDescription": "For RRB JE CBT 1 (Civil & IT streams).",
+    "description": "A technical course for RRB JE CBT 1 for Civil Engineering and IT/Computer Science streams. Covers general awareness and reasoning alongside technical subjects.",
+    "category": "Railway",
+    "examType": "RRB JE CBT 1",
+    "language": "Hindi & English",
+    "tags": ["Railway", "Free", "RRB JE", "Technical"],
+    "instructor": {
+      "id": "t18",
+      "name": "Er. Ravi Kishore",
+      "photoUrl": "https://img.youtube.com/vi/7tO_SZqT6Tk/maxresdefault.jpg",
+      "bio": "B.Tech, IIT Delhi, RRB JE specialist",
+      "subjectExpertise": ["Civil Engineering", "General Engineering"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 90,
+    "refundPolicy": "",
+    "startDate": "2025-09-25T16:00:00Z",
+    "type": "free",
+    "duration": "55 hours",
+    "totalClasses": 20,
+    "demoClasses": 3,
+    "recordingsAvailable": true,
+    "syllabus": ["General Awareness", "General Intelligence & Reasoning", "General Science", "Technical Abilities"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": true,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 15,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Technical Abilities (Civil)",
+        "classes": [
+          {"classId": "F-RAIL-18-c1", "title": "Building Materials & Construction", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/rrbje/t1"},
+          {"classId": "F-RAIL-18-c2", "title": "Surveying & RCC Design", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rrbje/t2"}
+        ]
+      },
+      {
+        "sectionTitle": "General Science",
+        "classes": [
+          {"classId": "F-RAIL-18-c3", "title": "Physics: Units, Measurements, Laws of Motion", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rrbje/gs1"},
+          {"classId": "F-RAIL-18-c4", "title": "Chemistry: Acids, Bases, Salts & Metals", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rrbje/gs2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Railway",
+      "related": ["SSC JE", "State JE Exams"]
+    },
+    "targetExam": "RRB JE CBT 1",
+    "examYear": 2026,
+    "difficultyLevel": "Intermediate",
+    "eligibility": "Diploma/Degree in Engineering",
+    "engagement": {"enrollmentCount": 5900, "rating": 4.7, "reviews": 900},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/7tO_SZqT6Tk/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "F-TEACH-19",
+    "title": "Free DSSSB PRT Preparation Batch",
+    "shortDescription": "For DSSSB Primary Teacher (PRT) exam.",
+    "description": "A complete course for the Delhi Subordinate Services Selection Board (DSSSB) Primary Teacher exam. Covers all sections as per the latest notification.",
+    "category": "Teaching",
+    "examType": "DSSSB PRT",
+    "language": "Hindi",
+    "tags": ["Teaching", "Free", "DSSSB", "PRT"],
+    "instructor": {
+      "id": "t19",
+      "name": "Pooja Mehta",
+      "photoUrl": "https://dummyimage.com/200x200/191919/fff",
+      "bio": "Educationist, DSSSB PRT selected, 5 years exp",
+      "subjectExpertise": ["Child Development", "Elementary Maths", "EVS"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 105,
+    "refundPolicy": "",
+    "startDate": "2025-10-10T09:00:00Z",
+    "type": "free",
+    "duration": "60 hours",
+    "totalClasses": 25,
+    "demoClasses": 4,
+    "recordingsAvailable": true,
+    "syllabus": ["General Awareness", "Reasoning", "Arithmetic & Numerical Ability", "English", "Hindi", "Subject Concerned"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 18,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Subject Concerned (PRT)",
+        "classes": [
+          {"classId": "F-TEACH-19-c1", "title": "Pedagogy: Teaching Methods & Approaches", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/dsssb/p1"},
+          {"classId": "F-TEACH-19-c2", "title": "EVS & Social Studies Concepts", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/dsssb/p2"}
+        ]
+      },
+      {
+        "sectionTitle": "Arithmetic & Numerical Ability",
+        "classes": [
+          {"classId": "F-TEACH-19-c3", "title": "Elementary Mathematics: Number System", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/dsssb/m1"},
+          {"classId": "F-TEACH-19-c4", "title": "Mensuration, Data Handling", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/dsssb/m2"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Teaching",
+      "related": ["CTET", "KVS PRT"]
+    },
+    "targetExam": "DSSSB PRT",
+    "examYear": 2026,
+    "difficultyLevel": "Beginner",
+    "eligibility": "12th Pass & D.Ed/B.Ed",
+    "engagement": {"enrollmentCount": 7700, "rating": 4.6, "reviews": 1350},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/dlFA17d0inQ/maxresdefault.jpg",
+    "board": "State"
+  }
+]

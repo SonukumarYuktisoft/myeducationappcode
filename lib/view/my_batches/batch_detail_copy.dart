@@ -6,7 +6,10 @@ import 'package:education/model/CourseModel/course_model.dart';
 import 'package:education/model/CourseModel/course_overview.dart';
 import 'package:education/view/my_batches/live_class_screen.dart';
 import 'package:education/view/my_batches/my_batches.dart';
+import 'package:education/view/my_batches/widgets/video_player_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/utils.dart';
 
 class BatchDetailCopy extends StatefulWidget {
   final CourseModel item;
@@ -118,114 +121,116 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
   }
 
   Widget _buildOverviewCard(CourseModel item) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12, left: 15, right: 15),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.08),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-        border: Border.all(color: AppColors.clrD6D6D6.withOpacity(0.5)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(bottom: 12),
-            padding: const EdgeInsets.all(16),
-            height: 200,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                  item.bannerUrl.isNotEmpty ? item.bannerUrl : 'assets/png/trending_courses_img.jpg',
-                ),
-                fit: BoxFit.cover,
+    return SingleChildScrollView(
+      child: SafeArea(
+        child: Container(
+          margin: const EdgeInsets.only(bottom: 12, left: 15, right: 15),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.grey.shade100,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.08),
+                blurRadius: 8,
+                offset: const Offset(0, 2),
               ),
-              color: AppColors.whiteColor,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.08),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-              border: Border.all(color: AppColors.clrD6D6D6.withOpacity(0.5)),
-            ),
+            ],
+            border: Border.all(color: AppColors.clrD6D6D6.withOpacity(0.5)),
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                width: 56,
-                height: 56,
+                margin: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.all(16),
+                height: 200,
                 decoration: BoxDecoration(
-                  color: AppColors.primaryColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Icon(Icons.menu_book, color: AppColors.primaryColor),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      item.title,
-                      style: TextStyleCustom.headingStyle(
-                        fontSize: 16,
-                        color: AppColors.blackColor,
-                      ),
+                  image: DecorationImage(
+                    image: NetworkImage(item.bannerUrl),
+                    fit: BoxFit.cover,
+                  ),
+                  color: AppColors.whiteColor,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.08),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
                     ),
                   ],
+                  border: Border.all(color: AppColors.clrD6D6D6.withOpacity(0.5)),
                 ),
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 56,
+                    height: 56,
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Icon(Icons.menu_book, color: AppColors.primaryColor),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item.title,
+                          style: TextStyleCustom.headingStyle(
+                            fontSize: 16,
+                            color: AppColors.blackColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              _kv('Start date', _formatDate(item.startDate)),
+              const SizedBox(height: 12),
+              _kv('Duration', item.duration),
+              const SizedBox(height: 12),
+              _kv('Teacher', item.instructor.name),
+              const SizedBox(height: 12),
+              _kv('Type', item.isPaid ? 'Paid' : 'Free'),
+              const SizedBox(height: 12),
+              _kv('Classes', '${item.totalClasses} total'),
+              const SizedBox(height: 12),
+              _kv('Language', item.language),
+        
+              buildSizeBox(20.0, 0.0),
+              BuildText.buildText(
+                text: "Targeted Exams",
+                fontFamily: FontFamily.semiBold,
+              ),
+              buildSizeBox(10.0, 0.0),
+              Wrap(
+                spacing: 6,
+                runSpacing: -8,
+                children: item.target.related.map((exam) => _chip(exam, AppColors.primaryColor)).toList(),
+              ),
+              
+              buildSizeBox(20.0, 0.0),
+              BuildText.buildText(
+                text: "Syllabus",
+                fontFamily: FontFamily.semiBold,
+              ),
+              buildSizeBox(10.0, 0.0),
+              Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: item.syllabus.map((subject) => _chip(subject, Colors.blue)).toList(),
               ),
             ],
           ),
-          const SizedBox(height: 20),
-          _kv('Start date', _formatDate(item.startDate)),
-          const SizedBox(height: 12),
-          _kv('Duration', item.duration),
-          const SizedBox(height: 12),
-          _kv('Teacher', item.instructor.name),
-          const SizedBox(height: 12),
-          _kv('Type', item.isPaid ? 'Paid' : 'Free'),
-          const SizedBox(height: 12),
-          _kv('Classes', '${item.totalClasses} total'),
-          const SizedBox(height: 12),
-          _kv('Language', item.language),
-
-          buildSizeBox(20.0, 0.0),
-          BuildText.buildText(
-            text: "Targeted Exams",
-            fontFamily: FontFamily.semiBold,
-          ),
-          buildSizeBox(10.0, 0.0),
-          Wrap(
-            spacing: 6,
-            runSpacing: -8,
-            children: item.target.related.map((exam) => _chip(exam, AppColors.primaryColor)).toList(),
-          ),
-          
-          buildSizeBox(20.0, 0.0),
-          BuildText.buildText(
-            text: "Syllabus",
-            fontFamily: FontFamily.semiBold,
-          ),
-          buildSizeBox(10.0, 0.0),
-          Wrap(
-            spacing: 6,
-            runSpacing: -8,
-            children: item.syllabus.map((subject) => _chip(subject, Colors.blue)).toList(),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -406,9 +411,14 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
           } else {
             // Completed/recorded class
             actions = [
-              _outlineButton('View'),
+              _outlineButton('View', onPressed: () {
+                print('akljfkla');
+             Get.to(()=>  VideoPlayerScreen(youtubeUrl: 'https://youtu.be/enY83Li8_ps?si=ErkiCJo_g4izyDql'));
+              }),
               const SizedBox(width: 8),
-              _outlineButton('Notes'),
+              _outlineButton('Notes', onPressed: () {
+                // Handle viewing notes
+              }),
             ];
           }
         } else {
@@ -591,9 +601,9 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
     );
   }
 
-  Widget _outlineButton(String text) {
+  Widget _outlineButton(String text,{required VoidCallback onPressed}) {
     return OutlinedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: OutlinedButton.styleFrom(
         foregroundColor: AppColors.primaryColor,
         side: BorderSide(color: AppColors.primaryColor),

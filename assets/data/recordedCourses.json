@@ -1,0 +1,332 @@
+[
+  {
+    "id": "R-SSC-01",
+    "title": "SSC CGL Tier-II Recorded Quant Batch",
+    "shortDescription": "Complete Quantitative Aptitude recorded course for SSC CGL Tier-II.",
+    "description": "Covers advanced quant topics with previous year questions, tricks and strategy for SSC CGL Tier-II.",
+    "category": "SSC",
+    "examType": "CGL Tier-II",
+    "language": "Hindi & English",
+    "tags": ["SSC", "Recorded", "Quant"],
+    "instructor": {
+      "id": "t3",
+      "name": "Manish Gupta",
+      "photoUrl": "https://dummyimage.com/200x200/444/fff",
+      "bio": "Quant Expert with 12 years SSC experience.",
+      "subjectExpertise": ["Quantitative Aptitude"]
+    },
+    "isPaid": true,
+    "isEnrolled": false,
+    "price": 2999,
+    "discountPrice": 1999,
+    "emiOptions": true,
+    "validity": 365,
+    "refundPolicy": "No refund on recorded courses",
+    "startDate": "2025-07-01T00:00:00Z",
+    "type": "recorded",
+    "duration": "80 hours",
+    "totalClasses": 40,
+    "demoClasses": 3,
+    "recordingsAvailable": true,
+    "syllabus": ["Arithmetic", "Algebra", "Geometry", "Trigonometry", "DI"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": true,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 50,
+      "testSeries": 3
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Arithmetic",
+        "classes": [
+          {"classId": "R-SSC-01-c1", "title": "Percentage & Ratio", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/ssc/rec1"},
+          {"classId": "R-SSC-01-c2", "title": "Profit, Loss & SI-CI", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/ssc/rec2"}
+        ]
+      },
+      {
+        "sectionTitle": "Algebra & Geometry",
+        "classes": [
+          {"classId": "R-SSC-01-c3", "title": "Linear Equations", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/ssc/rec3"},
+          {"classId": "R-SSC-01-c4", "title": "Geometry Basics", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/ssc/rec4"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "SSC",
+      "related": ["SSC CGL", "SSC CHSL", "SSC CPO"]
+    },
+    "targetExam": "SSC CGL Tier-II",
+    "examYear": 2026,
+    "difficultyLevel": "Intermediate",
+    "eligibility": "Graduates",
+    "engagement": {"enrollmentCount": 3200, "rating": 4.5, "reviews": 870},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/ssc_rec.png"},
+    "bannerUrl": "https://img.youtube.com/vi/mjWUtpP4XpY/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "R-UPSC-01",
+    "title": "UPSC Polity Recorded Batch",
+    "shortDescription": "Recorded lectures of Indian Polity for UPSC Prelims & Mains.",
+    "description": "Complete Polity module by expert faculty with recorded sessions, PYQs, and answer writing guidance.",
+    "category": "UPSC",
+    "examType": "Prelims + Mains",
+    "language": "English",
+    "tags": ["UPSC", "Polity", "Recorded"],
+    "instructor": {
+      "id": "t4",
+      "name": "Dr. Kavita Mishra",
+      "photoUrl": "https://dummyimage.com/200x200/555/fff",
+      "bio": "PhD in Political Science, teaching UPSC for 15 years.",
+      "subjectExpertise": ["Polity", "Governance"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 180,
+    "refundPolicy": "",
+    "startDate": "2025-06-01T00:00:00Z",
+    "type": "recorded",
+    "duration": "60 hours",
+    "totalClasses": 20,
+    "demoClasses": 5,
+    "recordingsAvailable": true,
+    "syllabus": ["Constitution", "Fundamental Rights", "Parliament", "Judiciary"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 25,
+      "testSeries": 0
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Constitutional Framework",
+        "classes": [
+          {"classId": "R-UPSC-01-c1", "title": "Making of the Constitution", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsc/rec1"},
+          {"classId": "R-UPSC-01-c2", "title": "Salient Features", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsc/rec2"}
+        ]
+      },
+      {
+        "sectionTitle": "Parliament & Judiciary",
+        "classes": [
+          {"classId": "R-UPSC-01-c3", "title": "Parliament Structure", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsc/rec3"},
+          {"classId": "R-UPSC-01-c4", "title": "Judiciary Independence", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/upsc/rec4"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "UPSC",
+      "related": ["State PSC", "CAPF"]
+    },
+    "targetExam": "UPSC Prelims & Mains",
+    "examYear": 2026,
+    "difficultyLevel": "Intermediate",
+    "eligibility": "Graduates",
+    "engagement": {"enrollmentCount": 15000, "rating": 4.8, "reviews": 2100},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/upsc_rec.png"},
+    "bannerUrl": "https://img.youtube.com/vi/jT4mNt5Y6iY/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "R-BANK-01",
+    "title": "Bank PO Recorded English Module",
+    "shortDescription": "Recorded course for Bank PO English — grammar, vocab & RC.",
+    "description": "Complete recorded English module with grammar rules, vocabulary building, and reading comprehension.",
+    "category": "Banking",
+    "examType": "IBPS PO",
+    "language": "English",
+    "tags": ["Banking", "Recorded", "English"],
+    "instructor": {
+      "id": "t5",
+      "name": "Neha Kapoor",
+      "photoUrl": "https://dummyimage.com/200x200/666/fff",
+      "bio": "Banking English trainer, 9 years of experience.",
+      "subjectExpertise": ["English Language"]
+    },
+    "isPaid": true,
+    "isEnrolled": false,
+    "price": 1999,
+    "discountPrice": 1499,
+    "emiOptions": false,
+    "validity": 365,
+    "refundPolicy": "No refund",
+    "startDate": "2025-08-10T00:00:00Z",
+    "type": "recorded",
+    "duration": "40 hours",
+    "totalClasses": 18,
+    "demoClasses": 2,
+    "recordingsAvailable": true,
+    "syllabus": ["Grammar", "Vocabulary", "Reading Comprehension"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": false,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 15,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Grammar",
+        "classes": [
+          {"classId": "R-BANK-01-c1", "title": "Tenses & Voices", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/bank/rec1"},
+          {"classId": "R-BANK-01-c2", "title": "Subject-Verb Agreement", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/bank/rec2"}
+        ]
+      },
+      {
+        "sectionTitle": "Vocabulary & RC",
+        "classes": [
+          {"classId": "R-BANK-01-c3", "title": "Word Power & Idioms", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/bank/rec3"},
+          {"classId": "R-BANK-01-c4", "title": "Reading Comprehension", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/bank/rec4"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Bank PO",
+      "related": ["SBI PO", "IBPS Clerk", "RBI Assistant"]
+    },
+    "targetExam": "IBPS PO",
+    "examYear": 2025,
+    "difficultyLevel": "Beginner to Intermediate",
+    "eligibility": "Graduate",
+    "engagement": {"enrollmentCount": 2100, "rating": 4.6, "reviews": 540},
+    "offers": {"featured": false, "offerBanner": ""},
+    "bannerUrl": "https://img.youtube.com/vi/sptgth5iMTo/maxresdefault.jpg",
+    "board": "All India"
+  },
+  {
+    "id": "R-RAIL-01",
+    "title": "Railway NTPC Recorded Course",
+    "shortDescription": "Complete NTPC Recorded Classes with notes.",
+    "description": "Covers Mathematics, Reasoning & GK for RRB NTPC through recorded video lectures.",
+    "category": "Railway",
+    "examType": "NTPC",
+    "language": "Hindi",
+    "tags": ["Railway", "Recorded", "NTPC"],
+    "instructor": {
+      "id": "t6",
+      "name": "Vikas Yadav",
+      "photoUrl": "https://dummyimage.com/200x200/777/fff",
+      "bio": "Railway Exam Faculty, 8 years experience.",
+      "subjectExpertise": ["Maths", "GK"]
+    },
+    "isPaid": false,
+    "isEnrolled": false,
+    "price": 0,
+    "discountPrice": 0,
+    "emiOptions": false,
+    "validity": 120,
+    "refundPolicy": "",
+    "startDate": "2025-05-20T00:00:00Z",
+    "type": "recorded",
+    "duration": "70 hours",
+    "totalClasses": 30,
+    "demoClasses": 6,
+    "recordingsAvailable": true,
+    "syllabus": ["Maths", "Reasoning", "GK"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": true,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 30,
+      "testSeries": 1
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Maths",
+        "classes": [
+          {"classId": "R-RAIL-01-c1", "title": "Number System", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/rail/rec1"},
+          {"classId": "R-RAIL-01-c2", "title": "Mensuration", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rail/rec2"}
+        ]
+      },
+      {
+        "sectionTitle": "Reasoning & GK",
+        "classes": [
+          {"classId": "R-RAIL-01-c3", "title": "Reasoning: Coding-Decoding", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/rail/rec3"},
+          {"classId": "R-RAIL-01-c4", "title": "GK: Indian Geography", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/rail/rec4"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "Railway",
+      "related": ["RRB Group D", "ALP"]
+    },
+    "targetExam": "RRB NTPC",
+    "examYear": 2025,
+    "difficultyLevel": "Beginner",
+    "eligibility": "10+2",
+    "engagement": {"enrollmentCount": 8700, "rating": 4.5, "reviews": 1250},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/rail_rec.png"},
+    "bannerUrl": "https://img.youtube.com/vi/VgH-eRtgUlQ/maxresdefault.jpg",
+    "board": "Railway Board"
+  },
+  {
+    "id": "R-DEF-01",
+    "title": "Defence NDA Recorded Maths & English",
+    "shortDescription": "NDA Recorded Course with Maths & English modules.",
+    "description": "Comprehensive NDA preparation with recorded lectures for Maths & English including solved examples.",
+    "category": "Defence",
+    "examType": "NDA",
+    "language": "English",
+    "tags": ["Defence", "NDA", "Recorded"],
+    "instructor": {
+      "id": "t7",
+      "name": "Col. Rajesh Singh (Retd.)",
+      "photoUrl": "https://dummyimage.com/200x200/888/fff",
+      "bio": "Ex-Army Officer, NDA trainer 12 years.",
+      "subjectExpertise": ["Maths", "English"]
+    },
+    "isPaid": true,
+    "isEnrolled": false,
+    "price": 3999,
+    "discountPrice": 2499,
+    "emiOptions": true,
+    "validity": 365,
+    "refundPolicy": "7-day refund",
+    "startDate": "2025-07-15T00:00:00Z",
+    "type": "recorded",
+    "duration": "100 hours",
+    "totalClasses": 50,
+    "demoClasses": 5,
+    "recordingsAvailable": true,
+    "syllabus": ["Maths", "English"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": true,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 60,
+      "testSeries": 2
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Maths",
+        "classes": [
+          {"classId": "R-DEF-01-c1", "title": "Algebra & Matrices", "isDemo": true, "isLocked": false, "videoUrl": "https://dummyvideo.com/def/rec1"},
+          {"classId": "R-DEF-01-c2", "title": "Trigonometry Advanced", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/def/rec2"}
+        ]
+      },
+      {
+        "sectionTitle": "English",
+        "classes": [
+          {"classId": "R-DEF-01-c3", "title": "Grammar & Sentence Improvement", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/def/rec3"},
+          {"classId": "R-DEF-01-c4", "title": "Reading Comprehension", "isDemo": false, "isLocked": false, "videoUrl": "https://dummyvideo.com/def/rec4"}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "NDA",
+      "related": ["CDS", "AFCAT"]
+    },
+    "targetExam": "NDA 2026",
+    "examYear": 2026,
+    "difficultyLevel": "Intermediate",
+    "eligibility": "12th Pass",
+    "engagement": {"enrollmentCount": 4500, "rating": 4.7, "reviews": 940},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/nda_rec.png"},
+   "bannerUrl": "https://img.youtube.com/vi/o4dA_7rQj90/maxresdefault.jpg",
+    "board": "Defence Board"
+  }
+]

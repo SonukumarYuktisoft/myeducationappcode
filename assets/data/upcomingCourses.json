@@ -1,0 +1,148 @@
+[
+  {
+    "id": "U-SSC-01",
+    "title": "SSC CGL 2026 Full Live Batch",
+    "shortDescription": "Complete SSC CGL Tier-I + Tier-II live coaching with strategy.",
+    "description": "Live batch covering all sections: Quantitative Aptitude, Reasoning, English & GK with live doubt clearing sessions.",
+    "category": "SSC",
+    "examType": "CGL Tier-I & II",
+    "language": "Hindi & English",
+    "tags": ["SSC", "Live", "Upcoming"],
+    "instructor": {
+      "id": "t1",
+      "name": "Rohit Sharma",
+      "photoUrl": "https://dummyimage.com/200x200/222/fff",
+      "bio": "SSC Expert, 10+ years experience, mentored 5k+ students",
+      "subjectExpertise": ["Quantitative Aptitude", "Reasoning", "English", "GK"]
+    },
+    "isPaid": true,
+    "isEnrolled": false,
+    "price": 4999,
+    "discountPrice": 3999,
+    "emiOptions": true,
+    "validity": 180,
+    "refundPolicy": "7-day refund",
+    "startDate": "2025-10-05T10:00:00Z",
+    "type": "upcoming",
+    "duration": "120 hours",
+    "totalClasses": 60,
+    "demoClasses": 2,
+    "recordingsAvailable": false,
+    "syllabus": ["Quantitative Aptitude", "Reasoning", "English", "General Awareness"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": true,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 50,
+      "testSeries": 5
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Quantitative Aptitude",
+        "classes": [
+          {"classId": "U-SSC-01-c1", "title": "Number System & Simplification", "isDemo": true, "isLocked": false, "videoUrl": ""},
+          {"classId": "U-SSC-01-c2", "title": "Percentage, Profit & Loss", "isDemo": false, "isLocked": true, "videoUrl": ""}
+        ]
+      },
+      {
+        "sectionTitle": "Reasoning",
+        "classes": [
+          {"classId": "U-SSC-01-c3", "title": "Syllogism & Puzzles", "isDemo": true, "isLocked": false, "videoUrl": ""},
+          {"classId": "U-SSC-01-c4", "title": "Coding-Decoding & Series", "isDemo": false, "isLocked": true, "videoUrl": ""}
+        ]
+      },
+      {
+        "sectionTitle": "English",
+        "classes": [
+          {"classId": "U-SSC-01-c5", "title": "Error Spotting & Grammar", "isDemo": true, "isLocked": false, "videoUrl": ""},
+          {"classId": "U-SSC-01-c6", "title": "Reading Comprehension & Vocabulary", "isDemo": false, "isLocked": true, "videoUrl": ""}
+        ]
+      },
+      {
+        "sectionTitle": "General Awareness",
+        "classes": [
+          {"classId": "U-SSC-01-c7", "title": "Current Affairs Last 6 Months", "isDemo": false, "isLocked": true, "videoUrl": ""},
+          {"classId": "U-SSC-01-c8", "title": "Static GK: History & Geography", "isDemo": false, "isLocked": true, "videoUrl": ""}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "SSC",
+      "related": ["SSC CGL", "SSC CHSL", "SSC MTS"]
+    },
+    "targetExam": "SSC CGL 2026",
+    "examYear": 2026,
+    "difficultyLevel": "Beginner to Intermediate",
+    "eligibility": "12th Pass",
+    "engagement": {"enrollmentCount": 0, "rating": 0, "reviews": 0},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/ssc_upcoming.png"},
+    "bannerUrl": "https://img.youtube.com/vi/8WIoHgXb-QY/maxresdefault.jpg",
+    "board": "Central"
+  },
+  {
+    "id": "U-UPSC-01",
+    "title": "UPSC Prelims 2026 Live Batch",
+    "shortDescription": "Full GS Prelims coaching with live classes and strategy sessions.",
+    "description": "Live coaching covering Polity, History, Geography, Economy, and Environment for UPSC Prelims.",
+    "category": "UPSC",
+    "examType": "Prelims",
+    "language": "English",
+    "tags": ["UPSC", "Live", "Upcoming"],
+    "instructor": {
+      "id": "t2",
+      "name": "Anjali Verma",
+      "photoUrl": "https://dummyimage.com/200x200/111/fff",
+      "bio": "Ex-UPSC aspirant, 8 years teaching experience",
+      "subjectExpertise": ["Polity", "History", "Economy", "Environment"]
+    },
+    "isPaid": true,
+    "isEnrolled": false,
+    "price": 5999,
+    "discountPrice": 4999,
+    "emiOptions": true,
+    "validity": 180,
+    "refundPolicy": "7-day refund",
+    "startDate": "2025-10-12T12:00:00Z",
+    "type": "upcoming",
+    "duration": "100 hours",
+    "totalClasses": 50,
+    "demoClasses": 2,
+    "recordingsAvailable": false,
+    "syllabus": ["Polity", "History", "Economy", "Environment"],
+    "materials": {
+      "pdfNotes": true,
+      "ebooks": true,
+      "previousYearPapers": true,
+      "mcqPracticeSets": 40,
+      "testSeries": 3
+    },
+    "curriculum": [
+      {
+        "sectionTitle": "Polity",
+        "classes": [
+          {"classId": "U-UPSC-01-c1", "title": "Preamble & Constitution", "isDemo": true, "isLocked": false, "videoUrl": ""},
+          {"classId": "U-UPSC-01-c2", "title": "Fundamental Rights & DPSP", "isDemo": false, "isLocked": true, "videoUrl": ""}
+        ]
+      },
+      {
+        "sectionTitle": "History",
+        "classes": [
+          {"classId": "U-UPSC-01-c3", "title": "Ancient India", "isDemo": true, "isLocked": false, "videoUrl": ""},
+          {"classId": "U-UPSC-01-c4", "title": "Medieval India", "isDemo": false, "isLocked": true, "videoUrl": ""}
+        ]
+      }
+    ],
+    "target": {
+      "exam": "UPSC",
+      "related": ["State PSC", "CAPF"]
+    },
+    "targetExam": "UPSC Prelims 2026",
+    "examYear": 2026,
+    "difficultyLevel": "Intermediate",
+    "eligibility": "Graduates",
+    "engagement": {"enrollmentCount": 0, "rating": 0, "reviews": 0},
+    "offers": {"featured": true, "offerBanner": "assets/png/banners/upsc_upcoming.png"},
+    "bannerUrl": "https://img.youtube.com/vi/-89YqNCmuZw/maxresdefault.jpg",
+    "board": "Central"
+  }
+]

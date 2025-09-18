@@ -2,7 +2,7 @@ import 'package:education/core/services/localapi_service.dart';
 import 'package:education/model/CourseModel/course_model.dart';
 import 'package:get/get.dart';
 
-class CourseController extends GetxController {
+class UpcomingBatchesController extends GetxController {
   var allCourses = <CourseModel>[].obs;
   var filteredCourses = <CourseModel>[].obs;
   var categories = <String>[].obs;
@@ -17,7 +17,7 @@ class CourseController extends GetxController {
   }
 
   void loadCourses() async {
-    final response = await apiService.getLocalJson("assets/data/courses.json");
+    final response = await apiService.getLocalJson("assets/data/upcomingCourses.json");
     allCourses.value =
         response.map<CourseModel>((e) => CourseModel.fromJson(e)).toList();
 
@@ -96,7 +96,10 @@ class CourseController extends GetxController {
   List<CourseModel> getLiveClassCourses() {
     return allCourses.where((course) => course.type == "Live Class").toList();
   }
-
+// Get Live Class courses
+  List<CourseModel> getUpcomingCourses() {
+    return allCourses.where((course) => course.type == "upcoming").toList();
+  }
   // Get Recorded Videos courses
   List<CourseModel> getRecordedVideoCourses() {
     return allCourses.where((course) => course.recordingsAvailable).toList();

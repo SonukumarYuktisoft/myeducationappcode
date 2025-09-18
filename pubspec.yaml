@@ -36,6 +36,7 @@ dependencies:
   file_picker: ^8.0.2
   video_player: ^2.9.2
   youtube_player_iframe: ^5.1.2
+  youtube_player_flutter: ^9.1.2
 
 dev_dependencies:
   flutter_test:
@@ -51,7 +52,9 @@ flutter:
     - assets/png/
     - assets/png/groups_images/
     - assets/png/teachers_image/
-    - assets/data/courses.json
+    - assets/data/freeCourses.json
+    - assets/data/recordedCourses.json
+    - assets\data\upcomingCourses.json
     - assets/png/courses_images/
   fonts:
     - family: OpenSansRegular

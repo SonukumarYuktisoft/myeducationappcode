@@ -20,7 +20,7 @@ class MyBatchesChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       decoration: BoxDecoration(
-        color: isSelected ? color : color.withOpacity(0.1),
+        color: isSelected ? color : AppColors.whiteColor,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: color,

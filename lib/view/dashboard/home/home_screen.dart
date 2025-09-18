@@ -1,6 +1,7 @@
 import 'package:education/core/constants/color.dart';
 import 'package:education/core/constants/font_style.dart';
-import 'package:education/view/my_batches/aI_assistant_screen.dart';
+import 'package:education/view/aI_assistant/aI_assistant_screen.dart';
+import 'package:education/view/my_batches/course_controller/upcoming_batches_controller.dart';
 import 'package:education/view/my_batches/free_batches_screen.dart';
 import 'package:education/view/my_batches/live_class_screen.dart';
 import 'package:education/view/my_batches/my_batches.dart';
@@ -143,7 +144,7 @@ class HomeScreen extends StatelessWidget {
               title: 'My Batches',
               color: const Color(0xFF4285F4),
               onTap: () {
-                Get.to(() => MyBatchesScreen());
+                Get.to(() => MyBatches());
               },
             ),
             _buildActionCard(
@@ -318,6 +319,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildUpcomingBatchesSection() {
+    UpcomingBatchesController controller = Get.put(UpcomingBatchesController());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -332,7 +334,7 @@ class HomeScreen extends StatelessWidget {
         ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: 3,
+          itemCount: controller.allCourses.length,
           itemBuilder: (context, index) {
             return _buildUpcomingBatchCard(
               title:
