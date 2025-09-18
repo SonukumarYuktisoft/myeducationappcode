@@ -1,210 +1,165 @@
-import 'dart:io';
-
+import 'package:education/core/services/localapi_service.dart';
+import 'package:education/model/CourseModel/course_model.dart';
 import 'package:get/get.dart';
 
-final List<Course> allCourses = [
-  Course(
-    id: "1",
-    title: "UPSC Prelims 2026 Foundation",
-    instructor: "Ketan Sharma",
-    category: "UPSC",
-    board: "National",
-    description: "Complete GS + CSAT with tests.",
-    banner: "assets/png/trending_courses_img.jpg",
-    isPaid: true,
-    status: "upcoming",
-    type: "live",
-    targets: ["UPSC"],
-    startDate: "01 Jan 2026",
-    duration: "6 months",
-  ),
-  Course(
-    id: "2",
-    title: "BPSC Mains Crash Course",
-    instructor: "Ravi Kumar",
-    category: "BPSC",
-    board: "Bihar Board",
-    description: "Answer writing practice + PYQs.",
-    banner: "assets/png/trending_courses_img.jpg",
-    isPaid: false,
-    status: "ongoing",
-    type: "recorded",
-    targets: ["BPSC", "UPSC"],
-    startDate: "15 Sep 2025",
-    duration: "4 months",
-  ),
-  Course(
-    id: "3",
-    title: "SSC CGL Tier-1 Foundation",
-    instructor: "Neha Gupta",
-    category: "SSC",
-    board: "National",
-    description: "Quant + Reasoning full coverage.",
-    banner: "assets/png/trending_courses_img.jpg",
-    isPaid: true,
-    status: "completed",
-    type: "recorded",
-    targets: ["SSC", "Railway"],
-    startDate: "10 May 2025",
-    duration: "5 months",
-  ),
-  Course(
-    id: "4",
-    title: "Rajasthan Teacher Exam Live Batch",
-    instructor: "Sunita Meena",
-    category: "Teaching",
-    board: "Rajasthan Board",
-    description: "Pedagogy + Child Development.",
-    banner: "assets/png/trending_courses_img.jpg",
-    isPaid: false,
-    status: "upcoming",
-    type: "live",
-    targets: ["Teaching", "Rajasthan Exams"],
-    startDate: "20 Oct 2025",
-    duration: "3 months",
-  ),
-  Course(
-    id: "5",
-    title: "UPSI Final Merit Complete Theory Batch",
-    instructor: "Vivek Sir (UPSI Rank 5)",
-    category: "UPSI",
-    board: "UP Board",
-    description: "Complete theory batch with LIVE classes, PDFs, "
-        "12,000+ PYQs, 6 hours daily classes, VOD, DPP, "
-        "Current Affairs & Test Series.",
-    banner: "assets/png/trending_courses_img.jpg",
-    isPaid: true,
-    status: "upcoming",
-    type: "live",
-    targets: ["UPSI"],
-    startDate: "26 Aug 2025",
-    duration: "Till Exam",
-  ),
-  Course(
-    id: "6",
-    title: "SSC CGL Mathematics",
-    instructor: "Prof. Anjali Sharma",
-    category: "SSC",
-    board: "National",
-    description: "Maths foundation + advanced level.",
-    banner: "assets/png/trending_courses_img.jpg",
-    isPaid: false,
-    status: "upcoming",
-    type: "recorded",
-    targets: ["SSC", "Railway"],
-    startDate: "01 Nov 2025",
-    duration: "3 months",
-  ),
-];
-
-
-
-class Course {
-  final String id;
-  final String title;
-  final String instructor;
-  final String category;
-  final String board;
-  final String description;
-  final String banner;
-  final bool isPaid;
-  final String status; // upcoming, ongoing, completed
-  final String type;   // live, recorded
-  final List<String> targets; // 👈 exams ya categories multiple
-  final String startDate; // 👈 new field
-  final String duration;  // 👈 new field
-
-  Course({
-    required this.id,
-    required this.title,
-    required this.instructor,
-    required this.category,
-    required this.board,
-    required this.description,
-    required this.banner,
-    required this.isPaid,
-    required this.status,
-    required this.type,
-    required this.targets,
-    required this.startDate, // 👈
-    required this.duration,  // 👈
-  });
-}
-
 class CourseController extends GetxController {
-  var selectedCategory = "".obs;
-  var selectedBoard = "".obs;
-  var searchQuery = "".obs;
+  var allCourses = <CourseModel>[].obs;
+  var filteredCourses = <CourseModel>[].obs;
+  var categories = <String>[].obs;
+  var selectedCategory = "All".obs;
+  var selectedTag = "All Tags".obs;
+  final LocalApiService apiService = LocalApiService();
 
-  var filteredCourses = <Course>[].obs;
-
-  String? filterStatus; // upcoming, ongoing, completed
-  bool? filterIsPaid; // free/paid
-  String? filterType; // live/recorded
-
-  CourseController({this.filterStatus, this.filterIsPaid, this.filterType});
-
-  void applyFilters(List<Course> allCourses) {
-    filteredCourses.value =
-        allCourses.where((course) {
-          // screen-level filter
-          final matchesStatus =
-              filterStatus == null || course.status == filterStatus;
-          final matchesPaid =
-              filterIsPaid == null || course.isPaid == filterIsPaid;
-          final matchesType = filterType == null || course.type == filterType;
-
-          // user-level filter
-          final matchesCategory =
-              selectedCategory.value.isEmpty ||
-              course.category == selectedCategory.value;
-
-          final matchesBoard =
-              selectedBoard.value.isEmpty ||
-              course.board == selectedBoard.value;
-
-          final matchesSearch =
-              searchQuery.value.isEmpty ||
-              course.title.toLowerCase().contains(
-                searchQuery.value.toLowerCase(),
-              ) ||
-              course.instructor.toLowerCase().contains(
-                searchQuery.value.toLowerCase(),
-              ) ||
-              course.category.toLowerCase().contains(
-                searchQuery.value.toLowerCase(),
-              );
-
-          return matchesStatus &&
-              matchesPaid &&
-              matchesType &&
-              matchesCategory &&
-              matchesBoard &&
-              matchesSearch;
-        }).toList();
+  @override
+  void onInit() {
+    super.onInit();
+    loadCourses();
   }
 
-  void updateCategory(String category, List<Course> allCourses) {
+  void loadCourses() async {
+    final response = await apiService.getLocalJson("assets/data/courses.json");
+    allCourses.value =
+        response.map<CourseModel>((e) => CourseModel.fromJson(e)).toList();
+
+    // Extract unique categories
+    Set<String> categorySet = {};
+    for (var course in allCourses) {
+      categorySet.add(course.category);
+    }
+    categories.value = ["All", ...categorySet.toList()];
+
+    // Initially show all courses
+    filteredCourses.value = allCourses;
+  }
+
+  void filterByCategory(String category) {
     selectedCategory.value = category;
-    applyFilters(allCourses);
+    _applyFilters();
   }
 
-  void updateBoard(String board, List<Course> allCourses) {
-    selectedBoard.value = board;
-    applyFilters(allCourses);
+  void filterByTag(String tag) {
+    selectedTag.value = tag;
+    _applyFilters();
   }
 
-  void updateSearch(String query, List<Course> allCourses) {
-    searchQuery.value = query;
-    applyFilters(allCourses);
+  void _applyFilters() {
+    var courses = allCourses;
+
+    // Filter by category
+    if (selectedCategory.value != "All") {
+      courses =
+          courses
+              .where((course) => course.category == selectedCategory.value)
+              .toList()
+              .obs;
+    }
+
+    // Filter by tag
+    if (selectedTag.value != "All Tags") {
+      courses =
+          courses
+              .where((course) => course.tags.contains(selectedTag.value))
+              .toList()
+              .obs;
+    }
+
+    filteredCourses.value = courses;
   }
 
-  void resetFilters(List<Course> allCourses) {
-    selectedCategory.value = "";
-    selectedBoard.value = "";
-    searchQuery.value = "";
-    applyFilters(allCourses);
+  void resetFilters() {
+    selectedCategory.value = "All";
+    selectedTag.value = "All Tags";
+    filteredCourses.value = allCourses;
   }
 
-  List<String> get categories => allCourses.map((c) => c.category).toSet().toList();
+  // Get courses based on type
+  List<CourseModel> getCoursesByType(String type) {
+    return filteredCourses.where((course) => course.type == type).toList();
+  }
+
+  // Get free courses only
+  List<CourseModel> getFreeCourses() {
+    return allCourses.where((course) => !course.isPaid).toList();
+  }
+
+  // Get paid courses only
+  List<CourseModel> getPaidCourses() {
+    return allCourses.where((course) => course.isPaid).toList();
+  }
+
+  // Get enrolled courses
+  List<CourseModel> getEnrolledCourses() {
+    return allCourses.where((course) => course.isEnrolled).toList();
+  }
+
+  // Get Live Class courses
+  List<CourseModel> getLiveClassCourses() {
+    return allCourses.where((course) => course.type == "Live Class").toList();
+  }
+
+  // Get Recorded Videos courses
+  List<CourseModel> getRecordedVideoCourses() {
+    return allCourses.where((course) => course.recordingsAvailable).toList();
+  }
+
+  // // Get Upcoming Batches
+  // List<CourseModel> getUpcomingBatches() {
+  //   return allCourses.where((course) => course.isUpcomingBatch == true).toList();
+  // }
+
+  // Get My Batches (all batches)
+  List<CourseModel> getMyBatches() {
+    return allCourses;
+  }
+
+  // Get featured courses
+  List<CourseModel> getFeaturedCourses() {
+    return allCourses.where((course) => course.offers.featured).toList();
+  }
+
+  // Search courses by title or description
+  List<CourseModel> searchCourses(String query) {
+    if (query.isEmpty) return filteredCourses;
+
+    return filteredCourses
+        .where(
+          (course) =>
+              course.title.toLowerCase().contains(query.toLowerCase()) ||
+              course.shortDescription.toLowerCase().contains(
+                query.toLowerCase(),
+              ) ||
+              course.instructor.name.toLowerCase().contains(
+                query.toLowerCase(),
+              ),
+        )
+        .toList();
+  }
+
+  // Get all unique tags from courses
+  List<String> getAllTags() {
+    Set<String> tagSet = {};
+    for (var course in allCourses) {
+      tagSet.addAll(course.tags);
+    }
+    return tagSet.toList();
+  }
+
+  // Get all unique tags from free courses only
+  List<String> getFreeCoursesTags() {
+    Set<String> tagSet = {};
+    final freeCourses = getFreeCourses();
+    for (var course in freeCourses) {
+      tagSet.addAll(course.tags);
+    }
+    return tagSet.toList();
+  }
+
+  // Get course by ID
+  CourseModel? getCourseById(String id) {
+    try {
+      return allCourses.firstWhere((course) => course.id == id);
+    } catch (e) {
+      return null;
+    }
+  }
 }

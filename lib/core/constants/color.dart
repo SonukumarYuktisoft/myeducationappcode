@@ -1,9 +1,6 @@
-
-
 import 'package:flutter/material.dart';
 
 class AppColors {
-
   static final AppColors _singleton = AppColors._internal();
   factory AppColors() {
     return _singleton;
@@ -12,6 +9,8 @@ class AppColors {
 
   static Color themeColor = Colors.deepOrangeAccent;
   static Color loaderColor = Colors.deepOrangeAccent;
+  static Color greyColor = Colors.grey;
+  // static Color blackColor = Colors.black;
 
   // static Color primaryColor = const Color(0xFFF8A340);
   static Color primaryColor = const Color(0xFF39895F);
@@ -29,7 +28,6 @@ class AppColors {
   static Color clrE53935 = const Color(0xFFE53935);
   static Color blackColor = Colors.black;
 
-
   /// Text-field
   static Color textFieldActiveBorderColor = const Color(0xFFFFD800);
   static Color textFieldErrorBorderColor = const Color(0xFFCB2A2F);
@@ -44,7 +42,7 @@ class AppColors {
   static LinearGradient linearButtonColor = LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
-    colors: [Color(0xff39895F),Color(0xff44755B)]
+    colors: [Color(0xff39895F), Color(0xff44755B)],
   );
 
   static LinearGradient inActiveButtonGradientColor = LinearGradient(
@@ -52,12 +50,10 @@ class AppColors {
     end: Alignment.bottomCenter,
     colors: [
       Color(0xff4FBAFD).withValues(alpha: 0.5),
-      Color(0xff1E3FF0).withValues(alpha: 0.5)
-    ]
+      Color(0xff1E3FF0).withValues(alpha: 0.5),
+    ],
   );
-  
 }
-
 
 /// Color Extension
 extension ColorExtension on String {
@@ -71,5 +67,4 @@ extension ColorExtension on String {
       return Color(int.parse(buffer.toString(), radix: 16));
     }
   }
-
 }

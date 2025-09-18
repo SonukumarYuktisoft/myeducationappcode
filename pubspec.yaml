@@ -51,6 +51,8 @@ flutter:
     - assets/png/
     - assets/png/groups_images/
     - assets/png/teachers_image/
+    - assets/data/courses.json
+    - assets/png/courses_images/
   fonts:
     - family: OpenSansRegular
       fonts:

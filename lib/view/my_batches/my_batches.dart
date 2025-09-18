@@ -1,8 +1,8 @@
 import 'package:education/core/constants/color.dart';
 import 'package:education/core/constants/font_family.dart';
 import 'package:education/core/constants/font_style.dart';
+import 'package:education/model/CourseModel/course_overview.dart';
 import 'package:education/view/my_batches/batch_detail.dart';
-import 'package:education/view/my_batches/course_controller/course_controller.dart';
 import 'package:education/view/my_batches/live_class_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,9 +19,6 @@ class MyBatchesScreen extends StatefulWidget {
 class _MyBatchesScreenState extends State<MyBatchesScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-   final CourseController courseCtrl =
-      Get.put(CourseController());
-
 
   @override
   void initState() {
@@ -42,12 +39,13 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
       appBar: _buildAppBar(),
       body: Column(
         children: [
-          _buildTabBar(),
+          // _buildTabBar(),
           Expanded(
-            child: TabBarView(
-              controller: _tabController,
-              children: [_buildOverviewTab(), _buildCurriculumTab()],
-            ),
+            // child: TabBarView(
+            //   controller: _tabController,
+            //   children: [_buildOverviewTab(), _buildCurriculumTab()],
+            // ),
+            child: _buildOverviewTab(),
           ),
         ],
       ),
@@ -109,6 +107,7 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
         duration: '6 months',
         teacher: 'Dr. Rajesh Kumar',
         isPaid: true,
+        // image: 'assets\png\courses_images\upsc.jpeg'
       ),
       CourseOverview(
         name: 'SSC CGL Mathematics',
@@ -136,21 +135,16 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
       ),
     ];
 
-    return Obx(
-       () {
-        
-        return ListView.builder(
-          padding: const EdgeInsets.all(16),
-          itemCount: overviewItems.length,
-          physics: BouncingScrollPhysics(),
-          itemBuilder: (context, index) {
-            final item = overviewItems[index];
-            return _buildOverviewCard(item, () {
-              Get.to(() => BatchDetailScreen(item: item));
-            });
-          },
-        );
-      }
+    return ListView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: overviewItems.length,
+      physics: BouncingScrollPhysics(),
+      itemBuilder: (context, index) {
+        final item = overviewItems[index];
+        return _buildOverviewCard(item, () {
+          Get.to(() => BatchDetailScreen(item: item));
+        });
+      },
     );
   }
 
@@ -446,24 +440,6 @@ class _MyBatchesScreenState extends State<MyBatchesScreen>
       child: Text(text),
     );
   }
-}
-
-class CourseOverview {
-  final String name;
-  final List<String> categories;
-  final String startDate;
-  final String duration;
-  final String teacher;
-  final bool isPaid;
-
-  const CourseOverview({
-    required this.name,
-    required this.categories,
-    required this.startDate,
-    required this.duration,
-    required this.teacher,
-    required this.isPaid,
-  });
 }
 
 enum _ClassStatus { upcoming, live, completed }

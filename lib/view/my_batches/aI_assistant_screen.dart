@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class AIAssistantScreen extends StatefulWidget {
-  const AIAssistantScreen({super.key});
+class AiAssistantScreen extends StatefulWidget {
+  const AiAssistantScreen({super.key});
 
   @override
-  State<AIAssistantScreen> createState() => _AIAssistantScreenState();
+  State<AiAssistantScreen> createState() => _NotesScreenState();
 }
 
-class _AIAssistantScreenState extends State<AIAssistantScreen> {
+class _NotesScreenState extends State<AiAssistantScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(body: const Center(child: Text('Notes Screen')));
   }
 }

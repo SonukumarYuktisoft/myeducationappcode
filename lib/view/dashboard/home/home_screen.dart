@@ -197,7 +197,7 @@ class HomeScreen extends StatelessWidget {
               title: 'AI Assistant',
               color: const Color(0xFF607D8B),
               onTap: () {
-                Get.to(() => AIAssistantScreen());
+                Get.to(() => AiAssistantScreen());
               },
             ),
           ],
