@@ -1,6 +1,7 @@
 import 'package:education/core/constants/color.dart';
 import 'package:education/core/constants/font_family.dart';
 import 'package:education/core/constants/font_style.dart';
+import 'package:education/view/my_batches/widgets/AlternativeVideoPlayer.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
@@ -70,7 +71,16 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
   void _addTempComment(String text) {
     if (text.trim().isEmpty) return;
     setState(() {
-      _comments.insert(0, _Comment(author: 'You', timeAgo: 'just now', text: text, likes: 0, replies: 0));
+      _comments.insert(
+        0,
+        _Comment(
+          author: 'You',
+          timeAgo: 'just now',
+          text: text,
+          likes: 0,
+          replies: 0,
+        ),
+      );
     });
   }
 
@@ -79,17 +89,9 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
     return Stack(
       children: [
         Column(
-          children: [
-            _buildVideoPlayer(),
-            Expanded(child: _buildComments()),
-          ],
+          children: [_buildVideoPlayer(), Expanded(child: _buildComments())],
         ),
-        Positioned(
-          bottom: 0, 
-          left: 0,
-          right: 0,
-          child: _buildActions()
-        ),
+        Positioned(bottom: 0, left: 0, right: 0, child: _buildActions()),
       ],
     );
   }
@@ -110,7 +112,9 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
             ),
           ),
         ),
-        const _NetworkVideoPlayer(),
+        AlternativeVideoPlayer(
+          youtubeUrl: "https://www.youtube.com/watch?v=0LawAwK5OaI",
+        ),
         Positioned(
           top: 12,
           right: 12,
@@ -137,10 +141,17 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
   Widget _buildComments() {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
         color: AppColors.whiteColor,
         boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.03), blurRadius: 8, offset: const Offset(0, -2)),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.03),
+            blurRadius: 8,
+            offset: const Offset(0, -2),
+          ),
         ],
       ),
       child: Column(
@@ -153,7 +164,10 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
               children: [
                 Text(
                   '${_comments.length} comments',
-                  style: TextStyleCustom.headingStyle(fontSize: 14, color: AppColors.blackColor),
+                  style: TextStyleCustom.headingStyle(
+                    fontSize: 14,
+                    color: AppColors.blackColor,
+                  ),
                 ),
                 TextButton.icon(
                   onPressed: () {},
@@ -174,12 +188,14 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
                 CircleAvatar(
                   radius: 16,
                   backgroundColor: AppColors.primaryColor.withOpacity(0.1),
-                  child: Icon(Icons.person, color: AppColors.primaryColor, size: 18),
+                  child: Icon(
+                    Icons.person,
+                    color: AppColors.primaryColor,
+                    size: 18,
+                  ),
                 ),
                 const SizedBox(width: 12),
-                Expanded(
-                  child: _InlineCommentField(onSubmit: _addTempComment),
-                ),
+                Expanded(child: _InlineCommentField(onSubmit: _addTempComment)),
               ],
             ),
           ),
@@ -190,7 +206,8 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
               itemCount: _comments.length,
               separatorBuilder: (_, __) => const Divider(height: 1),
               padding: const EdgeInsets.symmetric(vertical: 8),
-              itemBuilder: (context, index) => _buildCommentTile(_comments[index]),
+              itemBuilder:
+                  (context, index) => _buildCommentTile(_comments[index]),
             ),
           ),
         ],
@@ -235,20 +252,33 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
                       ),
                     ),
                     const SizedBox(width: 6),
-                    Text('• ${c.timeAgo}', style: TextStyleCustom.normalStyle(fontSize: 12, color: AppColors.clr606060)),
+                    Text(
+                      '• ${c.timeAgo}',
+                      style: TextStyleCustom.normalStyle(
+                        fontSize: 12,
+                        color: AppColors.clr606060,
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 4),
                 Text(
                   c.text,
-                  style: TextStyleCustom.normalStyle(fontSize: 13, color: AppColors.blackColor),
+                  style: TextStyleCustom.normalStyle(
+                    fontSize: 13,
+                    color: AppColors.blackColor,
+                  ),
                 ),
                 const SizedBox(height: 6),
                 Row(
                   children: [
                     _iconAction(
-                      icon: c.isLiked ? Icons.thumb_up : Icons.thumb_up_outlined,
-                      color: c.isLiked ? AppColors.primaryColor : AppColors.clr606060,
+                      icon:
+                          c.isLiked ? Icons.thumb_up : Icons.thumb_up_outlined,
+                      color:
+                          c.isLiked
+                              ? AppColors.primaryColor
+                              : AppColors.clr606060,
                       onTap: () {
                         setState(() {
                           c.toggleLike();
@@ -256,11 +286,23 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
                       },
                     ),
                     const SizedBox(width: 6),
-                    Text('${c.likes}', style: TextStyleCustom.normalStyle(fontSize: 12, color: AppColors.clr606060)),
+                    Text(
+                      '${c.likes}',
+                      style: TextStyleCustom.normalStyle(
+                        fontSize: 12,
+                        color: AppColors.clr606060,
+                      ),
+                    ),
                     const SizedBox(width: 12),
                     _iconAction(
-                      icon: c.isDisliked ? Icons.thumb_down : Icons.thumb_down_outlined,
-                      color: c.isDisliked ? AppColors.primaryColor : AppColors.clr606060,
+                      icon:
+                          c.isDisliked
+                              ? Icons.thumb_down
+                              : Icons.thumb_down_outlined,
+                      color:
+                          c.isDisliked
+                              ? AppColors.primaryColor
+                              : AppColors.clr606060,
                       onTap: () {
                         setState(() {
                           c.toggleDislike();
@@ -271,7 +313,10 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
                     TextButton(
                       onPressed: () {},
                       child: const Text('Reply'),
-                      style: TextButton.styleFrom(foregroundColor: AppColors.blackColor, padding: const EdgeInsets.symmetric(horizontal: 8)),
+                      style: TextButton.styleFrom(
+                        foregroundColor: AppColors.blackColor,
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                      ),
                     ),
                   ],
                 ),
@@ -280,7 +325,11 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
                     padding: const EdgeInsets.only(top: 2),
                     child: Text(
                       'View ${c.replies} replies',
-                      style: TextStyleCustom.normalStyle(fontSize: 12, color: AppColors.primaryColor, fontFamily: FontFamily.semiBold),
+                      style: TextStyleCustom.normalStyle(
+                        fontSize: 12,
+                        color: AppColors.primaryColor,
+                        fontFamily: FontFamily.semiBold,
+                      ),
                     ),
                   ),
               ],
@@ -295,7 +344,11 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
     );
   }
 
-  Widget _iconAction({required IconData icon, required Color color, required VoidCallback onTap}) {
+  Widget _iconAction({
+    required IconData icon,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(20),
@@ -312,10 +365,8 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
       child: Card(
         elevation: 0,
         color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        margin: const EdgeInsets.only(bottom: 10,left: 10,right: 10),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
           decoration: BoxDecoration(
@@ -346,10 +397,7 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
                 color: AppColors.primaryColor,
                 onTap: () {},
               ),
-              _actionIcon(
-                icon: Icons.more_horiz,
-                color: AppColors.clr606060,
-              ),
+              _actionIcon(icon: Icons.more_horiz, color: AppColors.clr606060),
             ],
           ),
         ),
@@ -370,10 +418,7 @@ class _LiveClassBodyState extends State<_LiveClassBody> {
             color: color.withOpacity(0.08),
             shape: BoxShape.circle,
           ),
-          child: IconButton(
-            onPressed: onTap,
-            icon: Icon(icon, color: color),
-          ),
+          child: IconButton(onPressed: onTap, icon: Icon(icon, color: color)),
         ),
       ],
     );
@@ -401,7 +446,7 @@ class _NetworkVideoPlayerState extends State<_NetworkVideoPlayer> {
   }
 
   Future<void> _init() async {
-    const String url = "https://youtu.be/0LawAwK5OaI?si=itv8sXlzjFwlEyXv";
+    const String url = "https://youtu.be/2t9BCOeWAyI?si=fs5QNg-92lRJmkJn";
     final String? ytId = _extractYouTubeId(url);
 
     if (ytId != null) {
@@ -446,7 +491,10 @@ class _NetworkVideoPlayerState extends State<_NetworkVideoPlayer> {
       return const Center(child: CircularProgressIndicator());
     }
     if (_ytController != null) {
-      return YoutubePlayer(controller: _ytController!,enableFullScreenOnVerticalDrag: true,);
+      return YoutubePlayer(
+        controller: _ytController!,
+        enableFullScreenOnVerticalDrag: true,
+      );
     }
     return GestureDetector(
       onTap: () async {
@@ -517,7 +565,10 @@ class _InlineCommentFieldState extends State<_InlineCommentField> {
               controller: _controller,
               decoration: InputDecoration(
                 hintText: 'Add a comment...',
-                hintStyle: TextStyleCustom.normalStyle(fontSize: 13, color: AppColors.clr606060),
+                hintStyle: TextStyleCustom.normalStyle(
+                  fontSize: 13,
+                  color: AppColors.clr606060,
+                ),
                 border: InputBorder.none,
               ),
               textInputAction: TextInputAction.send,
@@ -527,7 +578,7 @@ class _InlineCommentFieldState extends State<_InlineCommentField> {
           IconButton(
             onPressed: () => _submit(_controller.text),
             icon: Icon(Icons.send, size: 18, color: AppColors.primaryColor),
-          )
+          ),
         ],
       ),
     );
@@ -540,7 +591,13 @@ class _InlineCommentFieldState extends State<_InlineCommentField> {
 }
 
 class _Comment {
-  _Comment({required this.author, required this.timeAgo, required this.text, required this.likes, required this.replies});
+  _Comment({
+    required this.author,
+    required this.timeAgo,
+    required this.text,
+    required this.likes,
+    required this.replies,
+  });
 
   final String author;
   final String timeAgo;
@@ -585,5 +642,3 @@ String? _extractYouTubeId(String url) {
   }
   return null;
 }
-
-

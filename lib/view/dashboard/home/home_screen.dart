@@ -7,9 +7,10 @@ import 'package:education/view/my_batches/course_controller/upcoming_batches_con
 import 'package:education/view/my_batches/free_batches_screen.dart';
 import 'package:education/view/my_batches/live_class_screen.dart';
 import 'package:education/view/my_batches/my_batches.dart';
-import 'package:education/view/my_batches/notes_screen.dart';
 import 'package:education/view/my_batches/recorded_videos_screen.dart';
 import 'package:education/view/my_batches/upcoming_batches_screen.dart';
+import 'package:education/view/notes_screen/notes_list_screen.dart';
+import 'package:education/view/notes_screen/notes_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -168,7 +169,7 @@ class HomeScreen extends StatelessWidget {
               title: 'Notes',
               color: const Color(0xFFFBBC05),
               onTap: () {
-                Get.to(() => NotesScreen());
+                Get.to(() => NotesListScreen());
               },
             ),
             _buildActionCard(
@@ -327,7 +328,8 @@ class HomeScreen extends StatelessWidget {
         ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: controller.allCourses.length,
+          // itemCount: controller.getUpcomingCourses().length,
+          itemCount: 3,
           itemBuilder: (context, index) {
             return _buildUpcomingBatchCard(
               title:

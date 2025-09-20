@@ -1,3 +1,4 @@
+import 'package:education/core/constants/color.dart';
 import 'package:education/view/aI_assistant/chat_controller.dart';
 import 'package:education/view/aI_assistant/gemini_service.dart';
 import 'package:education/view/aI_assistant/widgets/message_bubble.dart';
@@ -18,14 +19,14 @@ class AiAssistantScreen extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 20,
-              backgroundColor: Colors.blue.shade100,
-              child: Icon(Icons.smart_toy, color: Colors.blue),
+              backgroundColor: AppColors.primaryColor.withOpacity(0.1),
+              child: Icon(Icons.smart_toy, color: AppColors.primaryColor),
             ),
             SizedBox(width: 12),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Gemini AI', style: TextStyle(fontSize: 18)),
+                Text('AI', style: TextStyle(fontSize: 18)),
                 Text('Online', 
                      style: TextStyle(fontSize: 12, color: Colors.green)),
               ],
@@ -118,7 +119,7 @@ class AiAssistantScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: controller.isTyping.value 
                             ? Colors.grey 
-                            : Colors.blue,
+                            : AppColors.primaryColor,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(

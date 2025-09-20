@@ -6,6 +6,7 @@ import 'package:education/model/CourseModel/course_model.dart';
 import 'package:education/model/CourseModel/course_overview.dart';
 import 'package:education/view/my_batches/live_class_screen.dart';
 import 'package:education/view/my_batches/my_batches.dart';
+import 'package:education/view/my_batches/widgets/AlternativeVideoPlayer.dart';
 import 'package:education/view/my_batches/widgets/video_player_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ import 'package:get/utils.dart';
 
 class BatchDetailCopy extends StatefulWidget {
   final CourseModel item;
-  
+
   BatchDetailCopy({super.key, required this.item});
 
   @override
@@ -81,8 +82,8 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
             color: widget.item.isPaid ? AppColors.primaryColor : Colors.green,
           ),
           child: BuildText.buildText(
-            text: widget.item.isPaid ? 'Paid' : 'Free', 
-            color: AppColors.whiteColor
+            text: widget.item.isPaid ? 'Paid' : 'Free',
+            color: AppColors.whiteColor,
           ),
         ),
       ],
@@ -160,7 +161,9 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
                       offset: const Offset(0, 2),
                     ),
                   ],
-                  border: Border.all(color: AppColors.clrD6D6D6.withOpacity(0.5)),
+                  border: Border.all(
+                    color: AppColors.clrD6D6D6.withOpacity(0.5),
+                  ),
                 ),
               ),
               Row(
@@ -204,7 +207,7 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
               _kv('Classes', '${item.totalClasses} total'),
               const SizedBox(height: 12),
               _kv('Language', item.language),
-        
+
               buildSizeBox(20.0, 0.0),
               BuildText.buildText(
                 text: "Targeted Exams",
@@ -214,9 +217,12 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
               Wrap(
                 spacing: 6,
                 runSpacing: -8,
-                children: item.target.related.map((exam) => _chip(exam, AppColors.primaryColor)).toList(),
+                children:
+                    item.target.related
+                        .map((exam) => _chip(exam, AppColors.primaryColor))
+                        .toList(),
               ),
-              
+
               buildSizeBox(20.0, 0.0),
               BuildText.buildText(
                 text: "Syllabus",
@@ -226,7 +232,10 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
               Wrap(
                 spacing: 10,
                 runSpacing: 10,
-                children: item.syllabus.map((subject) => _chip(subject, Colors.blue)).toList(),
+                children:
+                    item.syllabus
+                        .map((subject) => _chip(subject, Colors.blue))
+                        .toList(),
               ),
             ],
           ),
@@ -387,7 +396,7 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
 
   Widget _buildTopicRow(Class classItem) {
     List<Widget> actions = [];
-    
+
     // Determine class status and actions based on business logic
     if (!widget.item.isPaid || widget.item.isEnrolled || classItem.isDemo) {
       // Free course, enrolled in paid course, or demo class
@@ -402,23 +411,34 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
             actions = [
               _statusPill('Live', AppColors.primaryColor),
               const SizedBox(width: 8),
-              _primaryButton('Join', onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => const LiveClassScreen()),
-                );
-              }),
+              _primaryButton(
+                'Join',
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const LiveClassScreen()),
+                  );
+                },
+              ),
             ];
           } else {
             // Completed/recorded class
             actions = [
-              _outlineButton('View', onPressed: () {
-                print('akljfkla');
-             Get.to(()=>  VideoPlayerScreen(youtubeUrl: 'https://youtu.be/enY83Li8_ps?si=ErkiCJo_g4izyDql'));
-              }),
+              _outlineButton(
+                'View',
+                onPressed: () {
+                  print('akljfkla');
+                  Get.to(
+                    () =>  VideoPlayerScreen()
+                  );
+                },
+              ),
               const SizedBox(width: 8),
-              _outlineButton('Notes', onPressed: () {
-                // Handle viewing notes
-              }),
+              _outlineButton(
+                'Notes',
+                onPressed: () {
+                  // Handle viewing notes
+                },
+              ),
             ];
           }
         } else {
@@ -430,9 +450,12 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
       actions = [
         _statusPill('Locked', Colors.red),
         const SizedBox(width: 8),
-        _primaryButton('Enroll', onPressed: () {
-          _showEnrollDialog();
-        }),
+        _primaryButton(
+          'Enroll',
+          onPressed: () {
+            _showEnrollDialog();
+          },
+        ),
       ];
     }
 
@@ -443,16 +466,21 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
         color: AppColors.whiteColor,
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
-          color: (!widget.item.isPaid || widget.item.isEnrolled || classItem.isDemo)
-              ? AppColors.clrD6D6D6.withOpacity(0.5)
-              : Colors.red.withOpacity(0.3)
+          color:
+              (!widget.item.isPaid ||
+                      widget.item.isEnrolled ||
+                      classItem.isDemo)
+                  ? AppColors.clrD6D6D6.withOpacity(0.5)
+                  : Colors.red.withOpacity(0.3),
         ),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Lock icon for paid locked content
-          if (widget.item.isPaid && !widget.item.isEnrolled && !classItem.isDemo)
+          if (widget.item.isPaid &&
+              !widget.item.isEnrolled &&
+              !classItem.isDemo)
             Padding(
               padding: const EdgeInsets.only(right: 8),
               child: Icon(Icons.lock, size: 16, color: Colors.red),
@@ -465,9 +493,12 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
                   classItem.title,
                   style: TextStyleCustom.normalStyle(
                     fontSize: 14,
-                    color: (!widget.item.isPaid || widget.item.isEnrolled || classItem.isDemo)
-                        ? AppColors.blackColor
-                        : Colors.red.shade700,
+                    color:
+                        (!widget.item.isPaid ||
+                                widget.item.isEnrolled ||
+                                classItem.isDemo)
+                            ? AppColors.blackColor
+                            : Colors.red.shade700,
                     fontFamily: FontFamily.semiBold,
                   ),
                 ),
@@ -493,33 +524,34 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
   bool _isLiveClass(Class classItem) {
     // This would typically check against current time and scheduled class time
     // For demo purposes, we'll simulate this
-    return classItem.title.toLowerCase().contains('core concepts') && 
-           classItem.videoUrl.isNotEmpty;
+    return classItem.title.toLowerCase().contains('core concepts') &&
+        classItem.videoUrl.isNotEmpty;
   }
 
   void _showEnrollDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Enroll in Course'),
-        content: Text(
-          'To access this content, you need to enroll in "${widget.item.title}". '
-          'Price: ₹${widget.item.discountPrice > 0 ? widget.item.discountPrice : widget.item.price}'
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
+      builder:
+          (context) => AlertDialog(
+            title: Text('Enroll in Course'),
+            content: Text(
+              'To access this content, you need to enroll in "${widget.item.title}". '
+              'Price: ₹${widget.item.discountPrice > 0 ? widget.item.discountPrice : widget.item.price}',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Cancel'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  // Handle enrollment logic here
+                },
+                child: Text('Enroll Now'),
+              ),
+            ],
           ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-              // Handle enrollment logic here
-            },
-            child: Text('Enroll Now'),
-          ),
-        ],
-      ),
     );
   }
 
@@ -601,7 +633,7 @@ class _BatchDetailCopyState extends State<BatchDetailCopy>
     );
   }
 
-  Widget _outlineButton(String text,{required VoidCallback onPressed}) {
+  Widget _outlineButton(String text, {required VoidCallback onPressed}) {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
