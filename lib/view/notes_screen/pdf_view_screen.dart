@@ -2,6 +2,7 @@ import 'package:education/core/constants/color.dart';
 import 'package:education/view/notes_screen/models/note_model.dart';
 import 'package:education/view/notes_screen/notes_service.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
 
 class PDFViewScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
   String? localPath;
   bool isLoading = true;
   bool isDownloading = false;
-  bool isPurchased = false; // Track if user has purchased this note
+  bool isPurchased = false;
   int currentPage = 0;
   int totalPages = 0;
   double downloadProgress = 0.0;
@@ -29,7 +30,6 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
   }
 
   void loadPDF() async {
-    // Simulate loading
     await Future.delayed(Duration(seconds: 2));
     setState(() {
       isLoading = false;
@@ -37,7 +37,6 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
   }
 
   void downloadPDF() async {
-    // Check if note is free or purchased
     if (!widget.note.isFree && !isPurchased) {
       _showPurchaseDialog();
       return;
@@ -49,36 +48,210 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
     });
 
     try {
+      // Show progress dialog
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(AppColors.primaryColor),
+              ),
+              SizedBox(height: 16),
+              Text('Downloading PDF...'),
+              SizedBox(height: 8),
+              Text(
+                'Please wait while we save the file to your device',
+                style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      );
+
       String filePath = await NotesService.downloadPDF(
         widget.note.pdfUrl,
         widget.note.title,
       );
 
+      // Close progress dialog
+      Navigator.of(context).pop();
+
       setState(() {
         localPath = filePath;
       });
 
+      // Show success dialog with file location
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          title: Row(
+            children: [
+              Icon(Icons.check_circle, color: Colors.green, size: 28),
+              SizedBox(width: 12),
+              Expanded(child: Text('Download Successful!')),
+            ],
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Your PDF has been saved to:'),
+              SizedBox(height: 12),
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.green[50],
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.green[200]!),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.folder, color: Colors.green[700], size: 16),
+                        SizedBox(width: 6),
+                        Text(
+                          'Downloads Folder',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.green[700],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      widget.note.title + '.pdf',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.green[600],
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 12),
+              Text(
+                'You can find this file in your device\'s Downloads folder or file manager.',
+                style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text('Got It'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                _openPDFPreview();
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primaryColor,
+                foregroundColor: Colors.white,
+              ),
+              child: Text('Open PDF'),
+            ),
+          ],
+        ),
+      );
+
+      // Also show a snackbar
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('PDF downloaded successfully!'),
+          content: Row(
+            children: [
+              Icon(Icons.download_done, color: Colors.white, size: 20),
+              SizedBox(width: 8),
+              Expanded(child: Text('PDF saved to Downloads folder')),
+            ],
+          ),
           backgroundColor: Colors.green,
           duration: Duration(seconds: 4),
           action: SnackBarAction(
             label: 'Open',
             textColor: Colors.white,
-            onPressed: () {
-              _showDownloadLocationDialog(filePath);
-            },
+            onPressed: _openPDFPreview,
           ),
         ),
       );
+
     } catch (e) {
+      // Close progress dialog if still open
+      if (Navigator.canPop(context)) {
+        Navigator.of(context).pop();
+      }
+
       print('Download failed: ${e.toString()}');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Download failed: ${e.toString()}'),
-          backgroundColor: Colors.red,
-          duration: Duration(seconds: 5),
+      
+      // Show error dialog
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          title: Row(
+            children: [
+              Icon(Icons.error, color: Colors.red, size: 28),
+              SizedBox(width: 12),
+              Text('Download Failed'),
+            ],
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Unable to download the PDF file.'),
+              SizedBox(height: 8),
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.red[50],
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.red[200]!),
+                ),
+                child: Text(
+                  e.toString().replaceAll('Exception: ', ''),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.red[700],
+                  ),
+                ),
+              ),
+              SizedBox(height: 12),
+              Text(
+                'Please check your internet connection and storage space, then try again.',
+                style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text('OK'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                downloadPDF(); // Retry download
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primaryColor,
+                foregroundColor: Colors.white,
+              ),
+              child: Text('Retry'),
+            ),
+          ],
         ),
       );
     }
@@ -93,9 +266,7 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Row(
           children: [
             Icon(Icons.shopping_cart, color: AppColors.primaryColor),
@@ -132,7 +303,7 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
             ),
             SizedBox(height: 8),
             Text(
-              'Price: ₹99',
+              'Price: ₹${widget.note.price.toInt()}',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -163,14 +334,11 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
   }
 
   void _processPurchase() {
-    // Simulate purchase process
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -182,9 +350,8 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
       ),
     );
 
-    // Simulate payment processing
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.of(context).pop(); // Close processing dialog
+      Navigator.of(context).pop();
       
       setState(() {
         isPurchased = true;
@@ -200,51 +367,30 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
     });
   }
 
-  void _showDownloadLocationDialog(String filePath) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        title: Row(
-          children: [
-            Icon(Icons.check_circle, color: Colors.green),
-            SizedBox(width: 8),
-            Text('File Downloaded'),
-          ],
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('File saved to:'),
-            SizedBox(height: 8),
-            Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: SelectableText(
-                filePath,
-                style: TextStyle(
-                  fontSize: 12,
-                  fontFamily: 'monospace',
-                  color: Colors.blue,
-                ),
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: Text('OK'),
+  void _openPDFPreview() async {
+    try {
+      final Uri pdfUri = Uri.parse(widget.note.pdfUrl);
+      if (await canLaunchUrl(pdfUri)) {
+        await launchUrl(
+          pdfUri,
+          mode: LaunchMode.externalApplication,
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Cannot open PDF preview'),
+            backgroundColor: Colors.red,
           ),
-        ],
-      ),
-    );
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error opening PDF: ${e.toString()}'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 
   @override
@@ -254,10 +400,7 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
       appBar: AppBar(
         title: Text(
           widget.note.title,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         backgroundColor: AppColors.primaryColor,
         foregroundColor: Colors.white,
@@ -299,18 +442,14 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
           : SingleChildScrollView(
               child: Column(
                 children: [
-                  // Note Information Card
                   Container(
                     margin: EdgeInsets.all(16),
                     child: Card(
                       elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Header with image
                           Container(
                             height: 200,
                             width: double.infinity,
@@ -327,7 +466,6 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
                             ),
                             child: Stack(
                               children: [
-                                // Background pattern
                                 Positioned.fill(
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -343,7 +481,6 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
                                     ),
                                   ),
                                 ),
-                                // Content overlay
                                 Positioned.fill(
                                   child: Container(
                                     padding: EdgeInsets.all(20),
@@ -382,7 +519,6 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
                                     ),
                                   ),
                                 ),
-                                // Free/Paid badge
                                 Positioned(
                                   top: 16,
                                   right: 16,
@@ -393,7 +529,7 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     child: Text(
-                                      widget.note.isFree ? 'FREE' : 'PREMIUM',
+                                      widget.note.isFree ? 'FREE' : '₹${widget.note.price.toInt()}',
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 10,
@@ -406,13 +542,41 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
                             ),
                           ),
                           
-                          // Content section
                           Padding(
                             padding: EdgeInsets.all(20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                // Description
+                                if (!widget.note.isFree) ...[
+                                  Container(
+                                    width: double.infinity,
+                                    padding: EdgeInsets.all(12),
+                                    decoration: BoxDecoration(
+                                      color: Colors.orange[50],
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(color: Colors.orange[200]!),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.currency_rupee, color: Colors.orange[700], size: 20),
+                                        SizedBox(width: 8),
+                                        Text(
+                                          'Premium Content - ₹${widget.note.price.toInt()}',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.orange[700],
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        Spacer(),
+                                        if (isPurchased)
+                                          Icon(Icons.check_circle, color: Colors.green, size: 20),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 16),
+                                ],
+                                
                                 Text(
                                   'Description',
                                   style: TextStyle(
@@ -433,7 +597,6 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
                                 
                                 SizedBox(height: 16),
                                 
-                                // Teacher info
                                 Row(
                                   children: [
                                     Icon(Icons.person, size: 18, color: Colors.grey[600]),
@@ -451,17 +614,13 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
                                 
                                 SizedBox(height: 8),
                                 
-                                // Date
                                 Row(
                                   children: [
                                     Icon(Icons.calendar_today, size: 18, color: Colors.grey[600]),
                                     SizedBox(width: 8),
                                     Text(
                                       'Created on ${widget.note.createdAt.day}/${widget.note.createdAt.month}/${widget.note.createdAt.year}',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.grey[600],
-                                      ),
+                                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                                     ),
                                   ],
                                 ),
@@ -473,55 +632,35 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
                     ),
                   ),
 
-                  // Download Progress (if downloading)
-                  if (isDownloading)
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 16),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(16),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.download, color: AppColors.primaryColor),
-                                  SizedBox(width: 8),
-                                  Text(
-                                    'Downloading PDF...',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.grey[700],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 12),
-                              LinearProgressIndicator(
-                                backgroundColor: Colors.grey[300],
-                                valueColor: AlwaysStoppedAnimation<Color>(AppColors.primaryColor),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-
-                  // Action Buttons
                   Container(
                     margin: EdgeInsets.all(16),
                     child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       child: Padding(
                         padding: EdgeInsets.all(20),
                         child: Column(
                           children: [
+                            SizedBox(
+                              width: double.infinity,
+                              height: 50,
+                              child: ElevatedButton.icon(
+                                onPressed: _openPDFPreview,
+                                icon: Icon(Icons.visibility),
+                                label: Text(
+                                  'Preview PDF',
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                ),
+                              ),
+                            ),
+                            
+                            SizedBox(height: 12),
+                            
                             if (!widget.note.isFree && !isPurchased) ...[
-                              // Buy button for premium content
                               SizedBox(
                                 width: double.infinity,
                                 height: 50,
@@ -529,32 +668,23 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
                                   onPressed: () => _showPurchaseDialog(),
                                   icon: Icon(Icons.shopping_cart),
                                   label: Text(
-                                    'Buy Now - ₹99',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    'Buy Now - ₹${widget.note.price.toInt()}',
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.orange,
                                     foregroundColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 12),
+                              SizedBox(height: 8),
                               Text(
-                                '🔒 Premium content requires purchase',
-                                style: TextStyle(
-                                  color: Colors.grey[600],
-                                  fontSize: 12,
-                                ),
+                                'Purchase required for download access',
+                                style: TextStyle(color: Colors.grey[600], fontSize: 12),
                                 textAlign: TextAlign.center,
                               ),
                             ] else ...[
-                              // Download button for free/purchased content
                               SizedBox(
                                 width: double.infinity,
                                 height: 50,
@@ -573,19 +703,14 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
                                         : localPath != null
                                             ? 'Downloaded'
                                             : 'Download PDF',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                                   ),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: localPath != null
                                         ? Colors.green
                                         : AppColors.primaryColor,
                                     foregroundColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                                   ),
                                 ),
                               ),
@@ -598,7 +723,7 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
                                     Icon(Icons.check_circle, color: Colors.green, size: 16),
                                     SizedBox(width: 4),
                                     Text(
-                                      'File saved to device',
+                                      'File saved to Downloads',
                                       style: TextStyle(
                                         color: Colors.green[600],
                                         fontSize: 12,
@@ -609,44 +734,6 @@ class _PDFViewScreenState extends State<PDFViewScreen> {
                                 ),
                               ],
                             ],
-                            
-                            SizedBox(height: 12),
-                            
-                            // Preview button
-                            SizedBox(
-                              width: double.infinity,
-                              height: 45,
-                              child: OutlinedButton.icon(
-                                onPressed: () {
-                                  if (!widget.note.isFree && !isPurchased) {
-                                    // Show limited preview for premium content
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text('Limited preview available. Purchase to access full content.'),
-                                        backgroundColor: Colors.orange,
-                                      ),
-                                    );
-                                  } else {
-                                    // Show full preview
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(content: Text('Opening PDF preview...')),
-                                    );
-                                  }
-                                },
-                                icon: Icon(Icons.visibility),
-                                label: Text(
-                                  widget.note.isFree || isPurchased ? 'Preview PDF' : 'Limited Preview',
-                                  style: TextStyle(fontWeight: FontWeight.w600),
-                                ),
-                                style: OutlinedButton.styleFrom(
-                                  foregroundColor: AppColors.primaryColor,
-                                  side: BorderSide(color: AppColors.primaryColor),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                ),
-                              ),
-                            ),
                           ],
                         ),
                       ),

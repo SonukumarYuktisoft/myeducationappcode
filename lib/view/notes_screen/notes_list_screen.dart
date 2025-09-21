@@ -42,6 +42,41 @@ class _NotesListScreenState extends State<NotesListScreen> {
     setState(() {});
   }
 
+  Color _getCategoryColor(String category) {
+    switch (category.toLowerCase()) {
+      case 'ssc':
+        return Colors.blue;
+      case 'upsc':
+        return Colors.purple;
+      case 'banking':
+        return Colors.green;
+      case 'railway':
+        return Colors.orange;
+      case 'defence':
+        return Colors.red;
+      default:
+        return AppColors.primaryColor;
+    }
+  }
+
+  String _formatDate(DateTime date) {
+    final months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
+    return '${date.day} ${months[date.month - 1]}, ${date.year}';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,99 +196,240 @@ class _NotesListScreenState extends State<NotesListScreen> {
                       itemCount: filteredNotes.length,
                       itemBuilder: (context, index) {
                         final note = filteredNotes[index];
-                        return Card(
-                          margin: EdgeInsets.only(bottom: 12),
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: ListTile(
-                            contentPadding: EdgeInsets.all(16),
-                            leading: Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: AppColors.primaryColor.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Icon(
-                                Icons.picture_as_pdf,
-                                color: AppColors.primaryColor,
-                                size: 28,
-                              ),
-                            ),
-                            title: Text(
-                              note.title,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                            subtitle: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(height: 4),
-                                Text(
-                                  note.description,
-                                  style: TextStyle(
-                                    color: Colors.grey[600],
-                                    fontSize: 14,
-                                  ),
-                                ),
-                                SizedBox(height: 8),
-                                Row(
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 8,
-                                        vertical: 4,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: AppColors.primaryColor
-                                            .withOpacity(0.1),
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: Text(
-                                        note.category,
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: AppColors.primaryColor,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                    Spacer(),
-                                    Text(
-                                      '${note.createdAt.day}/${note.createdAt.month}/${note.createdAt.year}',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.grey[500],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.grey[400],
-                              size: 16,
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder:
-                                      (context) => PDFViewScreen(note: note),
-                                ),
-                              );
-                            },
-                          ),
-                        );
+                        return _buildNoteCard(note);
                       },
                     ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildNoteCard(NoteModel note) {
+    return Card(
+      margin: EdgeInsets.only(bottom: 16),
+      elevation: 3,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Colors.white, Colors.grey[50]!],
+          ),
+        ),
+        child: Column(
+          children: [
+            // Header with price/free badge
+            Container(
+              padding: EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  // PDF Icon
+                  Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: _getCategoryColor(note.category).withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Icon(
+                      Icons.picture_as_pdf,
+                      color: _getCategoryColor(note.category),
+                      size: 32,
+                    ),
+                  ),
+                  SizedBox(width: 16),
+
+                  // Title and basic info
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          note.title,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.black87,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(height: 4),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.person_outline,
+                              size: 14,
+                              color: Colors.grey[600],
+                            ),
+                            SizedBox(width: 4),
+                            Expanded(
+                              child: Text(
+                                note.teacherName,
+                                style: TextStyle(
+                                  color: Colors.grey[600],
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // Price Badge
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: note.isFree ? Colors.green : Colors.orange,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: (note.isFree ? Colors.green : Colors.orange)
+                              .withOpacity(0.3),
+                          blurRadius: 8,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      note.isFree ? 'FREE' : '₹${note.price.toInt()}',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Description
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+                width: double.infinity,
+                child: Text(
+                  note.description,
+                  style: TextStyle(
+                    color: Colors.grey[700],
+                    fontSize: 15,
+                    height: 1.4,
+                  ),
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+
+            SizedBox(height: 16),
+
+            // Bottom section with category, date, and action button
+            Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.grey[50],
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
+              ),
+              child: Row(
+                children: [
+                  // Category Badge
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: _getCategoryColor(note.category).withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: _getCategoryColor(
+                          note.category,
+                        ).withOpacity(0.3),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.category_outlined,
+                          size: 14,
+                          color: _getCategoryColor(note.category),
+                        ),
+                        SizedBox(width: 4),
+                        Text(
+                          note.category,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: _getCategoryColor(note.category),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(width: 12),
+
+                  // Date
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.calendar_today_outlined,
+                        size: 14,
+                        color: Colors.grey[500],
+                      ),
+                      SizedBox(width: 4),
+                      Text(
+                        _formatDate(note.createdAt),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey[600],
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  Spacer(),
+
+                  // View Button
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PDFViewScreen(note: note),
+                        ),
+                      );
+                    },
+                    icon: Icon(Icons.visibility, size: 16),
+                    label: Text('View'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryColor,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
+                      elevation: 2,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

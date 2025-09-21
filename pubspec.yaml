@@ -73,7 +73,7 @@ flutter:
     - assets/data/recordedCourses.json
     - assets/data/upcomingCourses.json
     - assets/png/courses_images/
-    - assets/videos/video.mp4
+    # - assets/videos/video.mp4
     
   fonts:
     - family: OpenSansRegular

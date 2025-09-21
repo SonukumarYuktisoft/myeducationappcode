@@ -9,6 +9,7 @@ class NoteModel {
   final DateTime createdAt;
   final bool isFree;
   final bool isPdf;
+  final double price; // Added price field
 
   NoteModel({
     required this.id,
@@ -21,6 +22,7 @@ class NoteModel {
     required this.createdAt,
     this.isFree = true,
     this.isPdf = true,
+    this.price = 0.0, // Default to free
   });
 
   factory NoteModel.fromJson(Map<String, dynamic> json) {
@@ -35,6 +37,7 @@ class NoteModel {
       createdAt: DateTime.parse(json['createdAt']),
       isFree: json['isFree'] ?? true,
       isPdf: json['isPdf'] ?? true,
+      price: (json['price'] ?? 0.0).toDouble(),
     );
   }
 
@@ -50,6 +53,7 @@ class NoteModel {
       'createdAt': createdAt.toIso8601String(),
       'isFree': isFree,
       'isPdf': isPdf,
+      'price': price,
     };
   }
 }
