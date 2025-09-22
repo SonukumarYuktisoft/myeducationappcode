@@ -158,7 +158,7 @@ class HomeScreen extends StatelessWidget {
               title: 'Mock Tests',
               color: const Color(0xFF34A853),
               onTap: () {
-                Get.to(() => MockTestQuestionScreen());
+                Get.to(() => MockTestScreen());
               },
             ),
             _buildActionCard(
@@ -497,121 +497,121 @@ class HomeScreen extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: Colors.black.withOpacity(
-              0.4,
-            ), // overlay for text readability
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: 280,
-                  margin: const EdgeInsets.only(right: 16),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        imagePath ?? 'https://via.placeholder.com/280x180',
-                      ),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Colors.black.withOpacity(
-                        0.4,
-                      ), // overlay for text readability
-                    ),
-                  ),
-                ),
-                // Top Row
-                if (showTrending) // 👈 optional "TRENDING" badge
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Text(
-                          'TRENDING',
-                          style: TextStyleCustom.normalStyle(
-                            fontSize: 10,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      const Icon(
-                        Icons.bookmark_outline,
-                        color: Colors.white,
-                        size: 20,
-                      ),
-                    ],
-                  ),
+        // child: Container(
+        //   decoration: BoxDecoration(
+        //     borderRadius: BorderRadius.circular(16),
+        //     color: Colors.black.withOpacity(
+        //       0.4,
+        //     ), // overlay for text readability
+        //   ),
+        // child: Padding(
+        //   padding: const EdgeInsets.all(16),
+        //   child: Column(
+        //     crossAxisAlignment: CrossAxisAlignment.start,
+        //     children: [
+        //       Container(
+        //         width: 280,
+        //         margin: const EdgeInsets.only(right: 16),
+        //         decoration: BoxDecoration(
+        //           borderRadius: BorderRadius.circular(16),
+        //           image: DecorationImage(
+        //             image: NetworkImage(
+        //               imagePath ?? 'https://via.placeholder.com/280x180',
+        //             ),
+        //             fit: BoxFit.cover,
+        //           ),
+        //         ),
+        //         child: Container(
+        //           decoration: BoxDecoration(
+        //             borderRadius: BorderRadius.circular(16),
+        //             color: Colors.black.withOpacity(
+        //               0.4,
+        //             ), // overlay for text readability
+        //           ),
+        //         ),
+        //       ),
+        //       // Top Row
+        //       if (showTrending) // 👈 optional "TRENDING" badge
+        //         Row(
+        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //           children: [
+        //             Container(
+        //               padding: const EdgeInsets.symmetric(
+        //                 horizontal: 8,
+        //                 vertical: 4,
+        //               ),
+        //               decoration: BoxDecoration(
+        //                 color: Colors.white.withOpacity(0.2),
+        //                 borderRadius: BorderRadius.circular(8),
+        //               ),
+        //               child: Text(
+        //                 'TRENDING',
+        //                 style: TextStyleCustom.normalStyle(
+        //                   fontSize: 10,
+        //                   color: Colors.white,
+        //                 ),
+        //               ),
+        //             ),
+        //             const Icon(
+        //               Icons.bookmark_outline,
+        //               color: Colors.white,
+        //               size: 20,
+        //             ),
+        //           ],
+        //         ),
 
-                const Spacer(),
+        //       const Spacer(),
 
-                // Title
-                if (title != null)
-                  Text(
-                    title,
-                    style: TextStyleCustom.headingStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
+        //       // Title
+        //       if (title != null)
+        //         Text(
+        //           title,
+        //           style: TextStyleCustom.headingStyle(
+        //             fontSize: 18,
+        //             color: Colors.white,
+        //           ),
+        //         ),
 
-                if (subtitle != null) ...[
-                  const SizedBox(height: 4),
-                  Text(
-                    subtitle,
-                    style: TextStyleCustom.normalStyle(
-                      fontSize: 14,
-                      color: Colors.white.withOpacity(0.9),
-                    ),
-                  ),
-                ],
+        //       if (subtitle != null) ...[
+        //         const SizedBox(height: 4),
+        //         Text(
+        //           subtitle,
+        //           style: TextStyleCustom.normalStyle(
+        //             fontSize: 14,
+        //             color: Colors.white.withOpacity(0.9),
+        //           ),
+        //         ),
+        //       ],
 
-                if (price != null || originalPrice != null) ...[
-                  const SizedBox(height: 12),
-                  Row(
-                    children: [
-                      if (price != null)
-                        Text(
-                          price,
-                          style: TextStyleCustom.headingStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                          ),
-                        ),
-                      if (price != null && originalPrice != null)
-                        const SizedBox(width: 8),
-                      if (originalPrice != null)
-                        Text(
-                          originalPrice,
-                          style: TextStyleCustom.normalStyle(
-                            fontSize: 12,
-                            color: Colors.white.withOpacity(0.7),
-                          ).copyWith(decoration: TextDecoration.lineThrough),
-                        ),
-                    ],
-                  ),
-                ],
-              ],
-            ),
-          ),
-        ),
+        //       if (price != null || originalPrice != null) ...[
+        //         const SizedBox(height: 12),
+        //         Row(
+        //           children: [
+        //             if (price != null)
+        //               Text(
+        //                 price,
+        //                 style: TextStyleCustom.headingStyle(
+        //                   fontSize: 16,
+        //                   color: Colors.white,
+        //                 ),
+        //               ),
+        //             if (price != null && originalPrice != null)
+        //               const SizedBox(width: 8),
+        //             if (originalPrice != null)
+        //               Text(
+        //                 originalPrice,
+        //                 style: TextStyleCustom.normalStyle(
+        //                   fontSize: 12,
+        //                   color: Colors.white.withOpacity(0.7),
+        //                 ).copyWith(decoration: TextDecoration.lineThrough),
+        //               ),
+        //           ],
+        //         ),
+        //       ],
+        //     ],
+        //   ),
+        // ),
+        // ),
       ),
     );
   }

@@ -2,7 +2,10 @@ import 'package:education/core/constants/color.dart';
 import 'package:education/core/constants/font_family.dart';
 import 'package:education/core/constants/font_style.dart';
 import 'package:education/core/utils/text.dart';
+import 'package:education/view/dashboard/test/mock_test_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/get_core.dart';
 
 class MockTestScreen extends StatefulWidget {
   const MockTestScreen({super.key});
@@ -71,17 +74,11 @@ class _MockTestScreenState extends State<MockTestScreen>
       actions: [
         IconButton(
           onPressed: () {},
-          icon: Icon(
-            Icons.filter_list,
-            color: AppColors.blackColor,
-          ),
+          icon: Icon(Icons.filter_list, color: AppColors.blackColor),
         ),
         IconButton(
           onPressed: () {},
-          icon: Icon(
-            Icons.history,
-            color: AppColors.blackColor,
-          ),
+          icon: Icon(Icons.history, color: AppColors.blackColor),
         ),
       ],
     );
@@ -147,37 +144,62 @@ class _MockTestScreenState extends State<MockTestScreen>
             itemCount: 4,
             itemBuilder: (context, index) {
               return _buildTestCard(
-                title: index == 0
-                    ? 'UPSC Prelims Mock Test - 15'
-                    : index == 1
+                title:
+                    index == 0
+                        ? 'UPSC Prelims Mock Test - 15'
+                        : index == 1
                         ? 'SSC CGL Full Length Test - 8'
                         : index == 2
-                            ? 'Current Affairs Weekly Quiz'
-                            : 'BPSC Mains Practice Test - 3',
-                subject: index == 0
-                    ? 'General Studies'
-                    : index == 1
+                        ? 'Current Affairs Weekly Quiz'
+                        : 'BPSC Mains Practice Test - 3',
+                subject:
+                    index == 0
+                        ? 'General Studies'
+                        : index == 1
                         ? 'Quantitative Aptitude'
                         : index == 2
-                            ? 'Current Affairs'
-                            : 'Essay Writing',
-                duration: index == 0
-                    ? '2 Hours'
-                    : index == 1
+                        ? 'Current Affairs'
+                        : 'Essay Writing',
+                duration:
+                    index == 0
+                        ? '2 Hours'
+                        : index == 1
                         ? '3 Hours'
                         : index == 2
-                            ? '30 Minutes'
-                            : '3 Hours',
-                questions: index == 0 ? 100 : index == 1 ? 100 : index == 2 ? 25 : 8,
-                marks: index == 0 ? 200 : index == 1 ? 200 : index == 2 ? 50 : 300,
-                attempts: index == 0 ? 1247 : index == 1 ? 890 : index == 2 ? 2156 : 456,
-                difficulty: index == 0
-                    ? 'Medium'
-                    : index == 1
+                        ? '30 Minutes'
+                        : '3 Hours',
+                questions:
+                    index == 0
+                        ? 100
+                        : index == 1
+                        ? 100
+                        : index == 2
+                        ? 25
+                        : 8,
+                marks:
+                    index == 0
+                        ? 200
+                        : index == 1
+                        ? 200
+                        : index == 2
+                        ? 50
+                        : 300,
+                attempts:
+                    index == 0
+                        ? 1247
+                        : index == 1
+                        ? 890
+                        : index == 2
+                        ? 2156
+                        : 456,
+                difficulty:
+                    index == 0
+                        ? 'Medium'
+                        : index == 1
                         ? 'Hard'
                         : index == 2
-                            ? 'Easy'
-                            : 'Hard',
+                        ? 'Easy'
+                        : 'Hard',
                 isPremium: index == 1 ? true : false,
               );
             },
@@ -209,9 +231,10 @@ class _MockTestScreenState extends State<MockTestScreen>
             itemCount: 2,
             itemBuilder: (context, index) {
               return _buildOngoingTestCard(
-                title: index == 0
-                    ? 'UPSC Prelims Mock Test - 12'
-                    : 'Current Affairs Monthly Test',
+                title:
+                    index == 0
+                        ? 'UPSC Prelims Mock Test - 12'
+                        : 'Current Affairs Monthly Test',
                 subject: index == 0 ? 'General Studies' : 'Current Affairs',
                 timeLeft: index == 0 ? '45 minutes' : '1 hour 20 minutes',
                 progress: index == 0 ? 0.65 : 0.30,
@@ -248,70 +271,86 @@ class _MockTestScreenState extends State<MockTestScreen>
             itemCount: 5,
             itemBuilder: (context, index) {
               return _buildCompletedTestCard(
-                title: index == 0
-                    ? 'UPSC Prelims Mock Test - 10'
-                    : index == 1
+                title:
+                    index == 0
+                        ? 'UPSC Prelims Mock Test - 10'
+                        : index == 1
                         ? 'SSC CGL Practice Test - 5'
                         : index == 2
-                            ? 'Current Affairs Quiz - Week 12'
-                            : index == 3
-                                ? 'Mathematics Speed Test'
-                                : 'General Knowledge Test - 8',
-                subject: index == 0
-                    ? 'General Studies'
-                    : index == 1
+                        ? 'Current Affairs Quiz - Week 12'
+                        : index == 3
+                        ? 'Mathematics Speed Test'
+                        : 'General Knowledge Test - 8',
+                subject:
+                    index == 0
+                        ? 'General Studies'
+                        : index == 1
                         ? 'Quantitative Aptitude'
                         : index == 2
-                            ? 'Current Affairs'
-                            : index == 3
-                                ? 'Mathematics'
-                                : 'General Knowledge',
-                score: index == 0
-                    ? 156
-                    : index == 1
+                        ? 'Current Affairs'
+                        : index == 3
+                        ? 'Mathematics'
+                        : 'General Knowledge',
+                score:
+                    index == 0
+                        ? 156
+                        : index == 1
                         ? 142
                         : index == 2
-                            ? 38
-                            : index == 3
-                                ? 85
-                                : 72,
-                totalMarks: index == 0
-                    ? 200
-                    : index == 1
+                        ? 38
+                        : index == 3
+                        ? 85
+                        : 72,
+                totalMarks:
+                    index == 0
+                        ? 200
+                        : index == 1
                         ? 200
                         : index == 2
-                            ? 50
-                            : index == 3
-                                ? 100
-                                : 100,
-                percentage: index == 0
-                    ? 78.0
-                    : index == 1
+                        ? 50
+                        : index == 3
+                        ? 100
+                        : 100,
+                percentage:
+                    index == 0
+                        ? 78.0
+                        : index == 1
                         ? 71.0
                         : index == 2
-                            ? 76.0
-                            : index == 3
-                                ? 85.0
-                                : 72.0,
-                rank: index == 0 ? 45 : index == 1 ? 67 : index == 2 ? 23 : index == 3 ? 12 : 89,
-                totalStudents: index == 0
-                    ? 1247
-                    : index == 1
+                        ? 76.0
+                        : index == 3
+                        ? 85.0
+                        : 72.0,
+                rank:
+                    index == 0
+                        ? 45
+                        : index == 1
+                        ? 67
+                        : index == 2
+                        ? 23
+                        : index == 3
+                        ? 12
+                        : 89,
+                totalStudents:
+                    index == 0
+                        ? 1247
+                        : index == 1
                         ? 890
                         : index == 2
-                            ? 2156
-                            : index == 3
-                                ? 654
-                                : 987,
-                completedOn: index == 0
-                    ? '2 days ago'
-                    : index == 1
+                        ? 2156
+                        : index == 3
+                        ? 654
+                        : 987,
+                completedOn:
+                    index == 0
+                        ? '2 days ago'
+                        : index == 1
                         ? '1 week ago'
                         : index == 2
-                            ? '1 week ago'
-                            : index == 3
-                                ? '2 weeks ago'
-                                : '3 weeks ago',
+                        ? '1 week ago'
+                        : index == 3
+                        ? '2 weeks ago'
+                        : '3 weeks ago',
               );
             },
           ),
@@ -354,25 +393,19 @@ class _MockTestScreenState extends State<MockTestScreen>
       ),
       child: Row(
         children: [
-          Expanded(
-            child: _buildStatItem('15', 'Tests\nTaken'),
-          ),
+          Expanded(child: _buildStatItem('15', 'Tests\nTaken')),
           Container(
             width: 1,
             height: 40,
             color: AppColors.whiteColor.withOpacity(0.3),
           ),
-          Expanded(
-            child: _buildStatItem('78%', 'Average\nScore'),
-          ),
+          Expanded(child: _buildStatItem('78%', 'Average\nScore')),
           Container(
             width: 1,
             height: 40,
             color: AppColors.whiteColor.withOpacity(0.3),
           ),
-          Expanded(
-            child: _buildStatItem('45', 'Best\nRank'),
-          ),
+          Expanded(child: _buildStatItem('45', 'Best\nRank')),
         ],
       ),
     );
@@ -447,11 +480,7 @@ class _MockTestScreenState extends State<MockTestScreen>
               color: AppColors.primaryColor.withOpacity(0.1),
               shape: BoxShape.circle,
             ),
-            child: Icon(
-              icon,
-              color: AppColors.primaryColor,
-              size: 24,
-            ),
+            child: Icon(icon, color: AppColors.primaryColor, size: 24),
           ),
           const SizedBox(height: 12),
           Text(
@@ -485,9 +514,10 @@ class _MockTestScreenState extends State<MockTestScreen>
     required String difficulty,
     required bool isPremium,
   }) {
-    Color difficultyColor = difficulty == 'Easy'
-        ? const Color(0xFF4CAF50)
-        : difficulty == 'Medium'
+    Color difficultyColor =
+        difficulty == 'Easy'
+            ? const Color(0xFF4CAF50)
+            : difficulty == 'Medium'
             ? const Color(0xFFFFA500)
             : AppColors.redColor;
 
@@ -522,7 +552,10 @@ class _MockTestScreenState extends State<MockTestScreen>
               ),
               if (isPremium)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     color: const Color(0xFFFFD700).withOpacity(0.2),
                     borderRadius: BorderRadius.circular(12),
@@ -560,11 +593,7 @@ class _MockTestScreenState extends State<MockTestScreen>
             children: [
               Row(
                 children: [
-                  Icon(
-                    Icons.people,
-                    size: 16,
-                    color: AppColors.clr606060,
-                  ),
+                  Icon(Icons.people, size: 16, color: AppColors.clr606060),
                   const SizedBox(width: 4),
                   Text(
                     '$attempts attempts',
@@ -575,7 +604,10 @@ class _MockTestScreenState extends State<MockTestScreen>
                   ),
                   const SizedBox(width: 12),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 2,
+                    ),
                     decoration: BoxDecoration(
                       color: difficultyColor.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12),
@@ -592,10 +624,15 @@ class _MockTestScreenState extends State<MockTestScreen>
                 ],
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => MockTestQuestionScreen());
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryColor,
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 8,
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -619,11 +656,7 @@ class _MockTestScreenState extends State<MockTestScreen>
     return Expanded(
       child: Row(
         children: [
-          Icon(
-            icon,
-            size: 16,
-            color: AppColors.clr606060,
-          ),
+          Icon(icon, size: 16, color: AppColors.clr606060),
           const SizedBox(width: 4),
           Expanded(
             child: Text(
@@ -646,20 +679,13 @@ class _MockTestScreenState extends State<MockTestScreen>
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [
-            AppColors.redColor.withOpacity(0.8),
-            AppColors.redColor,
-          ],
+          colors: [AppColors.redColor.withOpacity(0.8), AppColors.redColor],
         ),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
         children: [
-          Icon(
-            Icons.timer,
-            size: 40,
-            color: AppColors.whiteColor,
-          ),
+          Icon(Icons.timer, size: 40, color: AppColors.whiteColor),
           const SizedBox(width: 16),
           Expanded(
             child: Column(
@@ -686,7 +712,10 @@ class _MockTestScreenState extends State<MockTestScreen>
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.whiteColor,
                     foregroundColor: AppColors.redColor,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 8,
+                    ),
                   ),
                   child: Text(
                     'Continue Test',
@@ -739,11 +768,7 @@ class _MockTestScreenState extends State<MockTestScreen>
                   color: AppColors.redColor.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
-                child: Icon(
-                  Icons.timer,
-                  color: AppColors.redColor,
-                  size: 20,
-                ),
+                child: Icon(Icons.timer, color: AppColors.redColor, size: 20),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -819,7 +844,10 @@ class _MockTestScreenState extends State<MockTestScreen>
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryColor,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -846,20 +874,13 @@ class _MockTestScreenState extends State<MockTestScreen>
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [
-            const Color(0xFF4CAF50),
-            const Color(0xFF2E7D32),
-          ],
+          colors: [const Color(0xFF4CAF50), const Color(0xFF2E7D32)],
         ),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
         children: [
-          Icon(
-            Icons.trending_up,
-            size: 40,
-            color: AppColors.whiteColor,
-          ),
+          Icon(Icons.trending_up, size: 40, color: AppColors.whiteColor),
           const SizedBox(width: 16),
           Expanded(
             child: Column(
@@ -964,15 +985,11 @@ class _MockTestScreenState extends State<MockTestScreen>
           const SizedBox(height: 16),
           Row(
             children: [
-              Expanded(
-                child: _buildScoreItem('Score', '$score/$totalMarks'),
-              ),
+              Expanded(child: _buildScoreItem('Score', '$score/$totalMarks')),
               Expanded(
                 child: _buildScoreItem('Percentage', '${percentage.toInt()}%'),
               ),
-              Expanded(
-                child: _buildScoreItem('Rank', '$rank/$totalStudents'),
-              ),
+              Expanded(child: _buildScoreItem('Rank', '$rank/$totalStudents')),
             ],
           ),
           const SizedBox(height: 16),
@@ -1109,7 +1126,12 @@ class _MockTestScreenState extends State<MockTestScreen>
     );
   }
 
-  Widget _buildPerformanceMetric(String label, String value, IconData icon, Color color) {
+  Widget _buildPerformanceMetric(
+    String label,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return Container(
       margin: const EdgeInsets.only(right: 8),
       padding: const EdgeInsets.all(16),
@@ -1119,11 +1141,7 @@ class _MockTestScreenState extends State<MockTestScreen>
       ),
       child: Column(
         children: [
-          Icon(
-            icon,
-            color: color,
-            size: 24,
-          ),
+          Icon(icon, color: color, size: 24),
           const SizedBox(height: 8),
           Text(
             value,
@@ -1165,16 +1183,32 @@ class _MockTestScreenState extends State<MockTestScreen>
             ),
           ),
           const SizedBox(height: 16),
-          _buildSubjectPerformanceItem('General Studies', 0.78, AppColors.primaryColor),
-          _buildSubjectPerformanceItem('Mathematics', 0.85, const Color(0xFF4CAF50)),
-          _buildSubjectPerformanceItem('Current Affairs', 0.72, const Color(0xFFFFA500)),
+          _buildSubjectPerformanceItem(
+            'General Studies',
+            0.78,
+            AppColors.primaryColor,
+          ),
+          _buildSubjectPerformanceItem(
+            'Mathematics',
+            0.85,
+            const Color(0xFF4CAF50),
+          ),
+          _buildSubjectPerformanceItem(
+            'Current Affairs',
+            0.72,
+            const Color(0xFFFFA500),
+          ),
           _buildSubjectPerformanceItem('English', 0.68, AppColors.redColor),
         ],
       ),
     );
   }
 
-  Widget _buildSubjectPerformanceItem(String subject, double score, Color color) {
+  Widget _buildSubjectPerformanceItem(
+    String subject,
+    double score,
+    Color color,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Column(
@@ -1246,11 +1280,7 @@ class _MockTestScreenState extends State<MockTestScreen>
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.trending_up,
-                color: const Color(0xFF4CAF50),
-                size: 16,
-              ),
+              Icon(Icons.trending_up, color: const Color(0xFF4CAF50), size: 16),
               const SizedBox(width: 4),
               Text(
                 '12% improvement this month',
@@ -1312,11 +1342,7 @@ class _MockTestScreenState extends State<MockTestScreen>
         children: [
           Row(
             children: [
-              Icon(
-                Icons.priority_high,
-                color: AppColors.redColor,
-                size: 20,
-              ),
+              Icon(Icons.priority_high, color: AppColors.redColor, size: 20),
               const SizedBox(width: 8),
               Text(
                 'Areas to Improve',
