@@ -1,6 +1,8 @@
 import 'package:education/core/constants/color.dart';
 import 'package:education/core/constants/font_style.dart';
 import 'package:education/view/aI_assistant/aI_assistant_screen.dart';
+import 'package:education/view/dashboard/test/mock_test_screen.dart';
+import 'package:education/view/dashboard/test/test_screen.dart';
 import 'package:education/view/my_batches/batch_detail_copy.dart';
 import 'package:education/view/my_batches/course_controller/recorded_videos_screen_controller.dart';
 import 'package:education/view/my_batches/course_controller/upcoming_batches_controller.dart';
@@ -11,6 +13,7 @@ import 'package:education/view/my_batches/recorded_videos_screen.dart';
 import 'package:education/view/my_batches/upcoming_batches_screen.dart';
 import 'package:education/view/notes_screen/notes_list_screen.dart';
 import 'package:education/view/notes_screen/notes_screen.dart';
+import 'package:education/view/quiz/quiz_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,7 +34,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             _buildTrendingCoursesSection(),
             const SizedBox(height: 25),
-            _buildQuickActions(),
+            _buildQuickActions(context),
             const SizedBox(height: 25),
             _buildUpcomingBatchesSection(),
             const SizedBox(height: 20),
@@ -116,7 +119,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildQuickActions() {
+  Widget _buildQuickActions(BuildContext parentContext) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -154,7 +157,9 @@ class HomeScreen extends StatelessWidget {
               icon: Icons.quiz_outlined,
               title: 'Mock Tests',
               color: const Color(0xFF34A853),
-              onTap: () {},
+              onTap: () {
+                Get.to(() => MockTestQuestionScreen());
+              },
             ),
             _buildActionCard(
               icon: Icons.live_tv_outlined,
@@ -201,7 +206,7 @@ class HomeScreen extends StatelessWidget {
               title: 'AI Assistant',
               color: const Color(0xFF607D8B),
               onTap: () {
-                Get.to(() => AiAssistantScreen());
+                showOptionsBottomSheet(parentContext);
               },
             ),
           ],
@@ -714,6 +719,51 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void showOptionsBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: Icon(Icons.question_answer),
+                title: Text("Ask Doubt"),
+                onTap: () {
+                  Navigator.pop(context); // Close the bottom sheet
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AiAssistantScreen(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.quiz),
+                title: Text("Quick Quiz"),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ExamSelectionScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
